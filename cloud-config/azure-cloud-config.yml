@@ -1,0 +1,248 @@
+azs:
+- name: z1
+- name: z2
+- name: z3
+- name: z4
+- name: z5
+- name: z6
+- name: z7
+
+vm_types:
+- name: minimal
+  cloud_properties:
+    instance_type: Standard_A2_v2
+- name: default
+  cloud_properties:
+    instance_type: Standard_A2_v2
+- name: small
+  cloud_properties:
+    instance_type: Standard_A2_v2
+- name: medium
+  cloud_properties:
+    instance_type: Standard_A4_v2
+- name: medium-memory-8GB
+  cloud_properties:
+    instance_type: Standard_A4_v2
+- name: large
+  cloud_properties:
+    instance_type: Standard_A8_v2
+- name: xlarge
+  cloud_properties:
+    instance_type: Standard_A8_v2
+- name: small-50GB
+  cloud_properties:
+    instance_type: Standard_A2m_v2
+- name: small-50GB-ephemeral-disk
+  cloud_properties:
+    instance_type: Standard_A4_v2
+- name: small-100GB-ephemeral-disk
+  cloud_properties:
+    instance_type: Standard_A4_v2
+- name: small-highmem-100GB-ephemeral-disk
+  cloud_properties:
+    instance_type: Standard_A4m_v2
+- name: small-highmem-16GB
+  cloud_properties:
+    instance_type: Standard_A2m_v2
+- name: service_tiny
+  cloud_properties:
+    instance_type: Standard_A2_v2
+- name: service_small
+  cloud_properties:
+    instance_type: Standard_A2_v2
+- name: service_medium
+  cloud_properties:
+    instance_type: Standard_A2_v2
+- name: service_medium_1CPU_2G
+  cloud_properties:
+    instance_type: Standard_A2_v2
+- name: service_medium_2G
+  cloud_properties:
+    instance_type: Standard_A4_v2
+- name: portal_tiny
+  cloud_properties:
+    instance_type: Standard_A2_v2
+- name: portal_small
+  cloud_properties:
+    instance_type: Standard_A2_v2
+- name: portal_medium
+  cloud_properties:
+    instance_type: Standard_A2_v2
+- name: portal_large
+  cloud_properties:
+    instance_type: Standard_A2_v2
+
+compilation:
+  az: z3
+  network: default
+  reuse_compilation_vms: true
+  vm_type: large
+  workers: 25
+
+disk_types:
+- disk_size: 1024
+  name: default
+- disk_size: 1024
+  name: 1GB
+- disk_size: 2048
+  name: 2GB
+- disk_size: 4096
+  name: 4GB
+- disk_size: 5120
+  name: 5GB
+- disk_size: 8192
+  name: 8GB
+- disk_size: 10240
+  name: 10GB
+- disk_size: 20480
+  name: 20GB
+- disk_size: 30720
+  name: 30GB
+- disk_size: 51200
+  name: 50GB
+- disk_size: 102400
+  name: 100GB
+- disk_size: 1048576
+  name: 1TB
+
+- cloud_properties:
+    type: SSD1
+  disk_size: 2000
+  name: 2GB_GP2
+- cloud_properties:
+    type: SSD1
+  disk_size: 5000
+  name: 5GB_GP2
+- cloud_properties:
+    type: SSD1
+  disk_size: 10000
+  name: 10GB_GP2
+- cloud_properties:
+    type: SSD1
+  disk_size: 50000
+  name: 50GB_GP2
+
+networks:
+- name: default
+  subnets:
+  - az: z1
+    cloud_properties:
+      name: random
+      virtual_network_name: paasta-v50-bosh-net
+      subnet_name: paasta-v50-private-subnet-1
+      security_group: paasta-v50-nsg
+    dns:
+    - 8.8.8.8
+    gateway: 10.0.1.1
+    range: 10.0.1.0/24
+    reserved:
+    - 10.0.1.1 - 10.0.1.9
+    static:
+    - 10.0.1.10 - 10.0.1.120
+  - az: z2
+    cloud_properties:
+      name: random
+      virtual_network_name: paasta-v50-bosh-net
+      subnet_name: paasta-v50-private-subnet-2
+      security_group: paasta-v50-nsg
+    dns:
+    - 8.8.8.8
+    gateway: 10.0.41.1
+    range: 10.0.41.0/24
+    reserved:
+    - 10.0.41.1 - 10.0.41.9
+    static:
+    - 10.0.41.10 - 10.0.41.120
+  - az: z3
+    cloud_properties:
+      name: random
+      virtual_network_name: paasta-v50-bosh-net
+      subnet_name: paasta-v50-private-subnet-3
+      security_group: paasta-v50-nsg
+    dns:
+    - 8.8.8.8
+    gateway: 10.0.81.1
+    range: 10.0.81.0/24
+    reserved:
+    - 10.0.81.1 - 10.0.81.9
+    static:
+    - 10.0.81.10 - 10.0.81.120
+  - az: z4
+    cloud_properties:
+      name: random
+      virtual_network_name: paasta-v50-bosh-net
+      subnet_name: paasta-v50-private-subnet-4
+      security_group: paasta-v50-nsg
+    dns:
+    - 8.8.8.8
+    gateway: 10.0.121.1
+    range: 10.0.121.0/24
+    reserved:
+    - 10.0.121.1 - 10.0.121.9
+    static:
+    - 10.0.121.10 - 10.0.121.120
+  - az: z5
+    cloud_properties:
+      name: random
+      virtual_network_name: paasta-v50-bosh-net
+      subnet_name: paasta-v50-private-subnet-5
+      security_group: paasta-v50-nsg
+    dns:
+    - 8.8.8.8
+    gateway: 10.0.161.1
+    range: 10.0.161.0/24
+    reserved:
+    - 10.0.161.1 - 10.0.161.9
+    static:
+    - 10.0.161.10 - 10.0.161.120
+  - az: z6
+    cloud_properties:
+      name: random
+      virtual_network_name: paasta-v50-bosh-net
+      subnet_name: paasta-v50-private-subnet-6
+      security_group: paasta-v50-nsg
+    dns:
+    - 8.8.8.8
+    gateway: 10.0.201.1
+    range: 10.0.201.0/24
+    reserved:
+    - 10.0.201.1 - 10.0.201.9
+    static:
+    - 10.0.201.10 - 10.0.201.120
+  - az: z7
+    cloud_properties:
+      name: random
+      virtual_network_name: paasta-v50-bosh-net
+      subnet_name: paasta-v50-public-subnet
+      security_group: paasta-v50-nsg
+    dns:
+    - 8.8.8.8
+    gateway: 10.0.0.1
+    range: 10.0.0.0/24
+    reserved:
+    - 10.0.0.1 - 10.0.0.9
+    static:
+    - 10.0.0.10 - 10.0.0.120
+
+- name: vip
+  type: vip
+
+vm_extensions:
+- cloud_properties:
+    ports:
+    - host: 3306
+  name: mysql-proxy-lb
+- name: cf-router-network-properties
+- name: cf-tcp-router-network-properties
+- name: diego-ssh-proxy-network-properties
+- name: cf-haproxy-network-properties
+- cloud_properties:
+    ephemeral_disk:
+      size: 51200
+      type: gp2
+  name: 50GB_ephemeral_disk
+- cloud_properties:
+    ephemeral_disk:
+      size: 102400
+      type: gp2
+  name: 100GB_ephemeral_disk

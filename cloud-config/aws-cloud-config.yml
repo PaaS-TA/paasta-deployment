@@ -1,0 +1,296 @@
+azs:
+- cloud_properties:
+    availability_zone: ap-northeast-2a
+  name: z1
+- cloud_properties:
+    availability_zone: ap-northeast-2a
+  name: z2
+- cloud_properties:
+    availability_zone: ap-northeast-2a
+  name: z3
+- cloud_properties:
+    availability_zone: ap-northeast-2a
+  name: z4
+- cloud_properties:
+    availability_zone: ap-northeast-2a
+  name: z5
+- cloud_properties:
+    availability_zone: ap-northeast-2a
+  name: z6
+- cloud_properties:
+    availability_zone: ap-northeast-2a
+  name: z7
+
+compilation:
+  az: z4
+  network: default
+  reuse_compilation_vms: true
+  vm_type: xlarge
+  workers: 5
+
+disk_types:
+- disk_size: 1024
+  name: default
+- disk_size: 1024
+  name: 1GB
+- disk_size: 2048
+  name: 2GB
+- disk_size: 5120
+  name: 5GB
+- disk_size: 8192
+  name: 8GB
+- disk_size: 10240
+  name: 10GB
+- disk_size: 20480
+  name: 20GB
+- disk_size: 30720
+  name: 30GB
+- disk_size: 51200
+  name: 50GB
+- disk_size: 102400
+  name: 100GB
+- disk_size: 512000
+  name: 500GB
+- cloud_properties:
+    type: gp2
+  disk_size: 20000
+  name: 2GB_GP2
+- cloud_properties:
+    type: gp2
+  disk_size: 50000
+  name: 5GB_GP2
+- cloud_properties:
+    type: gp2
+  disk_size: 100000
+  name: 10GB_GP2
+- cloud_properties:
+    type: gp2
+  disk_size: 500000
+  name: 50GB_GP2
+
+networks:
+- name: default
+  subnets:
+  - az: z1
+    cloud_properties:
+      security_groups: paasta-v50-security
+      subnet: subnet-XXXXXXXXXXXXXXXXX
+    dns:
+    - 8.8.8.8
+    gateway: 10.0.1.1
+    range: 10.0.1.0/24
+    reserved:
+    - 10.0.1.2 - 10.0.1.9
+    static:
+    - 10.0.1.10 - 10.0.1.120
+  - az: z2
+    cloud_properties:
+      security_groups: paasta-v50-security
+      subnet: subnet-XXXXXXXXXXXXXXXXX
+    dns:
+    - 8.8.8.8
+    gateway: 10.1.41.1
+    range: 10.1.41.0/24
+    reserved:
+    - 10.1.41.1 - 10.1.41.9
+    static:
+    - 10.1.41.10 - 10.1.41.120
+  - az: z3
+    cloud_properties:
+      security_groups: paasta-v50-security
+      subnet: subnet-XXXXXXXXXXXXXXXXX
+    dns:
+    - 8.8.8.8
+    gateway: 10.2.81.1
+    range: 10.2.81.0/24
+    reserved:
+    - 10.2.81.1 - 10.2.81.9
+    static:
+    - 10.2.81.10 - 10.2.81.120
+  - az: z4
+    cloud_properties:
+      security_groups: paasta-v50-security
+      subnet: subnet-XXXXXXXXXXXXXXXXX
+    dns:
+    - 8.8.8.8
+    gateway: 10.3.121.1
+    range: 10.3.121.0/24
+    reserved:
+    - 10.3.121.1 - 10.3.121.9
+    static:
+    - 10.3.121.10 - 10.3.121.120
+  - az: z5
+    cloud_properties:
+      security_groups: paasta-v50-security
+      subnet: subnet-XXXXXXXXXXXXXXXXX
+    dns:
+    - 8.8.8.8
+    gateway: 10.4.161.1
+    range: 10.4.161.0/24
+    reserved:
+    - 10.4.161.1 - 10.4.161.9
+    static:
+    - 10.4.161.10 - 10.4.161.120
+  - az: z6
+    cloud_properties:
+      security_groups: paasta-v50-security
+      subnet: subnet-XXXXXXXXXXXXXXXXX
+    dns:
+    - 8.8.8.8
+    gateway: 10.5.201.1
+    range: 10.5.201.0/24
+    reserved:
+    - 10.5.201.1 - 10.5.201.9
+    static:
+    - 10.5.201.10 - 10.5.201.120
+  - az: z7
+    cloud_properties:
+      security_groups: paasta-v50-security
+      subnet: subnet-XXXXXXXXXXXXXXXXX
+    dns:
+    - 8.8.8.8
+    gateway: 10.6.0.1
+    range: 10.6.0.0/24
+    reserved:
+    - 10.6.0.1 - 10.6.0.9
+    static:
+    - 10.6.0.10 - 10.6.0.120
+  type: manual
+
+- name: vip
+  type: vip
+
+properties:
+  aws:
+    access_key_id: 'XXXXXXXXXXXXXXXXXXX'
+    default_key_name: aws-paasta-rnd-v50-inception.pem
+    default_security_groups:
+    - paasta-v50-security
+    region: ap-northeast-2
+    secret_access_key: 'XXXXXXXXXXXXXXXXXXXXXX'
+
+vm_extensions:
+- name: cf-router-network-properties
+- name: cf-tcp-router-network-properties
+- name: diego-ssh-proxy-network-properties
+- name: cf-haproxy-network-properties
+- cloud_properties:
+    ephemeral_disk:
+      size: 51200
+      type: gp2
+  name: 50GB_ephemeral_disk
+- cloud_properties:
+    ephemeral_disk:
+      size: 102400
+      type: gp2
+  name: 100GB_ephemeral_disk
+
+vm_types:
+- cloud_properties:
+    ephemeral_disk:
+      size: 3000
+      type: gp2
+    instance_type: t2.small
+  name: minimal
+- cloud_properties:
+    ephemeral_disk:
+      size: 10000
+      type: gp2
+    instance_type: t2.small
+  name: small
+- cloud_properties:
+    ephemeral_disk:
+      size: 50000
+      type: gp2
+    instance_type: t2.medium
+  name: medium
+- cloud_properties:
+    ephemeral_disk:
+      size: 50000
+      type: gp2
+    instance_type: t2.large
+  name: large
+- cloud_properties:
+    ephemeral_disk:
+      size: 50000
+      type: gp2
+    instance_type: t2.xlarge
+  name: xlarge
+- cloud_properties:
+    ephemeral_disk:
+      size: 30000
+      type: gp2
+    instance_type: t2.xlarge
+  name: small-highmem-16GB
+- cloud_properties:
+    ephemeral_disk:
+      size: 30000
+      type: gp2
+    instance_type: t2.2xlarge
+  name: large-highmem-32GB
+- cloud_properties:
+    ephemeral_disk:
+      size: 3000
+      type: gp2
+    instance_type: t2.small
+  name: service_tiny
+- cloud_properties:
+    ephemeral_disk:
+      size: 3000
+      type: gp2
+    instance_type: t2.small
+  name: service_small
+- cloud_properties:
+    ephemeral_disk:
+      size: 10000
+      type: gp2
+    instance_type: t2.small
+  name: service_medium_1CPU_2G
+- cloud_properties:
+    ephemeral_disk:
+      size: 8000
+      type: gp2
+    instance_type: t2.medium
+  name: service_medium
+- cloud_properties:
+    ephemeral_disk:
+      size: 10000
+      type: gp2
+    instance_type: t2.medium
+  name: service_medium_2G
+- cloud_properties:
+    ephemeral_disk:
+      size: 3000
+      type: gp2
+    instance_type: t2.small
+  name: portal_tiny
+- cloud_properties:
+    ephemeral_disk:
+      size: 3000
+      type: gp2
+    instance_type: t2.small
+  name: portal_small
+- cloud_properties:
+    ephemeral_disk:
+      size: 4096
+      type: gp2
+    instance_type: t2.small
+  name: portal_medium
+- cloud_properties:
+    ephemeral_disk:
+      size: 4096
+      type: gp2
+    instance_type: t2.small
+  name: portal_large
+- cloud_properties:
+    ephemeral_dist:
+      size: 4096
+      type: gp2
+    instance_type: t2.small
+  name: caas_small
+- cloud_properties:
+    ephemeral_dist:
+      size: 30000
+      type: gp2
+    instance_type: m4.xlarge
+  name: caas_small_highmem

@@ -1,0 +1,9 @@
+- type: replace
+  path: /releases/name=haproxy/url
+  value: file:///home/((inception_os_user_name))/workspace/paasta-5.0/release/paasta/haproxy-boshrelease-9.6.1.tgz
+- type: replace
+  path: /releases/name=haproxy/version
+  value: 9.6.1
+- type: replace
+  path: /releases/name=haproxy/sha1
+  value: 9a38672c074bc298d464766eb4383062fa385f3d

@@ -1,0 +1,16 @@
+- type: replace
+  path: /releases/name=bosh-openstack-cpi/url
+  value: file:///home/((inception_os_user_name))/workspace/paasta-5.0/release/bosh/bosh-openstack-cpi-release-43.tgz
+- type: replace
+  path: /releases/name=bosh-openstack-cpi/version
+  value: "43"
+- type: replace
+  path: /releases/name=bosh-openstack-cpi/sha1
+  value: b9bd5fa8f06436e7b055620d3259877907f6d99a
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/url
+  value: file:///home/((inception_os_user_name))/workspace/paasta-5.0/release/bosh/bosh-stemcell-315.64-openstack-kvm-ubuntu-xenial-go_agent.tgz
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/sha1
+  value: 774ba9acb1fdd9e82e93e0dbbf84beff4cd7927c
+

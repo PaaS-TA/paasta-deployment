@@ -1,0 +1,24 @@
+# BOSH VARIABLE
+bosh_client_admin_id: "admin"			# Bosh Client Admin ID
+inception_os_user_name: "ubuntu"		# Home User Name
+director_name: "micro-bosh"			# BOSH Director Name
+private_cidr: "10.0.1.0/24"			# Private IP Range
+private_gw: "10.0.1.1"				# Private IP Gateway
+bosh_url: "10.0.1.6"				# Private IP 
+auth_url: "http://XX.XXX.XX.XX:XXXX/v3/"	# Openstack Keystone URL
+az: "nova"					# Openstack AZ Zone
+default_key_name: "paasta"			# Openstack Key Name
+default_security_groups: ["paasta"]		# Openstack Security Group
+net_id: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"	# Openstack Network ID
+openstack_password: "XXXXXX"			# Openstack User Password
+openstack_username: "XXXXXX"			# Openstack User Name
+openstack_domain: "XXXXXXX"			# Openstack Domain Name
+openstack_project: "PaaSTA"			# Openstack Project
+private_key: "~/.ssh/id_rsa.pem"		# Openstack Region
+region: "RegionOne"				# SSH Private Key Path
+
+# MONITORING VARIABLE(PaaS-TA Monitoring을 설치할 경우 수정)
+metric_url: "10.0.161.101"			# PaaS-TA Monitoring InfluxDB IP
+syslog_address: "10.0.121.100"			# Logsearch의 ls-router IP
+syslog_port: "2514"				# Logsearch의 ls-router Port
+syslog_transport: "relp"			# Logsearch Protocol

@@ -1,0 +1,12 @@
+- type: replace
+  path: /instance_groups/name=windows2019-cell/jobs/name=windows2019fs?
+  value:
+    name: windows2019fs
+    release: windowsfs
+- type: replace
+  path: /releases/name=windowsfs?
+  value:
+    name: windowsfs
+    sha1: aecb23d96247ff691c7313801add040d0741200d
+    url: https://bosh.io/d/github.com/cloudfoundry/windowsfs-online-release?v=1.7.0
+    version: 1.7.0

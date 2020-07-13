@@ -1,0 +1,283 @@
+azs:
+- name: z1
+  cloud_properties:
+    datacenters:
+    - clusters:
+      - BD-HA:
+          resource_pool: BOSH2_PAASTA_40_Pools
+      name: BD-HA
+- name: z2
+  cloud_properties:
+    datacenters:
+    - clusters:
+      - BD-HA:
+          resource_pool: BOSH2_PAASTA_40_Pools
+      name: BD-HA
+- name: z3
+  cloud_properties:
+    datacenters:
+    - clusters:
+      - BD-HA:
+          resource_pool: BOSH2_PAASTA_40_Pools
+      name: BD-HA
+- name: z4
+  cloud_properties:
+    datacenters:
+    - clusters:
+      - BD-HA:
+          resource_pool: BOSH2_PAASTA_40_Pools
+      name: BD-HA
+- name: z5
+  cloud_properties:
+    datacenters:
+    - clusters:
+      - BD-HA:
+          resource_pool: BOSH2_PAASTA_40_Pools
+      name: BD-HA
+- name: z6
+  cloud_properties:
+    datacenters:
+    - clusters:
+      - BD-HA:
+          resource_pool: BOSH2_PAASTA_40_Pools
+      name: BD-HA
+- name: z7
+  cloud_properties:
+    datacenters:
+    - clusters:
+      - BD-HA:
+          resource_pool: BOSH2_PAASTA_40_Pools
+      name: BD-HA
+
+vm_types:
+- name: minimal
+  cloud_properties:
+    cpu: 1
+    ram: 1024
+    disk: 8192
+- name: default
+  cloud_properties:
+    cpu: 1
+    ram: 2048
+    disk: 10240
+- name: small
+  cloud_properties:
+    cpu: 1
+    ram: 4096
+    disk: 20480	#30720
+- name: medium
+  cloud_properties:
+    cpu: 2
+    ram: 4096
+    disk: 20480
+- name: medium-memory-8GB
+  cloud_properties:
+    cpu: 2
+    ram: 8192
+    disk: 20480
+- name: large
+  cloud_properties:
+    cpu: 4
+    ram: 8192
+    disk: 20480
+- name: xlarge
+  cloud_properties:
+    cpu: 8
+    ram: 16384
+    disk: 20480
+- name: small-50GB
+  cloud_properties:
+    cpu: 2
+    ram: 4096
+    disk: 51200
+- name: small-50GB-ephemeral-disk
+  cloud_properties:
+    cpu: 2
+    ram: 4096
+    disk: 51200
+- name: small-100GB-ephemeral-disk
+  cloud_properties:
+    cpu: 4
+    ram: 8192
+    disk: 102400
+- name: small-highmem-100GB-ephemeral-disk
+  cloud_properties:
+    cpu: 4
+    ram: 8192
+    disk: 102400
+- name: small-highmem-16GB
+  cloud_properties:
+    cpu: 8
+    ram: 16384
+    disk: 20480
+- name: service_tiny
+  cloud_properties:
+    cpu: 1
+    ram: 256
+    disk: 4096
+- name: service_small
+  cloud_properties:
+    cpu: 1
+    ram: 512
+    disk: 4096
+- name: service_medium
+  cloud_properties:
+    cpu: 1
+    ram: 1024
+    disk: 4096
+- name: service_medium_1CPU_2G
+  cloud_properties:
+    cpu: 1
+    ram: 2048
+    disk: 4096
+- name: service_medium_4G
+  cloud_properties:
+    cpu: 2
+    ram: 4096
+    disk: 8192
+- name: service_medium_2G
+  cloud_properties:
+    cpu: 2
+    ram: 2048
+    disk: 10240
+- name: portal_tiny
+  cloud_properties:
+    cpu: 1
+    ram: 256
+    disk: 4096
+- name: portal_small
+  cloud_properties:
+    cpu: 1
+    ram: 512
+    disk: 4096
+- name: portal_medium
+  cloud_properties:
+    cpu: 1
+    ram: 1024
+    disk: 4096
+- name: portal_large
+  cloud_properties:
+    cpu: 1
+    ram: 2048
+    disk: 4096
+
+compilation:
+  az: z1
+  network: default
+  reuse_compilation_vms: true
+  vm_type: large
+  workers: 5
+
+disk_types:
+- disk_size: 1024
+  name: default
+- disk_size: 1024
+  name: 1GB
+- disk_size: 2048
+  name: 2GB
+- disk_size: 4096
+  name: 4GB
+- disk_size: 5120
+  name: 5GB
+- disk_size: 8192
+  name: 8GB
+- disk_size: 10240
+  name: 10GB
+- disk_size: 20480
+  name: 20GB
+- disk_size: 30720
+  name: 30GB
+- disk_size: 51200
+  name: 50GB
+- disk_size: 102400
+  name: 100GB
+- disk_size: 1048576
+  name: 1TB
+
+networks:
+- name: default
+  subnets:
+  - azs: [z1,z2,z3,z4,z5,z6,z7]
+    gateway: 10.30.20.23
+    dns: [8.8.8.8]
+    range: 10.30.0.0/16
+    reserved: 
+      - 10.30.0.0 - 10.30.30.255
+      - 10.30.50.0 - 10.30.255.255
+    cloud_properties:
+      name: "Internal"
+
+- name: public
+  type: manual
+  subnets:
+  - azs: [z1,z2,z3,z4,z5,z6,z7]
+    gateway: 115.68.46.177
+    dns: [8.8.8.8]
+    range: 115.68.46.176/28
+    reserved: 
+      - 115.68.46.176 - 115.68.46.180
+      - 115.68.46.188 - 115.68.46.190
+    cloud_properties:
+      name: "External"
+    static:
+    - 115.68.46.181 - 115.68.46.185
+
+- name: service_private
+  subnets:
+  - azs: [z1,z2,z3,z4,z5,z6,z7]
+    gateway: 10.30.20.23
+    dns: [8.8.8.8]
+    range: 10.30.0.0/16
+    reserved:
+      - 10.30.0.0 - 10.30.21.255
+      - 10.30.40.0 - 10.30.255.255
+    cloud_properties:
+      name: "Internal"
+    static:
+    - 10.30.22.0 - 10.30.30.255
+
+- name: service_public
+  type: manual
+  subnets:
+  - azs: [z1,z2,z3,z4,z5,z6,z7]
+    gateway: 115.68.47.161
+    dns: [8.8.8.8]
+    range: 115.68.47.160/24
+    reserved: 
+      - 115.68.47.160 - 115.68.47.164
+      - 115.68.47.172 - 115.68.47.185
+    cloud_properties:
+      name: "External"
+    static:
+    - 115.68.47.165 - 115.68.47.171
+    - 115.68.47.186 - 115.68.47.190
+
+- name: portal_service_public
+  type: manual
+  subnets:
+  - azs: [z1,z2,z3,z4,z5,z6,z7]
+    gateway: 115.68.46.209
+    dns: [8.8.8.8]
+    range: 115.68.46.208/28
+    reserved: 
+      - 115.68.46.217 - 115.68.46.222
+    cloud_properties:
+      name: "External"
+    static:
+    - 115.68.46.213 - 115.68.46.215
+
+vm_extensions:
+- cloud_properties:
+    ports:
+    - host: 3306
+  name: mysql-proxy-lb
+- name: cf-router-network-properties
+- name: cf-tcp-router-network-properties
+- name: diego-ssh-proxy-network-properties
+- name: cf-haproxy-network-properties
+- name: 50GB_ephemeral_disk
+  cloud_properties:
+    disk: 51200
+- name: 100GB_ephemeral_disk
+  cloud_properties:
+    disk: 102400

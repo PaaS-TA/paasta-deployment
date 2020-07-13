@@ -1,0 +1,11 @@
+- type: replace
+  path: /instance_groups/name=bosh/jobs/name=credhub/properties/credhub/authentication/uaa/url
+  value: "https://[((bosh_url))]:8443"
+
+- type: replace
+  path: /instance_groups/name=bosh/properties/director/config_server/url
+  value: "https://[((bosh_url))]:8844/api/"
+
+- type: replace
+  path: /instance_groups/name=bosh/properties/director/config_server/uaa/url
+  value: "https://[((bosh_url))]:8443"

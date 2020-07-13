@@ -1,0 +1,25 @@
+#!/bin/bash -eu
+
+function suites() {
+  local suites
+  suites="
+    ./tests/addons_test
+    ./tests/backup_and_restore_test
+    ./tests/bits_service_test
+    ./tests/experimental_test
+    ./tests/iaas_test
+    ./tests/inline_test
+    ./tests/standard_test
+    ./tests/test_test
+    ./tests/semantic_test
+    "
+
+  # : "${RUN_SEMANTIC:="false"}"
+  # if [ ${RUN_SEMANTIC} = true ]; then
+  #   suites="${suites} ./semantic_test"
+  # fi
+
+  echo "${suites}"
+}
+
+go test "$@" $(suites) -mod=vendor

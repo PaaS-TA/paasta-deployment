@@ -1,0 +1,16 @@
+- type: replace
+  path: /releases/name=bosh-aws-cpi/url
+  value: file:///home/((inception_os_user_name))/workspace/paasta-5.0/release/bosh/bosh-aws-cpi-release-75.tgz
+- type: replace
+  path: /releases/name=bosh-aws-cpi/version
+  value: 75
+- type: replace
+  path: /releases/name=bosh-aws-cpi/sha1
+  value: a6f32491067eae70f62cb03fc559654708e4f2f3
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/url
+  value: file:///home/((inception_os_user_name))/workspace/paasta-5.0/release/bosh/light-bosh-stemcell-315.64-aws-xen-hvm-ubuntu-xenial-go_agent.tgz
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/sha1
+  value: 86c7b832c4666cfb9e84e81d21c034d1f3858642
+

@@ -1,0 +1,8 @@
+# BOSH VARIABLE
+bosh_client_admin_id: "admin"		# Bosh Client Admin ID
+inception_os_user_name: 'ubuntu'	# Home User Name
+director_name: 'micro-bosh'		# BOSH Director Name
+private_cidr: '10.0.1.0/24'		# Private IP Range
+private_gw: '10.0.1.1'			# Private IP Gateway
+bosh_url: '10.0.1.6'			# Private IP 
+outbound_network_name: 'NatNetwork'	# Outbound Network Name
