@@ -7,6 +7,4 @@ bosh create-env bosh.yml \
 	-o uaa.yml \
 	-o credhub.yml \
 	-o jumpbox-user.yml \
-	-o external-ip-with-registry-not-recommended.yml \
-	-o external-ip-not-recommended-uaa.yml \
 	-l aws-vars.yml
