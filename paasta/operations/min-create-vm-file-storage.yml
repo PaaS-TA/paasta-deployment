@@ -1,0 +1,49 @@
+- type: remove
+  path: /instance_groups/name=database/migrated_from/name=blobstore?
+- type: remove
+  path: /instance_groups/name=database/jobs/name=blobstore
+- type: remove
+  path: /instance_groups/name=database/jobs/name=route_registrar/properties/route_registrar/routes/name=blobstore
+
+- type: replace
+  path: /instance_groups/name=control:before
+  value:
+    name: file-storage
+    migrated_from:
+    - name: blobstore
+    azs: ((singleton_blobstore_azs))
+    instances: ((singleton_blobstore_instances))
+    vm_type: ((singleton_blobstore_vm_type))
+    persistent_disk_type: ((singleton_blobstore_persistent_disk_type))
+    stemcell: default
+    update:
+      serial: true
+    networks:
+    - name: default
+    jobs:
+    - name: blobstore
+      release: capi
+      properties:
+        system_domain: "((system_domain))"
+        blobstore:
+          admin_users:
+          - username: blobstore-user
+            password: "((blobstore_admin_users_password))"
+          secure_link:
+            secret: "((blobstore_secure_link_secret))"
+          tls:
+            cert: "((blobstore_tls.certificate))"
+            private_key: "((blobstore_tls.private_key))"
+    - name: route_registrar
+      release: routing
+      properties:
+        route_registrar:
+          routes:
+          - name: blobstore
+            port: 8080
+            registration_interval: 20s
+            tags:
+              component: blobstore
+            uris:
+            - blobstore.((system_domain))
+

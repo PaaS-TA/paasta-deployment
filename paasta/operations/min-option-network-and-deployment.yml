@@ -1,0 +1,11 @@
+# Bosh DNS Aliases
+- type: replace
+  path: /addons/name=bosh-dns-aliases/jobs/name=bosh-dns-aliases/properties/aliases/domain=blobstore.service.cf.internal?
+  value: 
+    domain: blobstore.service.cf.internal
+    targets:
+    - query: '*'
+      instance_group: file-storage
+      deployment: ((deployment_name))
+      network: ((singleton_blobstore_network))
+      domain: bosh

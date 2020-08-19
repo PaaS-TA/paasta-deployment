@@ -1,0 +1,32 @@
+- type: remove
+  path: /instance_groups/name=router/jobs/name=tcp_router
+
+- type: replace
+  path: /instance_groups/name=router:after
+  value:
+    name: tcp-router
+    azs: ((tcp_router_azs))
+    instances: ((tcp_router_instances))
+    vm_type: ((tcp_router_vm_type))
+    stemcell: default
+    vm_extensions: ((tcp_router_vm_extensions))
+    networks:
+    - name: default
+    jobs:
+    - name: tcp_router
+      release: routing
+      properties:
+        tcp_router:
+          oauth_secret: "((uaa_clients_tcp_router_secret))"
+          router_group: default-tcp
+        uaa:
+          ca_cert: "((uaa_ssl.ca))"
+          tls_port: 8443
+    - name: loggr-udp-forwarder
+      release: loggregator-agent
+      properties:
+        loggregator:
+          tls:
+            ca: "((loggregator_tls_agent.ca))"
+            cert: "((loggregator_tls_agent.certificate))"
+            key: "((loggregator_tls_agent.private_key))"

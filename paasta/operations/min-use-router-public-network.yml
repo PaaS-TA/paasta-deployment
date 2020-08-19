@@ -1,0 +1,24 @@
+---
+
+- type: remove
+  path: /instance_groups/name=router/vm_extensions
+- type: remove
+  path: /instance_groups/name=tcp-router?/vm_extensions
+
+- type: replace
+  path: /instance_groups/name=router/networks/name=default/default?
+  value: [dns, gateway]
+
+- type: replace
+  path: /instance_groups/name=router/azs
+  value: ((haproxy_azs))
+
+- type: replace
+  path: /instance_groups/name=router/networks/-
+  value:
+    name: ((haproxy_public_network_name))
+    static_ips: [((haproxy_public_ip))]
+
+- type: replace
+  path: /instance_groups/name=router/vm_extensions?/-
+  value: cf-haproxy-network-properties
