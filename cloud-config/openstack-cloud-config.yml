@@ -247,3 +247,9 @@ vm_extensions:
       size: 102400
       type: gp2
   name: small-highmem-100GB 
+- name: ssh-proxy-and-router-lb
+  cloud_properties:
+    ports:
+    - host: 80
+    - host: 443
+    - host: 2222  

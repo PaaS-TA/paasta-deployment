@@ -1,24 +1,72 @@
 ---
-
-- type: remove
-  path: /instance_groups/name=router/vm_extensions
-- type: remove
-  path: /instance_groups/name=tcp-router?/vm_extensions
-
-- type: replace
-  path: /instance_groups/name=router/networks/name=default/default?
-  value: [dns, gateway]
+# --- Set Router Static IP ---
 
 - type: replace
   path: /instance_groups/name=router/azs
   value: ((haproxy_azs))
 
 - type: replace
-  path: /instance_groups/name=router/networks/-
+  path: /instance_groups/name=router/networks
   value:
-    name: ((haproxy_public_network_name))
+  - name: default
+    default: [dns, gateway]
+  - name: ((haproxy_public_network_name))
     static_ips: [((haproxy_public_ip))]
 
+# --- Add Bosh Lite Security Groups ---
 - type: replace
-  path: /instance_groups/name=router/vm_extensions?/-
-  value: cf-haproxy-network-properties
+  path: /instance_groups/name=control/jobs/name=cloud_controller_ng/properties/cc/default_running_security_groups
+  value:
+  - public_networks
+  - dns
+  - load_balancer
+- type: replace
+  path: /instance_groups/name=control/jobs/name=cloud_controller_ng/properties/cc/security_group_definitions/-
+  value:
+    name: load_balancer
+    rules:
+    - destination: ((haproxy_public_ip))
+      protocol: all
+
+# ----- Combine router VM extensions ----
+- type: replace
+  path: /instance_groups/name=router/vm_extensions
+  value:
+  - ssh-proxy-and-router-lb
+- type: remove
+  path: /instance_groups/name=control/jobs/name=ssh_proxy
+- type: replace
+  path: /instance_groups/name=router/jobs/-
+  value:
+    name: ssh_proxy
+    release: diego
+    properties:
+      diego:
+        ssh_proxy:
+          bbs: &5
+            ca_cert: "((diego_bbs_client.ca))"
+            client_cert: "((diego_bbs_client.certificate))"
+            client_key: "((diego_bbs_client.private_key))"
+          disable_healthcheck_server: true
+          enable_cf_auth: true
+          host_key: "((diego_ssh_proxy_host_key.private_key))"
+          uaa_secret: "((uaa_clients_ssh-proxy_secret))"
+          uaa:
+            ca_cert: "((uaa_ssl.ca))"
+      backends:
+        tls:
+          enabled: true
+          ca_certificates:
+          - ((diego_instance_identity_ca.ca))
+          client_certificate: ((ssh_proxy_backends_tls.certificate))
+          client_private_key: ((ssh_proxy_backends_tls.private_key))
+      enable_consul_service_registration: false
+      logging:
+        format:
+          timestamp: "rfc3339"
+      loggregator: &diego_loggregator_client_properties
+        ca_cert: "((loggregator_tls_agent.ca))"
+        cert: "((loggregator_tls_agent.certificate))"
+        key: "((loggregator_tls_agent.private_key))"
+        use_v2_api: true
+
