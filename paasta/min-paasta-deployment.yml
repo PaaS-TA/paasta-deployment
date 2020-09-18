@@ -1751,9 +1751,7 @@ instance_groups:
     release: routing
     properties:
       router:
-        enable_proxy: true
         enable_ssl: true
-        force_forwarded_proto_https: true
         tls_pem:
         - cert_chain: "((router_ssl.certificate))"
           private_key: "((router_ssl.private_key))"
