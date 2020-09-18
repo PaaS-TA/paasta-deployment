@@ -2,7 +2,7 @@
 
 bosh -e min-bosh -d paasta -n deploy min-paasta-deployment.yml \
 	-o operations/min-aws.yml \
-        -o operations/min-create-vm-file-storage.yml \
+        -o operations/min-create-vm-singleton-blobstore.yml \
         -o operations/min-create-vm-tcp-router.yml \
         -o operations/min-use-haproxy.yml \
         -o operations/use-haproxy-public-network.yml \

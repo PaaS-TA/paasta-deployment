@@ -5,7 +5,7 @@
     domain: blobstore.service.cf.internal
     targets:
     - query: '*'
-      instance_group: file-storage
+      instance_group: singleton-blobstore
       deployment: ((deployment_name))
       network: ((singleton_blobstore_network))
       domain: bosh

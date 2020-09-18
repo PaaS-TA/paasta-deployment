@@ -29,7 +29,7 @@
 #  value: ((uaa_network))
 
 #- type: replace
-#  path: /instance_groups/name=file-storage/networks/name=default/name
+#  path: /instance_groups/name=singleton-blobstore/networks/name=default/name
 #  value: ((singleton_blobstore_network))
 
 #- type: replace
