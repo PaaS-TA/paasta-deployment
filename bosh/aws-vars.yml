@@ -9,7 +9,7 @@ access_key_id: "XXXXXXXXXXXXXXX"	# AWS Access Key
 secret_access_key: "XXXXXXXXXXXXX"	# AWS Secret Key
 region: "ap-northeast-2"		# AWS Region
 az: "ap-northeast-2a"			# AWS AZ Zone
-default_key_name: "aws-paasta.pem"	# AWS Key Name
+default_key_name: "aws-paasta"	# AWS Key Name
 default_security_groups: ["bosh"]	# AWS Security-Group
 subnet_id: "paasta-subnet"		# AWS Subnet
 private_key: "~/.ssh/aws-paasta.pem"	# SSH Private Key Path
