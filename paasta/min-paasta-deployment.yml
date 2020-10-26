@@ -363,7 +363,7 @@ instance_groups:
   - name: singleton-database
   - name: blobstore
   azs: ((database_azs))
-  persistent_disk_type: ((database_persistent_disk_type))
+  persistent_disk_type: ((singleton_blobstore_persistent_disk_type))
   instances: ((database_instances))
   vm_type: ((database_vm_type))
   stemcell: default

@@ -4,6 +4,9 @@
   path: /instance_groups/name=database/jobs/name=blobstore
 - type: remove
   path: /instance_groups/name=database/jobs/name=route_registrar/properties/route_registrar/routes/name=blobstore
+- type: replace
+  path: /instance_groups/name=database/persistent_disk_type
+  value: ((database_persistent_disk_type))
 
 - type: replace
   path: /instance_groups/name=control:before
