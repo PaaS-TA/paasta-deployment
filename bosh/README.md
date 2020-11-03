@@ -70,7 +70,7 @@ BOSH가 지원하는 IaaS는 VMware vSphere, Google Cloud Platform, AWS, OpenSta
 PaaS-TA는 VMware vSphere, Google Cloud Platform, AWS, OpenStack, MS Azure 등의 IaaS를 지원한다.
 
 PaaS-TA 3.1 버전까지는 Cloud Foundry BOSH1을 기준으로 설치했지만, PaaS-TA 3.5 버전부터 BOSH2를 기준으로 설치하였다.  
-PaaS-TA 5.0은 Cloud Foundry에서 제공하는 bosh-deployment를 활용하여 BOSH를 설치한다.
+PaaS-TA 5.1은 Cloud Foundry에서 제공하는 bosh-deployment를 활용하여 BOSH를 설치한다.
 
 BOSH2는 BOSH2 CLI를 통하여 BOSH와 PaaS-TA를 모두 생성한다.  
 bosh-deployment를 이용하여 BOSH를 생성한 후, paasta-deployment로 PaaS-TA를 설치한다.  
@@ -112,7 +112,7 @@ BOSH 및 PaaS-TA 설치를 위해 Inception 서버에 구성해야 할 컴포넌
 - BOSH CLI 6.1.x 이상 
 - BOSH Dependency : ruby, ruby-dev, openssl 등
 - BOSH Deployment: BOSH 설치를 위한 manifest deployment  
-- PaaS-TA Deployment : PaaS-TA 설치를 위한 manifest deployment (cf-deployment v9.5.0 기준)
+- PaaS-TA Deployment : PaaS-TA 설치를 위한 manifest deployment (cf-deployment v13.12.0 기준)
 
 ## <div id='1010'/>3.3.  BOSH 설치
 
