@@ -13,10 +13,10 @@ import (
 )
 
 type OpsFileTestParams struct {
-	Ops           []string
-	Vars          []string
-	VarsFiles     []string
-	PathValidator PathValidator
+	Ops           []string      `yaml:",omitempty"`
+	Vars          []string      `yaml:",omitempty"`
+	VarsFiles     []string      `yaml:",omitempty"`
+	PathValidator PathValidator `yaml:",omitempty"`
 }
 
 type PathValidator struct {
@@ -121,7 +121,7 @@ func checkInterpolate(cfDeploymentHome, operationsSubDir, opsFileName string, op
 }
 
 func createTempVarsStore(cfDeploymentHome string) (string, error) {
-	varsStorePath := filepath.Join(cfDeploymentHome, "scripts", "fixtures", "unit-test-vars-store.yml")
+	varsStorePath := filepath.Join(cfDeploymentHome, "units", "test-vars-store.yml")
 
 	varsStoreFile, err := os.Open(varsStorePath)
 	if err != nil {

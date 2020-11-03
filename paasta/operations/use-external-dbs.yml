@@ -25,13 +25,13 @@
 - type: remove
   path: /variables/name=locket_database_password
 - type: remove
-  path: /variables/name=cc_database_password
+  path: /variables/name=paasta_cc_db_password
 - type: remove
   path: /variables/name=credhub_database_password
 - type: remove
   path: /variables/name=diego_database_password
 - type: remove
-  path: /variables/name=uaa_database_password
+  path: /variables/name=paasta_uaa_db_password
 - type: remove
   path: /variables/name=pxc_galera_ca
 - type: remove
@@ -55,14 +55,15 @@
   value: ((external_uaa_database_address))
 - type: replace
   path: /instance_groups/name=uaa/jobs/name=uaa/properties/uaadb/roles/name=uaa/password
-  value: ((external_uaa_database_password))
+  value: ((external_paasta_uaa_db_password))
 - type: replace
   path: /instance_groups/name=uaa/jobs/name=uaa/properties/uaadb/roles/name=uaa/name
   value: ((external_uaa_database_username))
 - type: remove
   path: /instance_groups/name=uaa/jobs/name=uaa/properties/uaa?/ca_certs
-- type: remove
-  path: /instance_groups/name=uaa/jobs/name=uaa/properties/uaadb/tls_enabled?
+- type: replace
+  path: /instance_groups/name=uaa/jobs/name=uaa/properties/uaadb/tls?
+  value: disabled
 
 - type: replace
   path: /instance_groups/name=api/jobs/name=cloud_controller_ng/properties/ccdb/db_scheme
@@ -78,7 +79,7 @@
   value: &external_cc_database_address "((external_cc_database_address))"
 - type: replace
   path: /instance_groups/name=api/jobs/name=cloud_controller_ng/properties/ccdb/roles/name=cloud_controller/password
-  value: &external_cc_database_password "((external_cc_database_password))"
+  value: &external_paasta_cc_db_password "((external_paasta_cc_db_password))"
 - type: replace
   path: /instance_groups/name=api/jobs/name=cloud_controller_ng/properties/ccdb/roles/name=cloud_controller/name
   value: &external_cc_database_username "((external_cc_database_username))"
@@ -99,7 +100,7 @@
   value: *external_cc_database_address
 - type: replace
   path: /instance_groups/name=cc-worker/jobs/name=cloud_controller_worker/properties/ccdb/roles/name=cloud_controller/password
-  value: *external_cc_database_password
+  value: *external_paasta_cc_db_password
 - type: replace
   path: /instance_groups/name=cc-worker/jobs/name=cloud_controller_worker/properties/ccdb/roles/name=cloud_controller/name
   value: *external_cc_database_username
@@ -120,7 +121,7 @@
   value: *external_cc_database_address
 - type: replace
   path: /instance_groups/name=scheduler/jobs/name=cloud_controller_clock/properties/ccdb/roles/name=cloud_controller/password
-  value: *external_cc_database_password
+  value: *external_paasta_cc_db_password
 - type: replace
   path: /instance_groups/name=scheduler/jobs/name=cloud_controller_clock/properties/ccdb/roles/name=cloud_controller/name
   value: *external_cc_database_username
@@ -297,7 +298,7 @@
   value: "((external_cc_database_address))"
 - type: replace
   path: /instance_groups/name=scheduler/jobs/name=cc_deployment_updater/properties/ccdb/roles/name=cloud_controller/password
-  value: "((external_cc_database_password))"
+  value: "((external_paasta_cc_db_password))"
 - type: replace
   path: /instance_groups/name=scheduler/jobs/name=cc_deployment_updater/properties/ccdb/roles/name=cloud_controller/name
   value: "((external_cc_database_username))"

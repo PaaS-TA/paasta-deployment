@@ -13,10 +13,6 @@
   value: ((doppler_network))
 
 - type: replace
-  path: /instance_groups/name=adapter/networks/name=default/name
-  value: ((adapter_network))
-
-- type: replace
   path: /instance_groups/name=database/networks/name=default/name
   value: ((database_network))
 
@@ -85,16 +81,6 @@
       network: ((diego_cell_network))
       domain: bosh
     - query: '_'
-      instance_group: windows2012R2-cell
-      deployment: ((deployment_name))
-      network: ((diego_cell_network))
-      domain: bosh
-    - query: '_'
-      instance_group: windows2016-cell
-      deployment: ((deployment_name))
-      network: ((diego_cell_network))
-      domain: bosh
-    - query: '_'
       instance_group: isolated-diego-cell
       deployment: ((deployment_name))
       network: ((diego_cell_network))
@@ -112,13 +98,6 @@
       instance_group: diego-api
       deployment: ((deployment_name))
       network: ((diego_api_network))
-      domain: bosh
-  - domain: bits.service.cf.internal
-    targets:
-    - query: '*'
-      instance_group: bits
-      deployment: ((deployment_name))
-      network: ((network_name))
       domain: bosh
   - domain: blobstore.service.cf.internal
     targets:
@@ -181,7 +160,21 @@
     - query: '*'
       instance_group: log-api
       deployment: ((deployment_name))
-      network: ((api_network))
+      network: ((log_api_network))
+      domain: bosh
+  - domain: nats.service.cf.internal
+    targets:
+    - query: '*'
+      instance_group: nats
+      deployment: ((deployment_name))
+      network: ((nats_network))
+      domain: bosh
+  - domain: _.nats.service.cf.internal
+    targets:
+    - query: '_'
+      instance_group: nats
+      deployment: ((deployment_name))
+      network: ((nats_network))
       domain: bosh
   - domain: policy-server.service.cf.internal
     targets:

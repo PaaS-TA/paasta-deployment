@@ -20,7 +20,7 @@ uaa_client_portal_redirect_uri: "http://portal-web-user.15.165.2.88.xip.io,http:
 
 # STEMCELL
 stemcell_os: "ubuntu-xenial"		# Stemcell OS
-stemcell_version: "315.64"		# Stemcell Version
+stemcell_version: "621.78"		# Stemcell Version
 
 # SMOKE-TEST
 smoke_tests_azs: ["z1"]			# Smoke-Test 가용 존
@@ -33,12 +33,6 @@ nats_azs: ["z1", "z2"]			# Nats 가용 존
 nats_instances: 2			# Nats 인스턴스 수
 nats_vm_type: "minimal"			# Nats VM 종류
 nats_network: "default"			# Nats 네트워크
-
-# ADAPTER
-adapter_azs: ["z1", "z2"]		# Adapter 가용 존
-adapter_instances: 2			# Adapter 인스턴스 수
-adapter_vm_type: "minimal"		# Adapter VM 종류
-adapter_network: "default"		# Adapter 네트워크
 
 # DATABASE
 database_azs: ["z1"]			# Database 가용 존
@@ -108,7 +102,7 @@ doppler_network: "default"		# Doppler 네트워크
 
 # DIEGO-CELL
 diego_cell_azs: ["z1", "z2"]		# Diego-Cell 가용 존
-diego_cell_instances: 2			# Diego-Cell 인스턴스 수
+diego_cell_instances: 3			# Diego-Cell 인스턴스 수
 diego_cell_vm_type: "small-highmem-16GB"		# Diego-Cell VM 종류
 diego_cell_network: "default"		# Diego-Cell 네트워크
 diego_cell_vm_extensions: ["100GB_ephemeral_disk"]	# Diego-Cell VM 확장

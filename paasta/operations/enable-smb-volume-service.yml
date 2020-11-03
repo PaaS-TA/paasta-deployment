@@ -10,7 +10,7 @@
 - type: replace
   path: /instance_groups/name=uaa/jobs/name=uaa/properties/uaa/clients/smb-broker-client?
   value:
-    authorities: cloud_controller.admin
+    authorities: cloud_controller.admin,clients.read
     authorized-grant-types: client_credentials
     secret: ((smb-broker-uaa-client-secret))
 - type: replace
@@ -126,6 +126,6 @@
   path: /releases/-
   value:
     name: smb-volume
-    sha1: f1c61444cfbc16264accbd0dd152aa4cbdc25def
-    url: https://bosh.io/d/github.com/cloudfoundry/smb-volume-release?v=1.2.2
-    version: 1.2.2
+    sha1: 8a1e415da62367f98d7949c195f7535b617707bb
+    url: https://bosh.io/d/github.com/cloudfoundry/smb-volume-release?v=3.0.2
+    version: 3.0.2
