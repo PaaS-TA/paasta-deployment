@@ -189,10 +189,10 @@ $ git clone https://github.com/PaaS-TA/paasta-deployment.git
 
 ### <div id='1014'/>3.3.4.    BOSH 설치 파일
 
-- paasta-5.1/paasta-deployment 이하 디렉터리
+- paasta-5.1/deployment/paasta-deployment 이하 디렉터리
 
 ```
-$ cd ${HOME}/workspace/paasta-5.1/paasta-deployment
+$ cd ${HOME}/workspace/paasta-5.1/deployment/paasta-deployment
 $ ls
 bosh  cloud-config  paasta
 ```
