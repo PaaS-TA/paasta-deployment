@@ -945,12 +945,12 @@ PaaS-TA VM 중 singleton-blobstore, database의 AZs(zone)을 변경하면 조직
 ```
 bosh -e {director_name} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
 	-o operations/aws.yml \						# AWS 설정
-	-o operations/use-compiled-releases-online.yml \			# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-online.yml \		# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
 	-o operations/use-haproxy.yml \					# HAProxy 적용
 	-o operations/use-haproxy-public-network.yml \			# HAProxy Public Network 적용
-	-o operations/use-compiled-releases-haproxy-online.yml \		# PaaS-TA 설치시 HAProxy 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-haproxy-online.yml \	# PaaS-TA 설치시 HAProxy 컴파일 릴리즈 파일 정보
 	-o operations/use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
-	-o operations/use-compiled-releases-postgres-online.yml \		# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-postgres-online.yml \	# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l aws-vars.yml \						# AWS 환경에 PaaS-TA 설치시 적용하는 변숫값 설정 파일
 	-l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
@@ -959,12 +959,12 @@ bosh -e {director_name} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Ma
 ```
 bosh -e {director_name} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
 	-o operations/azure.yml \					# MS Azure 설정
-	-o operations/use-compiled-releases-online.yml \			# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-online.yml \		# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
 	-o operations/use-haproxy.yml \					# HAProxy 적용
 	-o operations/use-haproxy-public-network.yml \			# HAProxy Public Network 적용
-	-o operations/use-compiled-releases-haproxy-online.yml \		# PaaS-TA 설치시 HAProxy 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-haproxy-online.yml \	# PaaS-TA 설치시 HAProxy 컴파일 릴리즈 파일 정보
 	-o operations/use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
-	-o operations/use-compiled-releases-postgres-online.yml \		# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-postgres-online.yml \	# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l azure-vars.yml \						# MS Azure 환경에 PaaS-TA 설치시 적용하는 변숫값 설정 파일
 	-l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
@@ -973,12 +973,12 @@ bosh -e {director_name} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Ma
 #### <div id='1026'/>● deploy-gcp.sh
 ```
 bosh -e {director_name} -d paasta deploy paasta-deployment.yml \	# PaaS-TA Manifest File
-	-o operations/use-compiled-releases-online.yml \			# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-online.yml \		# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
 	-o operations/use-haproxy.yml \					# HAProxy 적용
 	-o operations/use-haproxy-public-network.yml \			# HAProxy Public Network 적용
-	-o operations/use-compiled-releases-haproxy-online.yml \		# PaaS-TA 설치시 HAProxy 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-haproxy-online.yml \	# PaaS-TA 설치시 HAProxy 컴파일 릴리즈 파일 정보
 	-o operations/use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
-	-o operations/use-compiled-releases-postgres-online.yml \		# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-postgres-online.yml \	# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l gcp-vars.yml \						# GCP 환경에 PaaS-TA 설치시 적용하는 변숫값 설정 파일
 	-l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
@@ -988,12 +988,12 @@ bosh -e {director_name} -d paasta deploy paasta-deployment.yml \	# PaaS-TA Manif
 ```
 bosh -e {director_name} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
 	-o operations/openstack.yml \					# OpenStack 설정
-	-o operations/use-compiled-releases-online.yml \			# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-online.yml \		# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
 	-o operations/use-haproxy.yml \					# HAProxy 적용
 	-o operations/use-haproxy-public-network.yml \			# HAProxy Public Network 적용
-	-o operations/use-compiled-releases-haproxy-online.yml \		# PaaS-TA 설치시 HAProxy 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-haproxy-online.yml \	# PaaS-TA 설치시 HAProxy 컴파일 릴리즈 파일 정보
 	-o operations/use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
-	-o operations/use-compiled-releases-postgres-online.yml \		# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-postgres-online.yml \	# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l openstack-vars.yml \						# OpenStack 환경에 PaaS-TA 설치시 적용하는 변숫값 설정 파일
 	-l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
@@ -1002,12 +1002,12 @@ bosh -e {director_name} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Ma
 #### <div id='1028'/>● deploy-vsphere.sh
 ```
 bosh -e {director_name} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Manifest File
-	-o operations/use-compiled-releases-online.yml \			# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-online.yml \		# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
 	-o operations/use-haproxy.yml \					# HAProxy 적용
 	-o operations/use-haproxy-public-network.yml \			# HAProxy Public Network 적용
-	-o operations/use-compiled-releases-haproxy-online.yml \		# PaaS-TA 설치시 HAProxy 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-haproxy-online.yml \	# PaaS-TA 설치시 HAProxy 컴파일 릴리즈 파일 정보
 	-o operations/use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
-	-o operations/use-compiled-releases-postgres-online.yml \		# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-postgres-online.yml \	# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l vsphere-vars.yml \						# vSphere 환경에 PaaS-TA 설치시 적용하는 변숫값 설정 파일
 	-l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
@@ -1017,9 +1017,9 @@ bosh -e {director_name} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Ma
 ```
 bosh -e {director_name} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA manifest file
 	-o operations/bosh-lite.yml \					# BOSH-LITE 설정
-	-o operations/use-compiled-releases-online.yml \			# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-online.yml \		# PaaS-TA 설치시 공통 컴파일 릴리즈 파일 정보
 	-o operations/use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
-	-o operations/use-compiled-releases-postgres-online.yml \		# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-postgres-online.yml \	# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l bosh-lite-vars.yml \						# BOSH-LITE 환경에 PaaS-TA 설치시 적용하는 변숫값 설정 파일
 	-l ../../common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
@@ -1046,7 +1046,7 @@ bosh -e {director_name} -d paasta -n deploy paasta-deployment.yml \	# PaaS-TA Ma
 	-o operations/use-haproxy-public-network.yml \			# HAProxy Public Network 적용
   -o operations/use-compiled-releases-haproxy-online.yml \		# PaaS-TA 설치시 HAProxy 컴파일 릴리즈 파일 정보
 	-o operations/use-postgres.yml \				# Database Type 설정 (3.5버전 이하에서 Migration 시 필수)
-	-o operations/use-compiled-releases-postgres-online.yml \		# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
+	-o operations/use-compiled-releases-postgres-online.yml \	# PaaS-TA 설치시 Postgres 컴파일 릴리즈 파일 정보
 	-o operations/rename-network-and-deployment.yml \		# Rename Network and Deployment
 	-l aws-vars.yml \						# AWS 환경에 PaaS-TA 설치시 적용하는 변숫값 설정 파일
 	-l ../../common/common_vars.yml					# PaaS-TA 및 각종 Service 설치시 적용하는 공통 변수 설정 파일
