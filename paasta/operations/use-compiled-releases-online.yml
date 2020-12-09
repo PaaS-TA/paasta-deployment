@@ -89,14 +89,14 @@
     url: https://storage.googleapis.com/cf-deployment-compiled-releases/credhub-2.8.0-ubuntu-xenial-621.5-20200722-213239-910474426.tgz
     version: 2.8.0
 - type: replace
-  path: /releases/name=diego
+  path: /releases/name=diego 
   value:
     name: diego
-    sha1: c29ec1edccc65b5f5d269ce5fb7c171e9c23e4c0
+    sha1: 1dbf5c840c061195ae308c1ece26f55fdf3e47c1
     stemcell:
       os: ubuntu-xenial
       version: "621.5"
-    url: https://storage.googleapis.com/cf-deployment-compiled-releases/diego-2.47.0-ubuntu-xenial-621.5-20200615-161058-884625771.tgz
+    url: http://45.248.73.44/index.php/s/taGHXQKToY9cRSK/download
     version: 2.47.0
 - type: replace
   path: /releases/name=dotnet-core-buildpack
