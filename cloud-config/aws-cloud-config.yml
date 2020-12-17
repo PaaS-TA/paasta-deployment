@@ -190,6 +190,7 @@ vm_extensions:
     - host: 80
     - host: 443
     - host: 2222
+    - host: 4443
 
 vm_types:
 - cloud_properties:

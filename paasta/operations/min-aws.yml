@@ -8,3 +8,50 @@
 - type: replace
   path: /instance_groups/name=router/jobs/name=gorouter/properties/router/load_balancer_healthy_threshold?
   value: 60
+
+- type: replace
+  path: /releases/name=os-conf?
+  value:
+    name: os-conf
+    url:  https://bosh.io/d/github.com/cloudfoundry/os-conf-release?v=22.1.0
+    sha1: 7ef05f6f3ebc03f59ad8131851dbd1abd1ab3663
+    version: 22.1.0
+
+- type: replace
+  path: /instance_groups/name=router/jobs/-
+  value:
+    name: pre-start-script
+    release: os-conf
+    properties:
+      script: |-
+        #!/bin/bash
+
+        vCount="0"
+        while [ "${vCount}" -ne "1" ]
+        do
+          vCount=`find /var/vcap/jobs/tcp_router/config/ -name haproxy.conf | wc -l`
+          echo "/var/vcap/jobs/tcp_router/config/haproxy.conf : ${vCount}"
+          sleep 0.5
+        done
+
+        pCount=`cat /var/vcap/jobs/tcp_router/config/haproxy.conf | grep tcp-trafficcontroller | wc -l`
+        echo "config in tcp-trafficcontroller : ${pCount}"
+
+        if [ ${pCount} -eq "0" ] ; then
+
+        echo "haproxy.conf add wss : 4443"
+
+        {
+        echo ' '
+        echo 'frontend tcp-frontend_trafficcontroller'
+        echo '    mode tcp'
+        echo '    bind :4443'
+        echo '    default_backend tcp-trafficcontroller'
+        echo ' '
+        echo 'backend tcp-trafficcontroller'
+        echo '    mode tcp'
+        echo '    server node0 loggregator-trafficcontroller.service.cf.internal:8081 check inter 1000'
+        } >> /var/vcap/jobs/tcp_router/config/haproxy.conf
+
+        fi
+
