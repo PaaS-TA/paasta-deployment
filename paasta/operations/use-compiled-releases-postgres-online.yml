@@ -2,10 +2,9 @@
   path: /releases/name=postgres
   value:
     name: postgres
-    sha1: 02e4d42a2089d52511306b6faf3d6d3557534ea2
+    sha1: 0eaf3ee73c4973ee15d358cdd2dbceeb76209cb5
     stemcell:
       os: ubuntu-xenial
-      version: "621.78"
-    url: http://45.248.73.44/index.php/s/6Q4aQzrF3cC2bzM/download
-    version: 41
-
+      version: "621.94"
+    url: http://45.248.73.44/index.php/s/msBb3i98yjdz5bT/download
+    version: 42
