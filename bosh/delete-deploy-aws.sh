@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bosh delete-env -n bosh.yml \
+bosh delete-env bosh.yml \
 	--state=aws/state.json \
 	--vars-store=aws/creds.yml \
 	-o aws/cpi.yml \
@@ -8,4 +8,3 @@ bosh delete-env -n bosh.yml \
 	-o credhub.yml \
 	-o jumpbox-user.yml \
 	-l aws-vars.yml
-

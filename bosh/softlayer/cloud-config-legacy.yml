@@ -12,7 +12,7 @@ azs:
 vm_types:
 - name: default
   cloud_properties:
-    bosh_ip: ((bosh_url))
+    bosh_ip: ((bosh_ip))
     startCpus:  4
     maxMemory:  8192
     ephemeralDiskSize: 100
@@ -32,17 +32,17 @@ networks:
 - name: default
   type: manual
   subnets:
-  - range: ((internal_cidr))
-    gateway: ((internal_gw))
+  - range: ((private_cidr))
+    gateway: ((private_gw))
     azs: [z1, z2, z3]
-    dns: [((bosh_url)), 8.8.8.8, 10.0.80.11, 10.0.80.12]
+    dns: [((bosh_ip)), 8.8.8.8, 10.0.80.11, 10.0.80.12]
     static: ((internal_static_ips))
     reserved: ((internal_reserved_ips))
 
 - name: dynamic
   type: dynamic
   subnets:
-  - dns: [((bosh_url)), 8.8.8.8, 10.0.80.11, 10.0.80.12]
+  - dns: [((bosh_ip)), 8.8.8.8, 10.0.80.11, 10.0.80.12]
     azs: [z1, z2, z3]
     cloud_properties:
       PrimaryNetworkComponent:

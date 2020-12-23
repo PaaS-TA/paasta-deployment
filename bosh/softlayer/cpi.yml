@@ -77,7 +77,7 @@
 
 - type: replace
   path: /instance_groups/name=bosh/properties/agent/env/bosh/blobstores/provider=dav/options/endpoint?
-  value: http://((bosh_url)):25250
+  value: http://((bosh_ip)):25250
 
 - type: replace
   path: /cloud_provider/template?
@@ -131,8 +131,8 @@
 - type: replace
   path: /instance_groups/name=bosh/properties/registry?
   value:
-    address: ((bosh_url))
-    host: ((bosh_url))
+    address: ((bosh_ip))
+    host: ((bosh_ip))
     db: # todo remove
       host: 127.0.0.1
       user: postgres

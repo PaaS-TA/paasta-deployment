@@ -3,15 +3,15 @@
   type: replace
   value:
     name: bosh-google-cpi
-    sha1: aba0451b5be65d8bbf3cf7f289c5432192892284
-    url: https://bosh.io/d/github.com/cloudfoundry/bosh-google-cpi-release?v=29.0.1
-    version: 29.0.1
+    sha1: 650681e2f9443ba5cc4100b96874c1e594ce0e97
+    url: https://bosh.io/d/github.com/cloudfoundry/bosh-google-cpi-release?v=40.0.3
+    version: 40.0.3
 - name: stemcell
   path: /resource_pools/name=vms/stemcell?
   type: replace
   value:
-    sha1: 4623028f7f7e7cb0b6ea04c9bddbe2aa837b6d73
-    url: https://s3.amazonaws.com/bosh-gce-light-stemcells/315.64/light-bosh-stemcell-315.64-google-kvm-ubuntu-xenial-go_agent.tgz
+    sha1: ee3bc8db7e31f10c94abc87721f8697570601d40
+    url: https://bosh-gce-light-stemcells.s3-accelerate.amazonaws.com/621.93/light-bosh-stemcell-621.93-google-kvm-ubuntu-xenial-go_agent.tgz
 - path: /resource_pools/name=vms/cloud_properties?
   type: replace
   value:
@@ -26,7 +26,7 @@
 - path: /networks/name=default/subnets/0/cloud_properties?
   type: replace
   value:
-    ephemeral_external_ip: false
+    ephemeral_public_ip: false
     network_name: ((network))
     subnetwork_name: ((subnetwork))
     tags: ((tags))
@@ -53,11 +53,11 @@
   value:
     json_key: ((gcp_credentials_json))
     project: ((project_id))
-- path: /instance_groups/name=bosh/properties/ntp
+- path: /resource_pools/0/env/bosh/ntp?
   type: replace
   value:
   - 169.254.169.254
-- path: /cloud_provider/properties/ntp
+- path: /instance_groups/name=bosh/properties/agent/env/bosh/ntp?
   type: replace
   value:
   - 169.254.169.254

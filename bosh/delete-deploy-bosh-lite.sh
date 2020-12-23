@@ -1,9 +1,9 @@
 #!/bin/bash
 
-bosh delete-env -n bosh.yml \
-	--state=bosh-lite/state.json \		
-	--vars-store bosh-lite/creds.yml \	
-	-o virtualbox/cpi.yml \			
+bosh delete-env bosh.yml \
+	--state=bosh-lite/state.json \
+	--vars-store bosh-lite/creds.yml \
+	-o virtualbox/cpi.yml \
 	-o virtualbox/outbound-network.yml \
 	-o bosh-lite.yml \
 	-o uaa.yml \

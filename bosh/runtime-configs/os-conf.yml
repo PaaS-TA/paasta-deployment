@@ -16,4 +16,3 @@ addons:
     properties:
       sysctl:
       - net.ipv4.tcp_timestamps=0
-

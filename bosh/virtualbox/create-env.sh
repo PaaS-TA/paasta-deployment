@@ -29,9 +29,9 @@ bosh create-env "${bosh_deployment}/bosh.yml" \
   --ops-file "${bosh_deployment}/jumpbox-user.yml" \
   --vars-store "${PWD}/creds.yml" \
   --var director_name=bosh-lite \
-  --var bosh_url=192.168.50.6 \
-  --var internal_gw=192.168.50.1 \
-  --var internal_cidr=192.168.50.0/24 \
+  --var bosh_ip=192.168.50.6 \
+  --var private_gw=192.168.50.1 \
+  --var private_cidr=192.168.50.0/24 \
   --var outbound_network_name=NatNetwork "$@"
 
 
@@ -45,13 +45,12 @@ elif [ "$(uname)" = "Linux" ]; then
   if type ip > /dev/null 2>&1; then
     sudo ip route add 10.244.0.0/16 via 192.168.50.6
   elif type route > /dev/null 2>&1; then
-    sudo route add -net 10.244.0.0/16 gw  192.168.50.6
+    sudo route add -net 10.244.0.0/16 gw 192.168.50.6
   else
     echo "ERROR adding route"
     exit 1
   fi
 fi
-
 
 ####
 STEP "Generating .envrc"

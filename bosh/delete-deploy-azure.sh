@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bosh delete-env -n bosh.yml \
+bosh delete-env bosh.yml \
 	--state=azure/state.json \
 	--vars-store azure/creds.yml \
 	-o azure/cpi.yml \
