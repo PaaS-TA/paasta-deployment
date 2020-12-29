@@ -149,7 +149,7 @@ networks:
       name: random
       network_name: paasta-v50-vpc
       subnetwork_name: paasta-v50-private-subnet-1
-      ephemeral_public_ip: false
+      ephemeral_external_ip: false
       tags: [paasta-v50-security]
     dns:
     - 8.8.8.8
@@ -164,7 +164,7 @@ networks:
       name: random
       network_name: paasta-v50-vpc
       subnetwork_name: paasta-v50-private-subnet-2
-      ephemeral_public_ip: false
+      ephemeral_external_ip: false
       tags: [paasta-v50-security]
     dns:
     - 8.8.8.8
@@ -179,7 +179,7 @@ networks:
       name: random
       network_name: paasta-v50-vpc
       subnetwork_name: paasta-v50-private-subnet-3
-      ephemeral_public_ip: false
+      ephemeral_external_ip: false
       tags: [paasta-v50-security]
     dns:
     - 8.8.8.8
@@ -194,7 +194,7 @@ networks:
       name: random
       network_name: paasta-v50-vpc
       subnetwork_name: paasta-v50-private-subnet-4
-      ephemeral_public_ip: false
+      ephemeral_external_ip: false
       tags: [paasta-v50-security]
     dns:
     - 8.8.8.8
@@ -209,7 +209,7 @@ networks:
       name: random
       network_name: paasta-v50-vpc
       subnetwork_name: paasta-v50-private-subnet-5
-      ephemeral_public_ip: false
+      ephemeral_external_ip: false
       tags: [paasta-v50-security]
     dns:
     - 8.8.8.8
@@ -224,7 +224,7 @@ networks:
       name: random
       network_name: paasta-v50-vpc
       subnetwork_name: paasta-v50-private-subnet-6
-      ephemeral_public_ip: false
+      ephemeral_external_ip: false
       tags: [paasta-v50-security]
     dns:
     - 8.8.8.8
@@ -239,7 +239,7 @@ networks:
       name: random
       network_name: paasta-v50-vpc
       subnetwork_name: paasta-v50-public-subnet
-      ephemeral_public_ip: false
+      ephemeral_external_ip: false
       tags: [paasta-v50-security]
     dns:
     - 8.8.8.8
