@@ -2,9 +2,9 @@
   path: /releases/-
   value:
     name: paasta-monitoring-agent
-    version: 4.0
-    url: http://45.248.73.44/index.php/s/Zj4SaX56SrzdTzx/download
-    sha1: 2e66b93860d09d93b01d1eab87fa936d4c41f426
+    version: 5.0
+    url: http://45.248.73.44/index.php/s/Q3MYw9zXjmjNnKc/download
+    sha1: 046797a647b4db63a805623cc29e09e26c6c605e
 
 - type: replace
   path: /instance_groups/name=bosh/jobs/-

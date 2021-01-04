@@ -17,6 +17,11 @@ uaa_login_links_signup: "http://portal-web-user.15.165.2.88.xip.io/createuser"	#
 uaa_client_portal_redirect_uri: "http://portal-web-user.15.165.2.88.xip.io,http://portal-web-user.15.165.2.88.xip.io/callback"	# UAA Portal Client의 Redirect URI 지정 변수, 포탈에서 로그인 버튼 클릭 후 UAA 페이지에서 성공적으로 로그인했을 경우 이동하는 URI 경로
 
 
+syslog_custom_rule: 'if ($msg contains "DEBUG") then stop'      # [MONITORING] PaaS-TA Logging Agent에서 전송할 Custom Rule
+syslog_fallback_servers: []             # [MONITORING] PaaS-TA Syslog Fallback Servers
+
+
+
 
 # STEMCELL
 stemcell_os: "ubuntu-xenial"		# Stemcell OS
