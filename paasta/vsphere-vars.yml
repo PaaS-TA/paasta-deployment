@@ -4,6 +4,7 @@ network_name: "default"			# VM에 별도로 지정하지 않는 Default Network 
 inception_os_user_name: "ubuntu"	# Home User Name (Release File Path 설정 시 필요)
 haproxy_public_ip: "52.78.32.153"	# HAProxy IP (Public IP)
 haproxy_public_network_name: "vip"	# PaaS-TA Public Network Name
+haproxy_private_network_name: "private" # PaaS-TA Private Network Name
 cc_db_encryption_key: "db-encryption-key"	# Database Encryption Key (Version Upgrade 시 동일 KEY 필수)
 cert_days: 3650				# PaaS-TA 인증서 유효기간
 uaa_login_logout_redirect_parameter_disable: "false"	

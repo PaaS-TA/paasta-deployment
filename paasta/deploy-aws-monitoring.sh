@@ -10,6 +10,6 @@ bosh -e micro-bosh -d paasta -n deploy paasta-deployment.yml \
 	-o operations/use-compiled-releases-postgres-online.yml \
 	-o operations/rename-network-and-deployment.yml \
 	-o paasta-addon/paasta-monitoring.yml \
-        -o operations/addons/enable-component-syslog.yml \
+    -o operations/addons/enable-component-syslog.yml \
 	-l aws-vars.yml \
 	-l ../../common/common_vars.yml
