@@ -1,0 +1,13 @@
+- path: /instance_groups/name=bosh/jobs/-
+  type: replace
+  value:
+    name: pre-start-script
+    properties:
+      script: |-
+        #!/bin/bash
+        sed -i "$(grep -Rn 'PASS_MAX_DAYS' /etc/login.defs | grep 99999 | awk -F"[:]" '{ print $1 }')s/99999/90/"  /etc/login.defs
+        chage -M 90 root
+        chage -M 90 vcap
+        chage -M 90 jumpbox
+        chmod o-w /var/tmp
+    release: os-conf
