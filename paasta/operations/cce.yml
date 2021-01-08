@@ -28,7 +28,7 @@
       cce_enable: true
 
 
-# CCE - UAA tomcat patch
+# CCE - diego-cell tomcat patch
 - type: replace
   path: /instance_groups/name=diego-cell/jobs/-
   value:
