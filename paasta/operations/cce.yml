@@ -4,7 +4,7 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  http://45.248.73.44/index.php/s/Y8Cqeg2CKoyEe53/download
+#   url:  http://45.248.73.44/index.php/s/Y8Cqeg2CKoyEe53/download
     version: 1.0.0
 
 # CCE - scrpt test
