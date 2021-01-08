@@ -27,3 +27,13 @@
     properties:
       cce_enable: true
 
+
+# CCE - UAA tomcat patch
+- type: replace
+  path: /instance_groups/name=diego-cell/jobs/-
+  value:
+    name: tomcat_conf
+    release: paasta-conf
+    properties:
+      cce_enable: true
+
