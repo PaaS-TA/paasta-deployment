@@ -1,0 +1,39 @@
+---
+# set paasta-conf release
+- type: replace
+  path: /releases/name=paasta-conf?
+  value:
+    name: paasta-conf
+#   url:  http://45.248.73.44/index.php/s/Y8Cqeg2CKoyEe53/download
+    version: 1.0.0
+
+# CCE - scrpt test
+#- type: replace
+#  path: /instance_groups/name=uaa/jobs/-
+#  value:
+#    name: common_script
+#    release: paasta-conf
+#    properties:
+#      post_deploy_script: |-
+#        #!/bin/bash
+#        echo "test complete"
+
+# CCE - UAA tomcat patch
+- type: replace
+  path: /instance_groups/name=uaa/jobs/-
+  value:
+    name: tomcat_conf
+    release: paasta-conf
+    properties:
+      cce_enable: true
+
+
+# CCE - diego-cell tomcat patch
+- type: replace
+  path: /instance_groups/name=diego-cell/jobs/-
+  value:
+    name: tomcat_conf
+    release: paasta-conf
+    properties:
+      cce_enable: true
+
