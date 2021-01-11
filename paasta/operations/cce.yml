@@ -37,3 +37,31 @@
     properties:
       cce_enable: true
 
+## CCE - PaaS-TA-min Control tomcat patch (PaaS-TA-min 사용할 경우 위의 CCE - UAA tomcat patch 주석후 아래내용 주석 해제)
+#- type: replace
+#  path: /instance_groups/name=control/jobs/-
+#  value:
+#    name: tomcat_conf
+#    release: paasta-conf
+#    properties:
+#      cce_enable: true      
+
+## CCE - diego-cell tomcat patch (PaaS-TA-min 사용할 경우 위의 CCE - diego-cell tomcat patch 주석후 아래내용 주석 해제)
+#- type: replace
+#  path: /instance_groups/name=compute/jobs/-
+#  value:
+#    name: tomcat_conf
+#    release: paasta-conf
+#    properties:
+#      cce_enable: true
+
+## CCE - PaaS-TA postgres patch (postgres 사용할 경우 주석 해제)
+#- type: replace
+#  path: /instance_groups/name=database/jobs/-
+#  value:
+#    name: postgres_conf
+#    release: paasta-conf
+#    properties:
+#      cce_enable: true
+#      sha256_enable: false      
+
