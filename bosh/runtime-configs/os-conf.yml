@@ -16,3 +16,13 @@ addons:
     properties:
       sysctl:
       - net.ipv4.tcp_timestamps=0
+
+  - name: pre-start-script
+    release: os-conf
+    properties:
+      script: |-
+        #!/bin/bash
+        sed -i "$(grep -Rn 'PASS_MAX_DAYS' /etc/login.defs | grep 99999 | awk -F"[:]" '{ print $1 }')s/99999/90/"  /etc/login.defs
+        chage -M 90 root
+        chage -M 90 vcap
+        chmod o-w /var/tmp
