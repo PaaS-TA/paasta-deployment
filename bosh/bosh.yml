@@ -77,6 +77,7 @@ instance_groups:
       enable_dedicated_status_worker: true
       enable_nats_delivered_templates: true
       enable_post_deploy: true
+      log_access_events: true
       events:
         record_events: true
       flush_arp: true
