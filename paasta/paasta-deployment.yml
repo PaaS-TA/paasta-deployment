@@ -762,6 +762,8 @@ instance_groups:
           ## PAAS-TA PORTAL USER ACCOUNT ADD END
         ca_certs:
         - "((mysql_server_certificate.ca))"
+        servlet:
+          idle-timeout: 600
       uaadb:
         address: sql-db.service.cf.internal
         databases:
