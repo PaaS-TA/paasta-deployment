@@ -10,20 +10,19 @@
   value: 60
 
 - type: replace
-  path: /releases/name=os-conf?
+  path: /releases/name=paasta-conf?
   value:
-    name: os-conf
-    url:  https://bosh.io/d/github.com/cloudfoundry/os-conf-release?v=22.1.0
-    sha1: 7ef05f6f3ebc03f59ad8131851dbd1abd1ab3663
-    version: 22.1.0
+    name: paasta-conf
+    url:  http://45.248.73.44/index.php/s/Y8Cqeg2CKoyEe53/download
+    version: 1.0.0
 
 - type: replace
   path: /instance_groups/name=router/jobs/-
   value:
-    name: pre-start-script
-    release: os-conf
+    name: common_script
+    release: paasta-conf
     properties:
-      script: |-
+      pre_start_script: |-
         #!/bin/bash
 
         vCount="0"
@@ -54,3 +53,8 @@
             break
           fi
         done
+
+        
+
+        
+
