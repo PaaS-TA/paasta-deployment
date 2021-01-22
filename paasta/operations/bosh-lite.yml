@@ -4,7 +4,7 @@
   path: /instance_groups/name=router/networks
   value:
   - name: default
-    static_ips: [10.244.0.34]
+    static_ips: [((private_ip))]
 
 # --- Add Bosh Lite Security Groups ---
 - type: replace
@@ -18,7 +18,7 @@
   value:
     name: load_balancer
     rules:
-    - destination: 10.244.0.34
+    - destination: ((private_ip))
       protocol: all
 
 # ----- Combine router VM extensions ----
