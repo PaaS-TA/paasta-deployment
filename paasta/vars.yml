@@ -1,12 +1,13 @@
 # SERVICE VARIABLE
 deployment_name: "paasta"		# Deployment Name
 network_name: "default"			# VM에 별도로 지정하지 않는 Default Network Name
-inception_os_user_name: "ubuntu"	# Home User Name (Release File Path 설정 시 필요)
-haproxy_public_ip: "52.78.32.153"	# HAProxy IP (Public IP)
+releases_dir: "/home/ubuntu/workspace/paasta-5.5/release"	# Release Directory (offline으로 릴리즈 다운받아 사용시 설정)
+haproxy_public_ip: "52.78.32.153"	# HAProxy IP (Public IP, HAproxy VM 배포시 필요)
 haproxy_public_network_name: "vip"	# PaaS-TA Public Network Name
-haproxy_private_network_name: "private" # PaaS-TA Private Network Name
+haproxy_private_network_name: "private" # PaaS-TA Private Network Name (vSphere use-haproxy-public-network-vsphere.yml 포함 배포시 설정 필요)
 cc_db_encryption_key: "db-encryption-key"	# Database Encryption Key (Version Upgrade 시 동일 KEY 필수)
 cert_days: 3650				# PaaS-TA 인증서 유효기간
+private_ip: "10.244.0.34"   # Proxy IP (Private IP, BOSH-LITE 사용시 설정 필요)
 uaa_login_logout_redirect_parameter_disable: "false"	
 uaa_login_logout_redirect_parameter_whitelist: ["http://portal-web-user.15.165.2.88.xip.io","http://portal-web-user.15.165.2.88.xip.io/callback","http://portal-web-user.15.165.2.88.xip.io/login"]	# 포탈 페이지 이동을 위한 UAA Redirect Whitelist 등록 변수
 uaa_login_branding_company_name: "PaaS-TA R&D"	# UAA 페이지 타이틀 명

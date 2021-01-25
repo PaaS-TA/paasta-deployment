@@ -1,0 +1,9 @@
+- type: replace
+  path: /releases/name=bosh/url
+  value: file://((releases_dir))/bosh/bosh-271.2.0-PaaS-TA.tgz
+- type: replace
+  path: /releases/name=bosh/version
+  value: 271.2.0-PaaS-TA
+- type: replace
+  path: /releases/name=bosh/sha1
+  value: 50ffc69959ae47e758f4bc5f2903d793e4aa96cd

@@ -11,3 +11,13 @@
         chage -M 90 jumpbox
         chmod o-w /var/tmp
     release: os-conf
+
+- type: replace
+  path: /releases/name=bosh/url
+  value: http://45.248.73.44/index.php/s/3Ni8AEfSs22CAiC/download
+- type: replace
+  path: /releases/name=bosh/version
+  value: 271.2.0-PaaS-TA
+- type: replace
+  path: /releases/name=bosh/sha1
+  value: 50ffc69959ae47e758f4bc5f2903d793e4aa96cd

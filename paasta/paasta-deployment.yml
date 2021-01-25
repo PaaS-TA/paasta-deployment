@@ -2527,13 +2527,13 @@ releases:
   version: 1.1.9
   sha1: dcf0582d838a73de29da273552ae79ac3098ee8b
 - name: capi
-  url: http://45.248.73.44/index.php/s/X3K3ok38AtdMZYJ/download
-  version: 1.98.0-PaaS-TA
-  sha1: fe0defeaaee5863c220daddc0daa53f4b8063d5a
+  url: https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.98.0
+  version: 1.98.0
+  sha1: e4b0b8a1ef10b71da5b09248150c3295197ee0b6
 - name: cf-networking
-  url: http://45.248.73.44/index.php/s/DewM5n2ACrzwBrH/download
-  version: 2.33.0-PaaS-TA
-  sha1: 4981b6f9d0d5f87a22e1852b8bf239cd6701d6b4
+  url: https://bosh.io/d/github.com/cloudfoundry/cf-networking-release?v=2.33.0
+  version: 2.33.0
+  sha1: 0497597194cf22fcd474e949a9299336cca78e9e
 - name: cf-smoke-tests
   url: https://bosh.io/d/github.com/cloudfoundry/cf-smoke-tests-release?v=41.0.1
   version: 41.0.1
@@ -2547,9 +2547,9 @@ releases:
   version: 2.8.0
   sha1: 3a9732bab2fa80bb9431941193b6569ef29af491
 - name: diego
-  url: http://45.248.73.44/index.php/s/WLQxEydt93pNxjs/download
-  version: 2.48.0-PaaS-TA
-  sha1: 329ab10d3b8792de4697c2a7076caade0fd4b39d
+  url: https://bosh.io/d/github.com/cloudfoundry/diego-release?v=2.48.0
+  version: 2.48.0
+  sha1: fbf8ebfeda1f326f5d6834b9a621b88a548e06e3
 - name: dotnet-core-buildpack
   url: https://bosh.io/d/github.com/cloudfoundry/dotnet-core-buildpack-release?v=2.3.14
   version: 2.3.14
@@ -2603,17 +2603,17 @@ releases:
   version: 1.7.20
   sha1: 9f32a3dc2d0d179083d3c2a395d8d6ee7379d9c8
 - name: routing
-  url: http://45.248.73.44/index.php/s/Ce2oKEESn7ty5ro/download
-  version: 0.207.0-PaaS-TA
-  sha1: 11b201117f131b2ac63d7fea957b13f40bcc82d3
+  url: https://bosh.io/d/github.com/cloudfoundry/routing-release?v=0.207.0
+  version: 0.207.0
+  sha1: 9e703259a07f032e7ca96dca2730d0e0c2b61685
 - name: ruby-buildpack
   url: https://bosh.io/d/github.com/cloudfoundry/ruby-buildpack-release?v=1.8.23
   version: 1.8.23
   sha1: e32eac05ad44279b6c5b3de50998f967e31e7f1b
 - name: silk
-  url: http://45.248.73.44/index.php/s/Xi96J9mCsGyzx94/download
-  version: 2.33.0-PaaS-TA
-  sha1: 09399d2591045e1b266b28bd41ba41e1d9ec6985
+  url: https://bosh.io/d/github.com/cloudfoundry/silk-release?v=2.33.0
+  version: 2.33.0
+  sha1: 9a2ed4dec4eff614614d6a66b77cd04182e25122
 - name: staticfile-buildpack
   url: https://bosh.io/d/github.com/cloudfoundry/staticfile-buildpack-release?v=1.5.10
   version: 1.5.10
@@ -2623,9 +2623,9 @@ releases:
   version: 1.11.15
   sha1: a0a2d33c6ab7d8fec8c017ea6f2c5a344af1407c
 - name: uaa
-  url: http://45.248.73.44/index.php/s/rnZ7WXWFdMTmpbH/download
-  version: 74.29.0-PaaS-TA
-  sha1: 4432cf7d0c67fbb4a7bce2194b8b4b86221d57dc
+  url: https://bosh.io/d/github.com/cloudfoundry/uaa-release?v=74.24.0
+  version: 74.24.0
+  sha1: 0de84931c008aa55664a5fc47ace4f694f95d688
 - name: loggregator-agent
   url: https://bosh.io/d/github.com/cloudfoundry/loggregator-agent-release?v=6.1.1
   version: 6.1.1

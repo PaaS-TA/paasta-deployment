@@ -1,0 +1,16 @@
+- type: replace
+  path: /releases/name=bosh-vsphere-cpi/url
+  value: file://((releases_dir))/bosh/bosh-vsphere-cpi-release-54.1.1.tgz
+- type: replace
+  path: /releases/name=bosh-vsphere-cpi/version
+  value: 54.1.1
+- type: replace
+  path: /releases/name=bosh-vsphere-cpi/sha1
+  value: 6779b27dbac5a638626d837a35642e4c6091cf93
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/url
+  value: file://((releases_dir))/bosh/bosh-stemcell-621.93-vsphere-esxi-ubuntu-xenial-go_agent.tgz
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/sha1
+  value: 0231ecd594a36fd9233295a23ff1dd5ca8494ec1
+
