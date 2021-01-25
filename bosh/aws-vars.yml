@@ -3,7 +3,7 @@ bosh_client_admin_id: "admin"		# Bosh Client Admin ID
 private_cidr: "10.0.1.0/24"		# Private IP Range
 private_gw: "10.0.1.1"			# Private IP Gateway
 bosh_ip: "10.0.1.6"			# Private IP 	
-inception_os_user_name: "ubuntu"	# Home User Name
+releases_dir: "/home/ubuntu/workspace/paasta-5.5/release" # Release Directory (offline으로 릴리즈 다운받아 사용시 설정)
 director_name: "micro-bosh"		# BOSH Director Name
 access_key_id: "XXXXXXXXXXXXXXX"	# AWS Access Key
 secret_access_key: "XXXXXXXXXXXXX"	# AWS Secret Key
