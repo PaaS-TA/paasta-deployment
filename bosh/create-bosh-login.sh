@@ -5,7 +5,7 @@ CURRENT_IAAS="aws"						# (e.g. aws/azure/gcp/openstack/vsphere/bosh-lite)
 BOSH_IP="10.0.1.6"						# (e.g. 10.0.1.6)
 BOSH_CLIENT_ADMIN_ID="admin"			# (e.g. admin)
 BOSH_ENVIRONMENT="micro-bosh"			# (e.g. micro-bosh)
-BOSH_LOGIN_FILE_PATH="~/.env"			# (e.g. /home/ubuntu/.env)
+BOSH_LOGIN_FILE_PATH="/home/ubuntu/.env"			# (e.g. /home/ubuntu/.env)
 BOSH_LOGIN_FILE_NAME="micro-bosh-login-env"	# (e.g. micro-bosh-login-env)
 
 echo 'export CRED_PATH='${BOSH_DEPLOYMENT_PATH}'
