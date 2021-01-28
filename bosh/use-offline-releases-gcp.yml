@@ -1,6 +1,6 @@
 - type: replace
   path: /releases/name=bosh-google-cpi/url
-  value: file://((releases_dir))/bosh/bosh-google-cpi-release?v=40.0.3
+  value: file://((releases_dir))/bosh/bosh-google-cpi-release-40.0.3.tgz
 - type: replace
   path: /releases/name=bosh-google-cpi/version
   value: 40.0.3
