@@ -15,8 +15,8 @@
           fallback_servers: ((syslog_fallback_servers))
           # permitted_peer: ((syslog_permitted_peer))
           port: ((syslog_port))
-          tls_enabled: true
-          transport: tcp
+          tls_enabled: false
+          transport: relp
       release: syslog
     name: syslog_forwarder
 - type: replace
