@@ -8,5 +8,5 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy paasta-deployment.yml \
 	-o operations/use-haproxy-public-network.yml \
 	-o operations/use-postgres.yml \
 	-o operations/rename-network-and-deployment.yml \
-	-l azure-vars.yml \
+	-l vars.yml \
 	-l ../../common/common_vars.yml
