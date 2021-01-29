@@ -37,9 +37,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v access_key_id=test \
   -v secret_access_key=test \
   -v az=test \
@@ -56,9 +56,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v access_key_id=test \
   -v secret_access_key=test \
   -v az=test \
@@ -76,9 +76,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v access_key_id=test \
   -v secret_access_key=test \
   -v az=test \
@@ -97,9 +97,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v access_key_id=test \
   -v secret_access_key=test \
   -v az=test \
@@ -117,7 +117,7 @@ bosh deploy bosh.yml \
   -o misc/bosh-dev.yml \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v bosh_url=test \
+  -v bosh_ip=test \
   -v access_key_id=test \
   -v secret_access_key=test \
   -v region=test \
@@ -132,9 +132,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v internal_dns=[8.8.8.8] \
   -v access_key_id=test \
   -v secret_access_key=test \
@@ -162,9 +162,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v access_key_id=test \
   -v secret_access_key=test \
   -v az=test \
@@ -196,8 +196,8 @@ bosh create-env bosh.yml \
 
 echo "- AWS (cloud-config)"
 bosh update-cloud-config aws/cloud-config.yml \
-  -v internal_cidr=test \
-  -v internal_gw=test \
+  -v private_cidr=test \
+  -v private_gw=test \
   -v az=test \
   -v subnet_id=test
 
@@ -207,9 +207,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v gcp_credentials_json=test \
   -v project_id=test \
   -v zone=test \
@@ -224,9 +224,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v gcp_credentials_json=test \
   -v project_id=test \
   -v zone=test \
@@ -243,16 +243,16 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v gcp_credentials_json=test \
   -v project_id=test \
   -v zone=test \
   -v tags=[internal,no-ip] \
   -v network=test \
   -v subnetwork=test \
-  -v external_ip=test
+  -v public_ip=test
 
 echo "- GCP with BOSH Lite"
 bosh create-env bosh.yml \
@@ -261,9 +261,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v gcp_credentials_json=test \
   -v project_id=test \
   -v zone=test \
@@ -278,9 +278,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v gcp_credentials_json=test \
   -v project_id=test \
   -v zone=test \
@@ -295,9 +295,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v gcp_credentials_json=test \
   -v project_id=test \
   -v zone=test \
@@ -313,8 +313,8 @@ bosh create-env bosh.yml \
 
 echo "- GCP (cloud-config)"
 bosh update-cloud-config gcp/cloud-config.yml \
-  -v internal_cidr=test \
-  -v internal_gw=test \
+  -v private_cidr=test \
+  -v private_gw=test \
   -v zone=test \
   -v network=test \
   -v subnetwork=test \
@@ -326,9 +326,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v auth_url=test \
   -v az=test \
   -v default_key_name=test \
@@ -343,8 +343,8 @@ bosh create-env bosh.yml \
 
 echo "- Openstack (cloud-config)"
 bosh update-cloud-config openstack/cloud-config.yml \
-  -v internal_cidr=test \
-  -v internal_gw=test \
+  -v private_cidr=test \
+  -v private_gw=test \
   -v az=test \
   -v net_id=test
 
@@ -354,9 +354,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v network_name=test \
   -v vcenter_dc=test \
   -v vcenter_ds=test \
@@ -374,9 +374,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v network_name=test \
   -v vcloud_url=test \
   -v vcloud_user=test \
@@ -386,8 +386,8 @@ bosh create-env bosh.yml \
 
 echo "- vSphere (cloud-config)"
 bosh update-cloud-config vsphere/cloud-config.yml \
-  -v internal_cidr=test \
-  -v internal_gw=test \
+  -v private_cidr=test \
+  -v private_gw=test \
   -v network_name=test \
   -v vcenter_cluster=test
 
@@ -397,9 +397,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=10.0.0.0/24 \
-  -v internal_gw=10.0.0.1 \
-  -v bosh_url=10.0.0.4 \
+  -v private_cidr=10.0.0.0/24 \
+  -v private_gw=10.0.0.1 \
+  -v bosh_ip=10.0.0.4 \
   -v vnet_name=boshvnet-crp \
   -v subnet_name=Bosh \
   -v subscription_id=test \
@@ -417,9 +417,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=10.0.0.0/24 \
-  -v internal_gw=10.0.0.1 \
-  -v bosh_url=10.0.0.4 \
+  -v private_cidr=10.0.0.0/24 \
+  -v private_gw=10.0.0.1 \
+  -v bosh_ip=10.0.0.4 \
   -v vnet_name=boshvnet-crp \
   -v subnet_name=Bosh \
   -v environment=AzureChinaCloud \
@@ -433,8 +433,8 @@ bosh create-env bosh.yml \
 
 echo "- Azure (cloud-config)"
 bosh update-cloud-config azure/cloud-config.yml \
-  -v internal_cidr=10.0.16.0/24 \
-  -v internal_gw=10.0.16.1 \
+  -v private_cidr=10.0.16.0/24 \
+  -v private_gw=10.0.16.1 \
   -v vnet_name=boshvnet-crp \
   -v subnet_name=CloudFoundry \
   -v security_group=nsg-cf
@@ -446,9 +446,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=vbox \
-  -v bosh_url=192.168.56.6 \
-  -v internal_gw=192.168.56.1 \
-  -v internal_cidr=192.168.56.0/24
+  -v bosh_ip=192.168.56.6 \
+  -v private_gw=192.168.56.1 \
+  -v private_cidr=192.168.56.0/24
 
 echo "- VirtualBox with IPv6 (remote)"
 bosh create-env bosh.yml \
@@ -466,9 +466,9 @@ bosh create-env bosh.yml \
   -o virtualbox/ipv6/cpi.yml \
   -o virtualbox/ipv6/remote.yml \
   -v director_name=vbox \
-  -v internal_cidr=fd7a:eeed:e696:969f:0000:0000:0000:0000/64 \
-  -v internal_gw=fd7a:eeed:e696:969f:0000:0000:0000:0001 \
-  -v bosh_url=fd7a:eeed:e696:969f:0000:0000:0000:0004 \
+  -v private_cidr=fd7a:eeed:e696:969f:0000:0000:0000:0000/64 \
+  -v private_gw=fd7a:eeed:e696:969f:0000:0000:0000:0001 \
+  -v bosh_ip=fd7a:eeed:e696:969f:0000:0000:0000:0004 \
   -v outbound_network_name=NatNetwork \
   -v vbox_host=fd7a:eeed:e696:969f:0000:0000:0000:0001 \
   -v vbox_username=test
@@ -482,9 +482,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=vbox \
-  -v bosh_url=192.168.56.6 \
-  -v internal_gw=192.168.56.1 \
-  -v internal_cidr=192.168.56.0/24
+  -v bosh_ip=192.168.56.6 \
+  -v private_gw=192.168.56.1 \
+  -v private_cidr=192.168.56.0/24
 
 echo "- Warden (cloud-config)"
 bosh update-cloud-config warden/cloud-config.yml
@@ -496,9 +496,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=docker \
-  -v internal_cidr=10.245.0.0/16 \
-  -v internal_gw=10.245.0.1 \
-  -v bosh_url=10.245.0.10 \
+  -v private_cidr=10.245.0.0/16 \
+  -v private_gw=10.245.0.1 \
+  -v bosh_ip=10.245.0.10 \
   -v docker_host=tcp://192.168.50.8:4243 \
   --var-file docker_tls.ca=$tmp_file \
   --var-file docker_tls.certificate=$tmp_file \
@@ -513,9 +513,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=docker \
-  -v internal_cidr=10.245.0.0/16 \
-  -v internal_gw=10.245.0.1 \
-  -v bosh_url=10.245.0.10 \
+  -v private_cidr=10.245.0.0/16 \
+  -v private_gw=10.245.0.1 \
+  -v bosh_ip=10.245.0.10 \
   -v docker_host=unix:///var/run/docker.sock \
   -v network=net3
 
@@ -532,9 +532,9 @@ bosh create-env bosh.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
-  -v internal_cidr=test \
-  -v internal_gw=test \
-  -v bosh_url=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
   -v access_key_id=test \
   -v secret_access_key=test \
   -v az=test \

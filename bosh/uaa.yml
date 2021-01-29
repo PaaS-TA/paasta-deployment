@@ -3,9 +3,9 @@
   type: replace
   value:
     name: uaa
-    sha1: 24fc5c63c99a594a537732bd897f10b8589096ff
-    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/uaa-73.5.0-ubuntu-xenial-315.64-20190709-215817-751355338-20190709215839.tgz
-    version: 73.5.0
+    sha1: 85c9d7d76c26e68f5a843f11e6661a935ce81cda
+    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/uaa-74.29.0-ubuntu-xenial-621.93-20201130-224014-789299918-20201130224017.tgz
+    version: 74.29.0
 - path: /instance_groups/name=bosh/properties/director/user_management/provider
   type: replace
   value: uaa
@@ -13,7 +13,7 @@
   type: remove
 - path: /instance_groups/name=bosh/properties/director/user_management/uaa?/url
   type: replace
-  value: https://((bosh_url)):8443
+  value: https://((bosh_ip)):8443
 - path: /instance_groups/name=bosh/properties/director/user_management/uaa/public_key?
   type: replace
   value: ((uaa_jwt_signing_key.public_key))
@@ -58,7 +58,7 @@
             scope: ""
             secret: ((hm_password))
           uaa_admin:
-            authorities: clients.read,clients.write,clients.secret,uaa.admin,scim.read,scim.write,password.write
+            authorities: uaa.admin
             authorized-grant-types: client_credentials
             override: true
             scope: ""
@@ -69,8 +69,6 @@
             keys:
               uaa-jwt-key-1:
                 signingKey: ((uaa_jwt_signing_key.private_key))
-        login:
-          client_secret: ((uaa_login_client_secret))
         scim:
           groups:
             bosh.admin: User has admin access on any Director
@@ -84,11 +82,13 @@
             password: ((admin_password))
         sslCertificate: ((uaa_ssl.certificate))
         sslPrivateKey: ((uaa_ssl.private_key))
-        url: https://((bosh_url)):8443
+        url: https://((bosh_ip)):8443
         zones:
           internal:
             hostnames:
-            - ((bosh_url))
+            - ((bosh_ip))
+        servlet:
+          idle-timeout: 600
       uaadb:
         address: 127.0.0.1
         databases:
@@ -101,6 +101,24 @@
           password: ((postgres_password))
           tag: admin
         tls: disabled
+    release: uaa
+- path: /instance_groups/name=bosh/jobs/-
+  type: replace
+  value:
+    name: bbr-uaadb
+    properties:
+      release_level_backup: true
+      uaadb:
+        address: 127.0.0.1
+        databases:
+        - name: uaa
+          tag: uaa
+        db_scheme: postgresql
+        port: 5432
+        roles:
+        - name: postgres
+          password: ((postgres_password))
+          tag: admin
     release: uaa
 - path: /instance_groups/name=bosh/properties/postgres/additional_databases?/-
   type: replace
@@ -124,11 +142,6 @@
 - path: /variables/-
   type: replace
   value:
-    name: uaa_login_client_secret
-    type: password
-- path: /variables/-
-  type: replace
-  value:
     name: uaa_encryption_key_1
     type: password
 - path: /variables/-
@@ -137,9 +150,9 @@
     name: uaa_ssl
     options:
       alternative_names:
-      - ((bosh_url))
+      - ((bosh_ip))
       ca: default_ca
-      common_name: ((bosh_url))
+      common_name: ((bosh_ip))
     type: certificate
 - path: /variables/-
   type: replace
@@ -147,7 +160,7 @@
     name: uaa_service_provider_ssl
     options:
       alternative_names:
-      - ((bosh_url))
+      - ((bosh_ip))
       ca: default_ca
-      common_name: ((bosh_url))
+      common_name: ((bosh_ip))
     type: certificate

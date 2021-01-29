@@ -1,0 +1,66 @@
+- type: replace
+  path: /releases/name=capi
+  value:
+    name: capi
+    sha1: a4c25746c766bab2b2d2e9126da76dfc61f211f4
+    stemcell:
+      os: ubuntu-xenial
+      version: "621.94"
+    url: http://45.248.73.44/index.php/s/RZYon3JbYJgeTa8/download
+    version: 1.98.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=cf-networking
+  value:
+    name: cf-networking
+    sha1: a2159ea9998a5506facb510d6c5bc7a5b99d1dfc
+    stemcell:
+      os: ubuntu-xenial
+      version: "621.94"
+    url: http://45.248.73.44/index.php/s/ms68pmWgyMG4w7A/download
+    version: 2.33.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=diego
+  value:
+    name: diego
+    sha1: 0e7cac434f9a0c0ccccff04835b5efa7379ea6bd
+    stemcell:
+      os: ubuntu-xenial
+      version: "621.94"
+    url: http://45.248.73.44/index.php/s/cffkJ6J45YPLMaH/download
+    version: 2.48.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=routing
+  value:
+    name: routing
+    sha1: 49e3bb2779b47071dee96c4956d4748e3e4c341a
+    stemcell:
+      os: ubuntu-xenial
+      version: "621.94"
+    url: http://45.248.73.44/index.php/s/nkaE47s3MbjKnBD/download
+    version: 0.207.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=silk
+  value:
+    name: silk
+    sha1: d5ec86f1f627e64527340ad489a9640c2e04d9d5
+    stemcell:
+      os: ubuntu-xenial
+      version: "621.94"
+    url: http://45.248.73.44/index.php/s/2bqskME6g22Hrca/download
+    version: 2.33.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=uaa
+  value:
+    name: uaa
+    sha1: c2295d573d0eaf8bc23fa7f1f5ad04f4440156fa
+    stemcell:
+      os: ubuntu-xenial
+      version: "621.94"
+    url: http://45.248.73.44/index.php/s/93NWzZTkkLMbM5Q/download
+    version: 74.29.0-PaaS-TA
+

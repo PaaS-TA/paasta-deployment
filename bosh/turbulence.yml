@@ -15,7 +15,7 @@
       password: ((turbulence_api_password))
       cert: ((turbulence_api_ssl))
       director:
-        host: ((bosh_url))
+        host: ((bosh_ip))
         cert: ((director_ssl))
         client: director_turbulence_api
         client_secret: ((director_turbulence_api_client_secret))
@@ -53,8 +53,8 @@
     type: certificate
     options:
       ca: turbulence_api_ca
-      common_name: ((bosh_url))
-      alternative_names: [((bosh_url))]
+      common_name: ((bosh_ip))
+      alternative_names: [((bosh_ip))]
 
 - type: replace
   path: /variables/-

@@ -24,10 +24,5 @@
         certificate: unused
         private_key: unused
     agent:
-      mbus: nats://nats:((nats_password))@((bosh_url)):4222
-      blobstore:
-        provider: dav
-        options:
-          endpoint: http://((bosh_url)):25250
-          user: agent
-          password: ((blobstore_agent_password))
+      mbus: nats://nats:((nats_password))@((bosh_ip)):4222
+      blobstore: null
