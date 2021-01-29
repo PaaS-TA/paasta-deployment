@@ -49,4 +49,3 @@
               component: blobstore
             uris:
             - blobstore.((system_domain))
-

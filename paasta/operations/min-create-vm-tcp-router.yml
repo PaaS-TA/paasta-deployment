@@ -30,3 +30,9 @@
             ca: "((loggregator_tls_agent.ca))"
             cert: "((loggregator_tls_agent.certificate))"
             key: "((loggregator_tls_agent.private_key))"
+        metrics:
+          ca_cert: ((loggr_udp_forwarder_tls.ca))
+          cert: ((loggr_udp_forwarder_tls.certificate))
+          key: ((loggr_udp_forwarder_tls.private_key))
+          server_name: loggr_udp_forwarder_metrics
+

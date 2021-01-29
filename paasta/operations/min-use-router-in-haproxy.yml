@@ -1,0 +1,60 @@
+- type: replace
+  path: /releases/-
+  value:
+    name: haproxy
+    sha1: 97fbb573fc04d36c548915d8daef12a547e722d6
+    url: https://bosh.io/d/github.com/cloudfoundry-incubator/haproxy-boshrelease?v=10.1.0
+    version: 10.1.0
+
+- type: replace
+  path: /instance_groups/name=router/azs
+  value: ((haproxy_azs))
+
+- type: replace
+  path: /instance_groups/name=router/networks
+  value:
+  - name: default
+    default: [dns, gateway]
+  - name: ((haproxy_public_network_name))
+    static_ips: [((haproxy_public_ip))]
+- type: remove
+  path: /instance_groups/name=router/vm_extensions
+- type: replace
+  path: /instance_groups/name=router/vm_extensions?/-
+  value: cf-haproxy-network-properties
+
+- type: replace
+  path: /instance_groups/name=router/jobs/-
+  value:
+    name: haproxy
+    properties:
+      ha_proxy:
+        backend_ca_file: ((router_ssl.ca))
+        backend_port: 443
+        backend_ssl: verify
+        ssl_pem: ((haproxy_ssl.certificate))((haproxy_ssl.private_key))
+        tcp_link_port: 2222
+        enable_4443: true
+        disable_tls_10: true
+        disable_tls_11: true
+        ssl_ciphers: "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK"
+    release: haproxy
+- type: replace
+  path: /variables/-
+  value:
+    name: haproxy_ca
+    options:
+      common_name: haproxyCA
+      is_ca: true
+    type: certificate
+- type: replace
+  path: /variables/-
+  value:
+    name: haproxy_ssl
+    options:
+      alternative_names:
+      - ((system_domain))
+      - '*.((system_domain))'
+      ca: haproxy_ca
+      common_name: haproxySSL
+    type: certificate

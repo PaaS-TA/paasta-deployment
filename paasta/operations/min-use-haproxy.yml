@@ -2,20 +2,18 @@
   path: /releases/-
   value:
     name: haproxy
-    sha1: 9a38672c074bc298d464766eb4383062fa385f3d
-    url: https://bosh.io/d/github.com/cloudfoundry-incubator/haproxy-boshrelease?v=9.6.1
-    version: 9.6.1
-
+    sha1: 97fbb573fc04d36c548915d8daef12a547e722d6
+    url: https://bosh.io/d/github.com/cloudfoundry-incubator/haproxy-boshrelease?v=10.1.0
+    version: 10.1.0
 - type: replace
   path: /instance_groups/name=router/azs
   value: ((tcp_router_azs))
 - type: remove
   path: /instance_groups/name=router/vm_extensions
 - type: remove
-  path: /instance_groups/name=tcp-router?/vm_extensions
-
+  path: /instance_groups/name=tcp-router/vm_extensions
 - type: replace
-  path: /instance_groups/name=smoke-tests:before
+  path: /instance_groups/name=database:after
   value:
     azs: ((haproxy_azs))
     instances: ((haproxy_instances))

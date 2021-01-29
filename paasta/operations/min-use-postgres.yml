@@ -2,9 +2,11 @@
   path: /releases/-
   value:
     name: postgres
-    sha1: 23620deb20c34cefadff74c0e5bfdffaaea1a807
-    url: https://bosh.io/d/github.com/cloudfoundry/postgres-release?v=38
-    version: "38"
+    sha1: 0a9e4ad424f2ad9611dd1d3f387cc12ed7b71ee4
+    url: https://bosh.io/d/github.com/cloudfoundry/postgres-release?v=42
+    version: "42"
+- type: remove
+  path: /instance_groups/name=database/jobs/name=route_registrar
 - type: remove
   path: /instance_groups/name=database/jobs/name=pxc-mysql
 - type: remove
@@ -118,6 +120,18 @@
       password: ((paasta_cc_db_password))
       tag: admin
 - type: replace
+  path: /instance_groups/name=control/jobs/name=cc_deployment_updater/properties/ccdb
+  value:
+    databases:
+    - name: cloud_controller
+      tag: cc
+    db_scheme: postgres
+    port: 5524
+    roles:
+    - name: cloud_controller
+      password: ((paasta_cc_db_password))
+      tag: admin
+- type: replace
   path: /instance_groups/name=control/jobs/name=uaa/properties/uaadb
   value:
     databases:
@@ -129,6 +143,7 @@
     - name: uaa
       password: ((paasta_uaa_db_password))
       tag: admin
+    tls: disabled
 - type: replace
   path: /instance_groups/name=control/jobs/name=bbs/properties/diego/bbs/sql
   value:
@@ -193,9 +208,3 @@
   path: /variables/name=galera_server_certificate?
 - type: remove
   path: /variables/name=mysql_server_certificate?
-- type: replace
-  path: /instance_groups/name=control/jobs/name=cc_deployment_updater/properties/ccdb/db_scheme
-  value: postgres
-- type: replace
-  path: /instance_groups/name=control/jobs/name=cc_deployment_updater/properties/ccdb/port
-  value: 5524
