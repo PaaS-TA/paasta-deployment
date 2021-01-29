@@ -37,6 +37,15 @@
     properties:
       cce_enable: true
 
+# CCE - PaaS-TA postgres patch (postgres 사용할 경우 주석 해제)
+- type: replace
+  path: /instance_groups/name=database/jobs/-
+  value:
+    name: postgres_conf
+    release: paasta-conf
+    properties:
+      cce_enable: true
+      sha256_enable: false      
 
 # CCE - Release replace
 - type: replace
