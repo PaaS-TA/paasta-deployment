@@ -2707,10 +2707,10 @@ instance_groups:
 #    release: log-cache
 #- name: diego-cell
 - name: compute
-  azs: ((diego_cell_azs))
-  instances: ((diego_cell_instances))
-  vm_type: ((diego_cell_vm_type))
-  vm_extensions: ((diego_cell_vm_extensions))
+  azs: ((compute_azs))
+  instances: ((compute_instances))
+  vm_type: ((compute_vm_type))
+  vm_extensions: ((compute_vm_extensions))
   stemcell: default
   networks:
   - name: default
