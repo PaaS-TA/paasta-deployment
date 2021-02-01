@@ -8,6 +8,7 @@ BOSH_ENVIRONMENT="micro-bosh"			# (e.g. micro-bosh)
 BOSH_LOGIN_FILE_PATH="/home/ubuntu/.env"			# (e.g. /home/ubuntu/.env)
 BOSH_LOGIN_FILE_NAME="micro-bosh-login-env"	# (e.g. micro-bosh-login-env)
 
+mkdir -p ${BOSH_LOGIN_FILE_PATH}
 echo 'export CRED_PATH='${BOSH_DEPLOYMENT_PATH}'
 export CURRENT_IAAS='${CURRENT_IAAS}'
 export BOSH_CA_CERT=$(bosh int $CRED_PATH/$CURRENT_IAAS/creds.yml --path /director_ssl/ca)
