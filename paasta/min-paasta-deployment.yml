@@ -510,6 +510,7 @@ instance_groups:
   - name: proxy
     release: pxc
     properties:
+      port: ((paasta_database_port))
       api_password: ((cf_mysql_proxy_api_password))
       api_port: 8083
       api_uri: proxy.((system_domain))
@@ -609,7 +610,7 @@ instance_groups:
             passphrase: "((diego_bbs_encryption_keys_passphrase))"
           sql:
             db_host: sql-db.service.cf.internal
-            db_port: 3306
+            db_port: ((paasta_database_port))
             db_schema: diego
             db_username: diego
             db_password: "((diego_database_password))"
@@ -649,7 +650,7 @@ instance_groups:
         username: network_connectivity
         password: ((network_connectivity_database_password))
         host: sql-db.service.cf.internal
-        port: 3306
+        port: ((paasta_database_port))
         name: network_connectivity
         ca_cert: "((mysql_server_certificate.ca))"
         require_ssl: true
@@ -670,7 +671,7 @@ instance_groups:
         locket:
           sql:
             db_host: sql-db.service.cf.internal
-            db_port: 3306
+            db_port: ((paasta_database_port))
             db_schema: locket
             db_username: locket
             db_password: "((locket_database_password))"
@@ -849,7 +850,7 @@ instance_groups:
         - name: uaa
           tag: uaa
         db_scheme: mysql
-        port: 3306
+        port: ((paasta_database_port))
         roles:
         - name: uaa
           password: "((paasta_uaa_db_password))"
@@ -1016,7 +1017,7 @@ instance_groups:
         - name: cloud_controller
           tag: cc
         db_scheme: mysql
-        port: 3306
+        port: ((paasta_database_port))
         roles:
         - name: cloud_controller
           password: "((paasta_cc_db_password))"
@@ -1117,7 +1118,7 @@ instance_groups:
         sqldb:
           host: sql-db.service.cf.internal
           type: mysql
-          port: 3306
+          port: ((paasta_database_port))
           schema: routing-api
           username: routing-api
           password: "((routing_api_database_password))"
@@ -1142,7 +1143,7 @@ instance_groups:
         username: network_policy
         password: ((network_policy_database_password))
         host: sql-db.service.cf.internal
-        port: 3306
+        port: ((paasta_database_port))
         name: network_policy
         ca_cert: "((mysql_server_certificate.ca))"
         require_ssl: true
@@ -1655,7 +1656,7 @@ instance_groups:
           database: credhub
           host: sql-db.service.cf.internal
           password: ((credhub_database_password))
-          port: 3306
+          port: ((paasta_database_port))
           type: mysql
           username: credhub
           tls_ca: "((mysql_server_certificate.ca))"
