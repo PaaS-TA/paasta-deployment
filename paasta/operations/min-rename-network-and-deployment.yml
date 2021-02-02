@@ -12,17 +12,13 @@
 #  path: /instance_groups/name=doppler/networks/name=default/name
 #  value: ((doppler_network))
 
-#- type: replace
-#  path: /instance_groups/name=adapter/networks/name=default/name
-#  value: ((adapter_network))
-
 - type: replace
   path: /instance_groups/name=database/networks/name=default/name
   value: ((database_network))
 
-#- type: replace
-#  path: /instance_groups/name=diego-api/networks/name=default/name
-#  value: ((diego_api_network))
+- type: replace
+  path: /instance_groups/name=control/networks/name=default/name
+  value: ((control_network))
 
 #- type: replace
 #  path: /instance_groups/name=uaa/networks/name=default/name
@@ -57,7 +53,7 @@
 #  value: ((log_api_network))
 
 #- type: replace
-#  path: /instance_groups/name=tcp-router?/networks/name=default/name
+#  path: /instance_groups/name=tcp-router/networks/name=default/name
 #  value: ((tcp_router_network))
 
 #- type: replace
@@ -85,16 +81,6 @@
       network: ((compute_network))
       domain: bosh
     - query: '_'
-      instance_group: windows2012R2-cell
-      deployment: ((deployment_name))
-      network: ((compute_network))
-      domain: bosh
-    - query: '_'
-      instance_group: windows2016-cell
-      deployment: ((deployment_name))
-      network: ((compute_network))
-      domain: bosh
-    - query: '_'
       instance_group: isolated-diego-cell
       deployment: ((deployment_name))
       network: ((compute_network))
@@ -113,19 +99,12 @@
       deployment: ((deployment_name))
       network: ((control_network))
       domain: bosh
-  - domain: bits.service.cf.internal
-    targets:
-    - query: '*'
-      instance_group: bits
-      deployment: ((deployment_name))
-      network: ((network_name))
-      domain: bosh
   - domain: blobstore.service.cf.internal
     targets:
     - query: '*'
       instance_group: database
       deployment: ((deployment_name))
-      network: ((singleton_blobstore_network))
+      network: ((database_network))
       domain: bosh
   - domain: cc-uploader.service.cf.internal
     targets:
@@ -182,6 +161,20 @@
       instance_group: control
       deployment: ((deployment_name))
       network: ((control_network))
+      domain: bosh
+  - domain: nats.service.cf.internal
+    targets:
+    - query: '*'
+      instance_group: database
+      deployment: ((deployment_name))
+      network: ((database_network))
+      domain: bosh
+  - domain: _.nats.service.cf.internal
+    targets:
+    - query: '_'
+      instance_group: database
+      deployment: ((deployment_name))
+      network: ((database_network))
       domain: bosh
   - domain: policy-server.service.cf.internal
     targets:
