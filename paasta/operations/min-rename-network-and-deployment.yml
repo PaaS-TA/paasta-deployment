@@ -12,13 +12,17 @@
 #  path: /instance_groups/name=doppler/networks/name=default/name
 #  value: ((doppler_network))
 
+#- type: replace
+#  path: /instance_groups/name=adapter/networks/name=default/name
+#  value: ((adapter_network))
+
 - type: replace
   path: /instance_groups/name=database/networks/name=default/name
   value: ((database_network))
 
-- type: replace
-  path: /instance_groups/name=control/networks/name=default/name
-  value: ((diego_api_network))
+#- type: replace
+#  path: /instance_groups/name=diego-api/networks/name=default/name
+#  value: ((diego_api_network))
 
 #- type: replace
 #  path: /instance_groups/name=uaa/networks/name=default/name
@@ -46,14 +50,14 @@
 
 - type: replace
   path: /instance_groups/name=compute/networks/name=default/name
-  value: ((diego_cell_network))
+  value: ((compute_network))
 
 #- type: replace
 #  path: /instance_groups/name=log-api/networks/name=default/name
 #  value: ((log_api_network))
 
 #- type: replace
-#  path: /instance_groups/name=tcp-router/networks/name=default/name
+#  path: /instance_groups/name=tcp-router?/networks/name=default/name
 #  value: ((tcp_router_network))
 
 #- type: replace
@@ -78,26 +82,43 @@
     - query: '_'
       instance_group: compute
       deployment: ((deployment_name))
-      network: ((diego_cell_network))
+      network: ((compute_network))
+      domain: bosh
+    - query: '_'
+      instance_group: windows2012R2-cell
+      deployment: ((deployment_name))
+      network: ((compute_network))
+      domain: bosh
+    - query: '_'
+      instance_group: windows2016-cell
+      deployment: ((deployment_name))
+      network: ((compute_network))
       domain: bosh
     - query: '_'
       instance_group: isolated-diego-cell
       deployment: ((deployment_name))
-      network: ((diego_cell_network))
+      network: ((compute_network))
       domain: bosh
   - domain: auctioneer.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((scheduler_network))
+      network: ((control_network))
       domain: bosh
   - domain: bbs.service.cf.internal
     targets:
     - query: 'q-s4'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((diego_api_network))
+      network: ((control_network))
+      domain: bosh
+  - domain: bits.service.cf.internal
+    targets:
+    - query: '*'
+      instance_group: bits
+      deployment: ((deployment_name))
+      network: ((network_name))
       domain: bosh
   - domain: blobstore.service.cf.internal
     targets:
@@ -111,35 +132,35 @@
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((api_network))
+      network: ((control_network))
       domain: bosh
   - domain: cloud-controller-ng.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((api_network))
+      network: ((control_network))
       domain: bosh
   - domain: credhub.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((credhub_network))
+      network: ((control_network))
       domain: bosh
   - domain: doppler.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((doppler_network))
+      network: ((control_network))
       domain: bosh
   - domain: file-server.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((api_network))
+      network: ((control_network))
       domain: bosh
   - domain: gorouter.service.cf.internal
     targets:
@@ -153,56 +174,42 @@
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((diego_api_network))
+      network: ((control_network))
       domain: bosh
   - domain: loggregator-trafficcontroller.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((log_api_network))
-      domain: bosh
-  - domain: nats.service.cf.internal
-    targets:
-    - query: '*'
-      instance_group: database
-      deployment: ((deployment_name))
-      network: ((nats_network))
-      domain: bosh
-  - domain: _.nats.service.cf.internal
-    targets:
-    - query: '_'
-      instance_group: database
-      deployment: ((deployment_name))
-      network: ((nats_network))
+      network: ((control_network))
       domain: bosh
   - domain: policy-server.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((api_network))
+      network: ((control_network))
       domain: bosh
   - domain: reverse-log-proxy.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((log_api_network))
+      network: ((control_network))
       domain: bosh
   - domain: routing-api.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((api_network))
+      network: ((control_network))
       domain: bosh
   - domain: silk-controller.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((diego_api_network))
+      network: ((control_network))
       domain: bosh
   - domain: sql-db.service.cf.internal
     targets:
@@ -216,19 +223,19 @@
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((scheduler_network))
+      network: ((control_network))
       domain: bosh
   - domain: tps.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((scheduler_network))
+      network: ((control_network))
       domain: bosh
   - domain: uaa.service.cf.internal
     targets:
     - query: '*'
       instance_group: control
       deployment: ((deployment_name))
-      network: ((uaa_network))
+      network: ((control_network))
       domain: bosh
