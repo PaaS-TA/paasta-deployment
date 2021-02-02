@@ -10,7 +10,7 @@
 
 - type: replace
   path: /resource_pools/name=vms/stemcell?/url
-  value: file://((releases_dir))/release/bosh/light-bosh-stemcell-621.93-aws-xen-hvm-ubuntu-xenial-go_agent.tgz
+  value: file://((releases_dir))/bosh/light-bosh-stemcell-621.93-aws-xen-hvm-ubuntu-xenial-go_agent.tgz
 - type: replace
   path: /resource_pools/name=vms/stemcell?/sha1
   value: 99fec7cf51389b58d5ac4efac79f9fb2e4256d2d
