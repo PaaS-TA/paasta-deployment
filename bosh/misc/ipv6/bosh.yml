@@ -18,12 +18,16 @@
 
 - type: replace
   path: /cloud_provider/mbus
-  value: "https://mbus:((mbus_bootstrap_password))@[((bosh_url))]:6868"
+  value: "https://mbus:((mbus_bootstrap_password))@[((bosh_ip))]:6868"
 
 - type: replace
   path: /instance_groups/name=bosh/properties/agent/mbus
-  value: "nats://nats:((nats_password))@[((bosh_url))]:4222"
+  value: "nats://nats:((nats_password))@[((bosh_ip))]:4222"
 
 - type: replace
   path: /instance_groups/name=bosh/properties/blobstore/address
-  value: "[((bosh_url))]"
+  value: "[((bosh_ip))]"
+
+- type: replace
+  path: /instance_groups/name=bosh/properties/agent/env/bosh/blobstores/0/options/endpoint
+  value: "http://[((bosh_ip))]:25250"

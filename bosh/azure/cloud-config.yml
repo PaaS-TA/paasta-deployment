@@ -21,11 +21,11 @@ networks:
 - name: default
   type: manual
   subnets:
-  - range: ((internal_cidr))
-    gateway: ((internal_gw))
+  - range: ((private_cidr))
+    gateway: ((private_gw))
     azs: [z1, z2, z3]
     dns: [168.63.129.16]
-    reserved: [((internal_gw))/30]
+    reserved: [((private_gw))/30]
     cloud_properties:
       virtual_network_name: ((vnet_name))
       subnet_name: ((subnet_name))

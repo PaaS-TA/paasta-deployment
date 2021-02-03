@@ -1,0 +1,10 @@
+- type: replace
+  path: /releases/name=postgres
+  value:
+    name: postgres
+    sha1: 50a314be89b8a7e4f448ffa3a30ca6ad582d88e1
+    stemcell:
+      os: ubuntu-xenial
+      version: "621.94"
+    url: http://45.248.73.44/index.php/s/2ZdpFbtt69bSZqy/download
+    version: 43

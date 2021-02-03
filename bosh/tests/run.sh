@@ -22,9 +22,9 @@ bosh create-env bosh.yml \
   -o misc/nats-strict-tls.yml \
   --vars-store $tests_dir/creds.yml \
   -v director_name=bosh-lite \
-  -v bosh_url=192.168.50.10 \
-  -v internal_gw=192.168.50.1 \
-  -v internal_cidr=192.168.50.0/24 \
+  -v bosh_ip=192.168.50.10 \
+  -v private_gw=192.168.50.1 \
+  -v private_cidr=192.168.50.0/24 \
   -v outbound_network_name=NatNetwork
 
 export BOSH_ENVIRONMENT=192.168.50.10
@@ -61,9 +61,9 @@ bosh delete-env bosh.yml \
   -o jumpbox-user.yml \
   --vars-store $tests_dir/creds.yml \
   -v director_name=bosh-lite \
-  -v bosh_url=192.168.50.10 \
-  -v internal_gw=192.168.50.1 \
-  -v internal_cidr=192.168.50.0/24 \
+  -v bosh_ip=192.168.50.10 \
+  -v private_gw=192.168.50.1 \
+  -v private_cidr=192.168.50.0/24 \
   -v outbound_network_name=NatNetwork
 
 echo "-----> `date`: Done"

@@ -3,9 +3,9 @@
   type: replace
   value:
     name: credhub
-    sha1: 2c4f2371271a200ee88fc6fdf2e7dfd5559c30e1
-    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/credhub-2.4.0-ubuntu-xenial-315.64-20190703-003700-568359054-20190703003705.tgz
-    version: 2.4.0
+    sha1: 77be3e3d9e90736adb3c01ae46e8005f6b998ff3
+    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/credhub-2.9.0-ubuntu-xenial-621.93-20201130-223813-836755462-20201130223815.tgz
+    version: 2.9.0
 - path: /instance_groups/name=bosh/jobs/-
   type: replace
   value:
@@ -16,11 +16,13 @@
           uaa:
             ca_certs:
             - ((uaa_ssl.ca))
-            url: https://((bosh_url)):8443
+            url: https://((bosh_ip)):8443
             verification_key: ((uaa_jwt_signing_key.public_key))
         authorization:
           acls:
             enabled: false
+        certificates:
+          concatenate_cas: true
         data_storage:
           database: credhub
           host: 127.0.0.1
@@ -52,8 +54,8 @@
       ca_cert: ((uaa_ssl.ca))
       client_id: director_to_credhub
       client_secret: ((uaa_clients_director_to_credhub))
-      url: https://((bosh_url)):8443
-    url: https://((bosh_url)):8844/api/
+      url: https://((bosh_ip)):8443
+    url: https://((bosh_ip)):8844/api/
 - path: /instance_groups/name=bosh/jobs/name=uaa/properties/uaa/clients/director_to_credhub?
   type: replace
   value:
@@ -128,9 +130,9 @@
     name: credhub_tls
     options:
       alternative_names:
-      - ((bosh_url))
+      - ((bosh_ip))
       ca: credhub_ca
-      common_name: ((bosh_url))
+      common_name: ((bosh_ip))
     type: certificate
 - path: /variables/-
   type: replace

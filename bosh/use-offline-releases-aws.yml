@@ -1,0 +1,17 @@
+- type: replace
+  path: /releases/name=bosh-aws-cpi/url
+  value: file://((releases_dir))/bosh/bosh-aws-cpi-release-83.tgz
+- type: replace
+  path: /releases/name=bosh-aws-cpi/version
+  value: 83
+- type: replace
+  path: /releases/name=bosh-aws-cpi/sha1
+  value: cabcdf15846adabe2000fe892314a3a2f72c9177
+
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/url
+  value: file://((releases_dir))/bosh/light-bosh-stemcell-621.93-aws-xen-hvm-ubuntu-xenial-go_agent.tgz
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/sha1
+  value: 99fec7cf51389b58d5ac4efac79f9fb2e4256d2d
+

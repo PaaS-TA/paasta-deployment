@@ -1,0 +1,10 @@
+- type: replace
+  path: /releases/name=haproxy
+  value:
+    name: haproxy
+    sha1: 9a7ccd2c6236d0a967a35971043a8d917b99a962
+    stemcell:
+      os: ubuntu-xenial
+      version: "621.94"
+    url: http://45.248.73.44/index.php/s/86c2giN8FaFyxRn/download
+    version: 10.1.0

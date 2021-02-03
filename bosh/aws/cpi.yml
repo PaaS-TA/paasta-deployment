@@ -3,15 +3,15 @@
   type: replace
   value:
     name: bosh-aws-cpi
-    sha1: a6f32491067eae70f62cb03fc559654708e4f2f3
-    url: https://bosh.io/d/github.com/cloudfoundry/bosh-aws-cpi-release?v=75
-    version: 75
+    sha1: cabcdf15846adabe2000fe892314a3a2f72c9177
+    url: https://bosh.io/d/github.com/cloudfoundry/bosh-aws-cpi-release?v=83
+    version: 83
 - name: stemcell
   path: /resource_pools/name=vms/stemcell?
   type: replace
   value:
-    sha1: 86c7b832c4666cfb9e84e81d21c034d1f3858642
-    url: https://s3.amazonaws.com/bosh-aws-light-stemcells/315.64/light-bosh-stemcell-315.64-aws-xen-hvm-ubuntu-xenial-go_agent.tgz
+    sha1: 99fec7cf51389b58d5ac4efac79f9fb2e4256d2d
+    url: https://bosh-aws-light-stemcells.s3-accelerate.amazonaws.com/621.93/light-bosh-stemcell-621.93-aws-xen-hvm-ubuntu-xenial-go_agent.tgz
 - path: /resource_pools/name=vms/cloud_properties?
   type: replace
   value:
@@ -19,7 +19,7 @@
     ephemeral_disk:
       size: 25000
       type: gp2
-    instance_type: m4.xlarge
+    instance_type: m5.xlarge
 - path: /disk_pools/name=disks/cloud_properties?
   type: replace
   value:
@@ -36,14 +36,14 @@
 - path: /instance_groups/name=bosh/properties/registry?
   type: replace
   value:
-    address: ((bosh_url))
+    address: ((bosh_ip))
     db:
       adapter: postgres
       database: bosh
       host: 127.0.0.1
       password: ((postgres_password))
       user: postgres
-    host: ((bosh_url))
+    host: ((bosh_ip))
     http:
       password: ((registry_password))
       port: 25777
@@ -75,7 +75,7 @@
 - path: /cloud_provider/ssh_tunnel?
   type: replace
   value:
-    host: ((bosh_url))
+    host: ((bosh_ip))
     port: 22
     private_key: ((private_key))
     user: vcap

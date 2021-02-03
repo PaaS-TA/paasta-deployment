@@ -4,15 +4,15 @@
     name: second
     type: manual
     subnets:
-    - range: ((second_internal_cidr))
-      gateway: ((second_internal_gw))
-      static: [((second_bosh_url))]
+    - range: ((second_private_cidr))
+      gateway: ((second_private_gw))
+      static: [((second_bosh_ip))]
 
 - type: replace
   path: /instance_groups/name=bosh/networks/-
   value:
     name: second
-    static_ips: [((second_bosh_url))]
+    static_ips: [((second_bosh_ip))]
 
 - type: replace
   path: /instance_groups/name=bosh/networks/0/default?

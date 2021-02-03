@@ -2,12 +2,12 @@
 
 - type: replace
   path: /cloud_provider/mbus
-  value: https://mbus:((mbus_bootstrap_password))@((external_ip)):6868
+  value: https://mbus:((mbus_bootstrap_password))@((public_ip)):6868
 
 - type: replace
   path: /variables/name=mbus_bootstrap_ssl/options/alternative_names/-
-  value: ((external_ip))
+  value: ((public_ip))
 
 - type: replace
   path: /variables/name=director_ssl/options/alternative_names/-
-  value: ((external_ip))
+  value: ((public_ip))

@@ -9,8 +9,8 @@
   path: /resource_pools/name=vms/stemcell?
   type: replace
   value:
-    sha1: bfeacdd2ef178742b211c9ea7f154e58fb28639a
-    url: https://s3.amazonaws.com/bosh-core-stemcells/315.64/bosh-stemcell-315.64-warden-boshlite-ubuntu-xenial-go_agent.tgz
+    sha1: c207c26c0528f2c4709317200a6730ceacfdad87
+    url: https://bosh-core-stemcells.s3-accelerate.amazonaws.com/621.93/bosh-stemcell-621.93-warden-boshlite-ubuntu-xenial-go_agent.tgz
 - path: /networks/name=default/subnets/0/cloud_properties?
   type: replace
   value:
@@ -43,13 +43,8 @@
   type: replace
   value:
     agent:
-      blobstore:
-        options:
-          endpoint: http://((bosh_url)):25250
-          password: ((blobstore_agent_password))
-          user: agent
-        provider: dav
-      mbus: nats://nats:((nats_password))@((bosh_url)):4222
+      blobstore: null
+      mbus: nats://nats:((nats_password))@((bosh_ip)):4222
     docker:
       host: ((docker_host))
       tls: ((docker_tls))
@@ -57,10 +52,6 @@
   type: replace
   value:
     agent:
-      blobstore:
-        options:
-          blobstore_path: /var/vcap/micro_bosh/data/cache
-        provider: local
       mbus: https://mbus:((mbus_bootstrap_password))@0.0.0.0:6868
     docker:
       host: ((docker_host))

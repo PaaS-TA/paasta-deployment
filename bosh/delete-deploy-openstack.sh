@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bosh delete-env -n bosh.yml \
+bosh delete-env bosh.yml \
 	--state=openstack/state.json \
 	--vars-store=openstack/creds.yml \
 	-o openstack/cpi.yml \

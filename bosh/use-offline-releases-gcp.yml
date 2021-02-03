@@ -1,0 +1,17 @@
+- type: replace
+  path: /releases/name=bosh-google-cpi/url
+  value: file://((releases_dir))/bosh/bosh-google-cpi-release-40.0.3.tgz
+- type: replace
+  path: /releases/name=bosh-google-cpi/version
+  value: 40.0.3
+- type: replace
+  path: /releases/name=bosh-google-cpi/sha1
+  value: 650681e2f9443ba5cc4100b96874c1e594ce0e97
+
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/url
+  value: file://((releases_dir))/bosh/light-bosh-stemcell-621.93-google-kvm-ubuntu-xenial-go_agent.tgz
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/sha1
+  value: ee3bc8db7e31f10c94abc87721f8697570601d40
+
