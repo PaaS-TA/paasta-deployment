@@ -2,9 +2,9 @@
   path: /releases/-
   value:
     name: node-exporter
-    sha1: 9c91394cdaa38e5da503523bc1b5b801b317de3e
-    url: https://bosh.io/d/github.com/cloudfoundry-community/node-exporter-boshrelease?v=4.1.0
-    version: 4.1.0
+    sha1: cea1edc938873b7204b889173002e0e9fa813e54
+    url: https://bosh.io/d/github.com/cloudfoundry-community/node-exporter-boshrelease?v=5.0.0
+    version: 5.0.0
 - type: replace
   path: /addons/-
   value:
@@ -74,17 +74,3 @@
               enabled: false
       release: node-exporter
     name: node_exporter
-- type: replace
-  path: /addons/-
-  value:
-    exclude:
-      jobs:
-      - name: smoke_tests
-        release: cf-smoke-tests
-    include:
-      stemcell:
-      - os: ubuntu-xenial
-    jobs:
-    - name: prom_scraper
-      release: loggregator-agent
-    name: prom_scraper

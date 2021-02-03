@@ -162,12 +162,12 @@ networks:
 
 properties:
   aws:
-    access_key_id: 'XXXXXXXXXXXXXXXXXXX'
+    access_key_id: "XXXXXXXXXXXXXXXXXXX"
     default_key_name: aws-paasta-rnd-v50-inception.pem
     default_security_groups:
     - paasta-v50-security
     region: ap-northeast-2
-    secret_access_key: 'XXXXXXXXXXXXXXXXXXXXXX'
+    secret_access_key: "XXXXXXXXXXXXXXXXXXXXXX"
 
 vm_extensions:
 - name: cf-router-network-properties
@@ -191,6 +191,7 @@ vm_extensions:
     - host: 443
     - host: 2222
     - host: 4443
+
 
 vm_types:
 - cloud_properties:

@@ -1,11 +1,13 @@
 # SERVICE VARIABLE
 deployment_name: "paasta"		# Deployment Name
 network_name: "default"			# VM에 별도로 지정하지 않는 Default Network Name
-inception_os_user_name: "ubuntu"	# Home User Name (Release File Path 설정 시 필요)
-haproxy_public_ip: "52.78.32.153"	# HAProxy IP (Public IP)
+releases_dir: "/home/ubuntu/workspace/paasta-5.5.0/release"	# Release Directory (offline으로 릴리즈 다운받아 사용시 설정)
+haproxy_public_ip: "52.78.32.153"	# HAProxy IP (Public IP, HAproxy VM 배포시 필요)
 haproxy_public_network_name: "vip"	# PaaS-TA Public Network Name
+haproxy_private_network_name: "private" # PaaS-TA Private Network Name (vSphere use-haproxy-public-network-vsphere.yml 포함 배포시 설정 필요)
 cc_db_encryption_key: "db-encryption-key"	# Database Encryption Key (Version Upgrade 시 동일 KEY 필수)
 cert_days: 3650				# PaaS-TA 인증서 유효기간
+private_ip: "10.244.0.34"   # Proxy IP (Private IP, BOSH-LITE 사용시 설정 필요)
 uaa_login_logout_redirect_parameter_disable: "false"	
 uaa_login_logout_redirect_parameter_whitelist: ["http://portal-web-user.15.165.2.88.xip.io","http://portal-web-user.15.165.2.88.xip.io/callback","http://portal-web-user.15.165.2.88.xip.io/login"]	# 포탈 페이지 이동을 위한 UAA Redirect Whitelist 등록 변수
 uaa_login_branding_company_name: "PaaS-TA R&D"	# UAA 페이지 타이틀 명
@@ -16,11 +18,13 @@ uaa_login_links_passwd: "http://portal-web-user.15.165.2.88.xip.io/resetpasswd"	
 uaa_login_links_signup: "http://portal-web-user.15.165.2.88.xip.io/createuser"	# UAA 페이지에서 Create Account 누를 시 이동하는 링크 주소
 uaa_client_portal_redirect_uri: "http://portal-web-user.15.165.2.88.xip.io,http://portal-web-user.15.165.2.88.xip.io/callback"	# UAA Portal Client의 Redirect URI 지정 변수, 포탈에서 로그인 버튼 클릭 후 UAA 페이지에서 성공적으로 로그인했을 경우 이동하는 URI 경로
 
+syslog_custom_rule: 'if ($msg contains "DEBUG") then stop'      # [MONITORING] PaaS-TA Logging Agent에서 전송할 Custom Rule
+syslog_fallback_servers: []             # [MONITORING] PaaS-TA Syslog Fallback Servers
 
 
 # STEMCELL
 stemcell_os: "ubuntu-xenial"		# Stemcell OS
-stemcell_version: "315.64"		# Stemcell Version
+stemcell_version: "621.94"		# Stemcell Version
 
 # SMOKE-TEST
 smoke_tests_azs: ["z1"]			# Smoke-Test 가용 존
@@ -33,12 +37,6 @@ nats_azs: ["z1", "z2"]			# Nats 가용 존
 nats_instances: 2			# Nats 인스턴스 수
 nats_vm_type: "minimal"			# Nats VM 종류
 nats_network: "default"			# Nats 네트워크
-
-# ADAPTER
-adapter_azs: ["z1", "z2"]		# Adapter 가용 존
-adapter_instances: 2			# Adapter 인스턴스 수
-adapter_vm_type: "minimal"		# Adapter VM 종류
-adapter_network: "default"		# Adapter 네트워크
 
 # DATABASE
 database_azs: ["z1"]			# Database 가용 존
@@ -108,7 +106,7 @@ doppler_network: "default"		# Doppler 네트워크
 
 # DIEGO-CELL
 diego_cell_azs: ["z1", "z2"]		# Diego-Cell 가용 존
-diego_cell_instances: 2			# Diego-Cell 인스턴스 수
+diego_cell_instances: 3			# Diego-Cell 인스턴스 수
 diego_cell_vm_type: "small-highmem-16GB"		# Diego-Cell VM 종류
 diego_cell_network: "default"		# Diego-Cell 네트워크
 diego_cell_vm_extensions: ["100GB_ephemeral_disk"]	# Diego-Cell VM 확장

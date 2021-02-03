@@ -1,17 +1,12 @@
 cloud_provider:
   cert: ((mbus_bootstrap_ssl))
-  mbus: https://mbus:((mbus_bootstrap_password))@((bosh_url)):6868
+  mbus: https://mbus:((mbus_bootstrap_password))@((bosh_ip)):6868
   properties:
     agent:
       mbus: https://mbus:((mbus_bootstrap_password))@0.0.0.0:6868
     blobstore:
       path: /var/vcap/micro_bosh/data/cache
       provider: local
-    ntp:
-    - time1.google.com
-    - time2.google.com
-    - time3.google.com
-    - time4.google.com
 disk_pools:
 - disk_size: 65536
   name: disks
@@ -34,7 +29,7 @@ instance_groups:
   networks:
   - name: default
     static_ips:
-    - ((bosh_url))
+    - ((bosh_ip))
   persistent_disk_pool: disks
   properties:
     agent:
@@ -42,16 +37,21 @@ instance_groups:
         bosh:
           blobstores:
           - options:
-              endpoint: https://((bosh_url)):25250
+              endpoint: https://((bosh_ip)):25250
               password: ((blobstore_agent_password))
               tls:
                 cert:
                   ca: ((blobstore_ca.certificate))
               user: agent
             provider: dav
-      mbus: nats://nats:((nats_password))@((bosh_url)):4222
+          ntp:
+          - time1.google.com
+          - time2.google.com
+          - time3.google.com
+          - time4.google.com
+      mbus: nats://nats:((nats_password))@((bosh_ip)):4222
     blobstore:
-      address: ((bosh_url))
+      address: ((bosh_ip))
       agent:
         password: ((blobstore_agent_password))
         user: agent
@@ -77,6 +77,7 @@ instance_groups:
       enable_dedicated_status_worker: true
       enable_nats_delivered_templates: true
       enable_post_deploy: true
+      log_access_events: true
       events:
         record_events: true
       flush_arp: true
@@ -103,7 +104,7 @@ instance_groups:
         user: hm
       resurrector_enabled: true
     nats:
-      address: ((bosh_url))
+      address: ((bosh_ip))
       password: ((nats_password))
       tls:
         ca: ((nats_server_tls.ca))
@@ -120,11 +121,6 @@ instance_groups:
           certificate: ((nats_server_tls.certificate))
           private_key: ((nats_server_tls.private_key))
       user: nats
-    ntp:
-    - time1.google.com
-    - time2.google.com
-    - time3.google.com
-    - time4.google.com
     postgres:
       adapter: postgres
       database: bosh
@@ -142,22 +138,31 @@ networks:
     gateway: ((private_gw))
     range: ((private_cidr))
     static:
-    - ((bosh_url))
+    - ((bosh_ip))
   type: manual
 releases:
 - name: bosh
-  sha1: 9cdfdd8353a4f3c76171c7afa3594d78642f72c7
-  url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/bosh-270.2.0-ubuntu-xenial-315.64-20190703-005145-080146523-20190703005152.tgz
-  version: 270.2.0
+  sha1: c577a646101fd22d21d4bf6ffdae83849de3f949
+  url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/bosh-271.2.0-ubuntu-xenial-621.93-20201130-224348-505837986-20201130224349.tgz
+  version: 271.2.0
 - name: bpm
-  sha1: fe05f3212c4c12bb68328b266c95b418cd447bb4
-  url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/bpm-1.1.0-ubuntu-xenial-315.64-20190703-003408-569600361-20190703003415.tgz
-  version: 1.1.0
+  sha1: 3e85f4f121022d2f870aa6e59c1116a1a34b3c6f
+  url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/bpm-1.1.9-ubuntu-xenial-621.93-20201130-224507-912672592-20201130224509.tgz
+  version: 1.1.9
 resource_pools:
 - env:
     bosh:
+      blobstores:
+      - options:
+          blobstore_path: /var/vcap/micro_bosh/data/cache
+        provider: local
       mbus:
         cert: ((mbus_bootstrap_ssl))
+      ntp:
+      - time1.google.com
+      - time2.google.com
+      - time3.google.com
+      - time4.google.com
       password: '*'
   name: vms
   network: default
@@ -184,16 +189,16 @@ variables:
 - name: mbus_bootstrap_ssl
   options:
     alternative_names:
-    - ((bosh_url))
+    - ((bosh_ip))
     ca: default_ca
-    common_name: ((bosh_url))
+    common_name: ((bosh_ip))
   type: certificate
 - name: director_ssl
   options:
     alternative_names:
-    - ((bosh_url))
+    - ((bosh_ip))
     ca: default_ca
-    common_name: ((bosh_url))
+    common_name: ((bosh_ip))
   type: certificate
 - name: nats_ca
   options:
@@ -203,7 +208,7 @@ variables:
 - name: nats_server_tls
   options:
     alternative_names:
-    - ((bosh_url))
+    - ((bosh_ip))
     ca: nats_ca
     common_name: default.nats.bosh-internal
     extended_key_usage:
@@ -231,7 +236,7 @@ variables:
 - name: blobstore_server_tls
   options:
     alternative_names:
-    - ((bosh_url))
+    - ((bosh_ip))
     ca: blobstore_ca
-    common_name: ((bosh_url))
+    common_name: ((bosh_ip))
   type: certificate

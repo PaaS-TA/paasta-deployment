@@ -2,9 +2,11 @@
   path: /releases/-
   value:
     name: postgres
-    sha1: 23620deb20c34cefadff74c0e5bfdffaaea1a807
-    url: https://bosh.io/d/github.com/cloudfoundry/postgres-release?v=38
-    version: "38"
+    sha1: e44bbe8f8a7cdde1cda67b202e399a239d104db6
+    url: https://bosh.io/d/github.com/cloudfoundry/postgres-release?v=43
+    version: "43"
+- type: remove
+  path: /instance_groups/name=database/jobs/name=route_registrar
 - type: remove
   path: /instance_groups/name=database/jobs/name=pxc-mysql
 - type: remove
@@ -54,7 +56,7 @@
           name: credhub
           tag: credhub
         db_scheme: postgres
-        port: 5524
+        port: ((paasta_database_port))
         roles:
         - name: cloud_controller
           password: ((paasta_cc_db_password))
@@ -88,7 +90,7 @@
     - name: cloud_controller
       tag: cc
     db_scheme: postgres
-    port: 5524
+    port: ((paasta_database_port))
     roles:
     - name: cloud_controller
       password: ((paasta_cc_db_password))
@@ -100,7 +102,7 @@
     - name: cloud_controller
       tag: cc
     db_scheme: postgres
-    port: 5524
+    port: ((paasta_database_port))
     roles:
     - name: cloud_controller
       password: ((paasta_cc_db_password))
@@ -112,7 +114,19 @@
     - name: cloud_controller
       tag: cc
     db_scheme: postgres
-    port: 5524
+    port: ((paasta_database_port))
+    roles:
+    - name: cloud_controller
+      password: ((paasta_cc_db_password))
+      tag: admin
+- type: replace
+  path: /instance_groups/name=control/jobs/name=cc_deployment_updater/properties/ccdb
+  value:
+    databases:
+    - name: cloud_controller
+      tag: cc
+    db_scheme: postgres
+    port: ((paasta_database_port))
     roles:
     - name: cloud_controller
       password: ((paasta_cc_db_password))
@@ -124,18 +138,19 @@
     - name: uaa
       tag: uaa
     db_scheme: postgresql
-    port: 5524
+    port: ((paasta_database_port))
     roles:
     - name: uaa
       password: ((paasta_uaa_db_password))
       tag: admin
+    tls: disabled
 - type: replace
   path: /instance_groups/name=control/jobs/name=bbs/properties/diego/bbs/sql
   value:
     db_driver: postgres
     db_host: sql-db.service.cf.internal
     db_password: ((diego_database_password))
-    db_port: 5524
+    db_port: ((paasta_database_port))
     db_schema: diego
     db_username: diego
 - type: replace
@@ -144,7 +159,7 @@
     host: sql-db.service.cf.internal
     name: network_policy
     password: ((network_policy_database_password))
-    port: 5524
+    port: ((paasta_database_port))
     type: postgres
     username: network_policy
 - type: replace
@@ -153,7 +168,7 @@
     host: sql-db.service.cf.internal
     name: network_connectivity
     password: ((network_connectivity_database_password))
-    port: 5524
+    port: ((paasta_database_port))
     type: postgres
     username: network_connectivity
 - type: replace
@@ -162,7 +177,7 @@
     db_driver: postgres
     db_host: sql-db.service.cf.internal
     db_password: ((locket_database_password))
-    db_port: 5524
+    db_port: ((paasta_database_port))
     db_schema: locket
     db_username: locket
 - type: replace
@@ -171,7 +186,7 @@
     database: credhub
     host: sql-db.service.cf.internal
     password: ((credhub_database_password))
-    port: 5524
+    port: ((paasta_database_port))
     require_tls: false
     type: postgres
     username: credhub
@@ -180,7 +195,7 @@
   value: postgres
 - type: replace
   path: /instance_groups/name=control/jobs/name=routing-api/properties/routing_api/sqldb/port
-  value: 5524
+  value: ((paasta_database_port))
 - type: remove
   path: /instance_groups/name=control/jobs/name=uaa/properties/uaa/ca_certs?
 - type: remove
@@ -193,9 +208,3 @@
   path: /variables/name=galera_server_certificate?
 - type: remove
   path: /variables/name=mysql_server_certificate?
-- type: replace
-  path: /instance_groups/name=control/jobs/name=cc_deployment_updater/properties/ccdb/db_scheme
-  value: postgres
-- type: replace
-  path: /instance_groups/name=control/jobs/name=cc_deployment_updater/properties/ccdb/port
-  value: 5524

@@ -1,0 +1,10 @@
+aws_region: us-east-1
+blobstore_access_key_id: admin
+blobstore_secret_access_key: admin-secret
+app_package_directory_key: example-app-package-directory-key
+buildpack_directory_key: example-buildpack-directory-key
+droplet_directory_key: example-droplet-directory-key
+resource_directory_key: example-resource-directory-key
+s3_host: 10.0.21.121
+s3_endpoint: http://10.0.21.121:9000
+s3_path_style: true

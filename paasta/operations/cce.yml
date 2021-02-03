@@ -1,0 +1,89 @@
+---
+# set paasta-conf release
+- type: replace
+  path: /releases/name=paasta-conf?
+  value:
+    name: paasta-conf
+    url:  http://45.248.73.44/index.php/s/Y8Cqeg2CKoyEe53/download
+    version: 1.0.0
+
+# CCE - scrpt test
+#- type: replace
+#  path: /instance_groups/name=uaa/jobs/-
+#  value:
+#    name: common_script
+#    release: paasta-conf
+#    properties:
+#      post_deploy_script: |-
+#        #!/bin/bash
+#        echo "test complete"
+
+# CCE - UAA tomcat patch
+- type: replace
+  path: /instance_groups/name=uaa/jobs/-
+  value:
+    name: tomcat_conf
+    release: paasta-conf
+    properties:
+      cce_enable: true
+
+
+# CCE - diego-cell tomcat patch
+- type: replace
+  path: /instance_groups/name=diego-cell/jobs/-
+  value:
+    name: tomcat_conf
+    release: paasta-conf
+    properties:
+      cce_enable: true
+
+
+# CCE - Release replace
+- type: replace
+  path: /releases/name=capi
+  value:
+    name: capi
+    sha1: fe0defeaaee5863c220daddc0daa53f4b8063d5a
+    url: http://45.248.73.44/index.php/s/X3K3ok38AtdMZYJ/download
+    version: 1.98.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=cf-networking
+  value:
+    name: cf-networking
+    sha1: 4981b6f9d0d5f87a22e1852b8bf239cd6701d6b4
+    url: http://45.248.73.44/index.php/s/DewM5n2ACrzwBrH/download
+    version: 2.33.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=diego
+  value:
+    name: diego
+    sha1: 329ab10d3b8792de4697c2a7076caade0fd4b39d
+    url: http://45.248.73.44/index.php/s/WLQxEydt93pNxjs/download
+    version: 2.48.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=routing
+  value:
+    name: routing
+    sha1: 11b201117f131b2ac63d7fea957b13f40bcc82d3
+    url: http://45.248.73.44/index.php/s/Ce2oKEESn7ty5ro/download
+    version: 0.207.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=silk
+  value:
+    name: silk
+    sha1: 09399d2591045e1b266b28bd41ba41e1d9ec6985
+    url: http://45.248.73.44/index.php/s/Xi96J9mCsGyzx94/download
+    version: 2.33.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=uaa
+  value:
+    name: uaa
+    sha1: 4432cf7d0c67fbb4a7bce2194b8b4b86221d57dc
+    url: http://45.248.73.44/index.php/s/rnZ7WXWFdMTmpbH/download
+    version: 74.29.0-PaaS-TA
+

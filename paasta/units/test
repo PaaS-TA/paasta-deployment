@@ -5,7 +5,6 @@ function suites() {
   suites="
     ./tests/addons_test
     ./tests/backup_and_restore_test
-    ./tests/bits_service_test
     ./tests/experimental_test
     ./tests/iaas_test
     ./tests/inline_test
@@ -14,12 +13,15 @@ function suites() {
     ./tests/semantic_test
     "
 
-  # : "${RUN_SEMANTIC:="false"}"
-  # if [ ${RUN_SEMANTIC} = true ]; then
-  #   suites="${suites} ./semantic_test"
-  # fi
-
   echo "${suites}"
 }
 
-go test "$@" $(suites) -mod=vendor
+pushd "$(dirname "$0")" > /dev/null
+  if [ ! -f "test-vars-store.yml" ]; then
+    echo "Generating vars-store..."
+    bosh interpolate ../cf-deployment.yml --vars-store test-vars-store.yml > /dev/null
+  fi
+
+  echo "Starting unit tests..."
+  go test "$@" $(suites) -mod=vendor
+popd > /dev/null

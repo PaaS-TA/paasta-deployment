@@ -1,0 +1,46 @@
+- type: replace
+  path: /releases/name=bosh-virtualbox-cpi/url
+  value: file://((releases_dir))/bosh/bosh-virtualbox-cpi-release-0.2.0.tgz
+- type: replace
+  path: /releases/name=bosh-virtualbox-cpi/version
+  value: 0.2.0
+- type: replace
+  path: /releases/name=bosh-virtualbox-cpi/sha1
+  value: 2efc4763e7bf19cf76264f435b78bb05a1060935
+
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/url
+  value: file://((releases_dir))/bosh/bosh-stemcell-621.93-vsphere-esxi-ubuntu-xenial-go_agent.tgz
+- type: replace
+  path: /resource_pools/name=vms/stemcell?/sha1
+  value: 0231ecd594a36fd9233295a23ff1dd5ca8494ec1
+
+- type: replace
+  path: /releases/name=garden-runc/url
+  value: file://((releases_dir))/bosh/garden-runc-1.19.17-ubuntu-xenial-621.93-20201202-140222-317108723-20201202140224.tgz
+- type: replace
+  path: /releases/name=garden-runc/version
+  value: 1.19.17
+- type: replace
+  path: /releases/name=garden-runc/sha1
+  value: a699609c360cf8d965fc5144158a56724ed992d1
+
+- type: replace
+  path: /releases/name=bosh-warden-cpi/url
+  value: file://((releases_dir))/bosh/bosh-warden-cpi-41-ubuntu-xenial-621.93-20201130-224003-395585274-20201130224004.tgz
+- type: replace
+  path: /releases/name=bosh-warden-cpi/version
+  value: "41"
+- type: replace
+  path: /releases/name=bosh-warden-cpi/sha1
+  value: 8219b18c4d3a22df09b88578585d05190fbcebd2
+
+- type: replace
+  path: /releases/name=os-conf/url
+  value: file://((releases_dir))/bosh/os-conf-release-18.tgz
+- type: replace
+  path: /releases/name=os-conf/version
+  value: "18"
+- type: replace
+  path: /releases/name=os-conf/sha1
+  value: 78d79f08ff5001cc2a24f572837c7a9c59a0e796

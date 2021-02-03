@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"testing"
 
 	"github.com/cf-deployment/units/helpers"
@@ -146,8 +147,10 @@ func TestSemantic(t *testing.T) {
 	})
 
 	t.Run("use-trusted-ca-cert-for-apps.yml", func(t *testing.T) {
-		certPaths := []string{"/instance_groups/name=diego-cell/jobs/name=cflinuxfs3-rootfs-setup/properties/cflinuxfs3-rootfs/trusted_certs",
-			"/instance_groups/name=diego-cell/jobs/name=cflinuxfs3-rootfs-setup/properties/cflinuxfs3-rootfs/trusted_certs"}
+		certPaths := []string{
+			"/instance_groups/name=diego-cell/jobs/name=cflinuxfs3-rootfs-setup/properties/cflinuxfs3-rootfs/trusted_certs",
+			"/instance_groups/name=diego-cell/jobs/name=cflinuxfs3-rootfs-setup/properties/cflinuxfs3-rootfs/trusted_certs",
+		}
 
 		for _, certPath := range certPaths {
 			existingCA, err := helpers.BoshInterpolate(
@@ -171,7 +174,7 @@ func TestSemantic(t *testing.T) {
 				t.Errorf("bosh interpolate error: %v", err)
 			}
 
-			if diff, ok := diffLeft(string(existingCA), string(newCA)); !ok {
+			if diff, same := diffLeft(string(existingCA), string(newCA)); !same {
 				t.Errorf("use-trusted-ca-cert-for-apps.yml overwrites existing trusted CAs from cf-deployment.yml.\n%s", diff)
 			}
 		}
@@ -200,7 +203,7 @@ func TestSemantic(t *testing.T) {
 			t.Errorf("bosh interpolate error: %v", err)
 		}
 
-		if diff, ok := diffLeft(string(diegoCellRepProperties), string(isoSegDiegoCellRepProperties)); !ok {
+		if diff, same := diffLeft(string(diegoCellRepProperties), string(isoSegDiegoCellRepProperties)); !same {
 			t.Errorf("rep properties on diego-cell have diverged between cf-deployment.yml and test/add-persistent-isolation-segment-diego-cell.yml.\n%s", diff)
 		}
 	})
@@ -218,14 +221,51 @@ func TestSemantic(t *testing.T) {
 				continue
 			}
 
-			t.Errorf("CAs should be referenced from their certificate variables: %s", ca)
+			t.Errorf("CAs should be referenced from their certificate variables: %s in cf-deployment.yml", ca)
+		}
+
+		err = filepath.Walk(operationsSubDirectory, func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				t.Errorf("filepath walk error: %v", err)
+				return nil
+			}
+
+			if info.IsDir() {
+				return nil
+			}
+
+			opsFile, err := ioutil.ReadFile(path)
+			if err != nil {
+				t.Errorf("file read error: %v", err)
+				return nil
+			}
+
+			badCAs := caRegexp.FindAllString(string(opsFile), -1)
+			for _, ca := range badCAs {
+				if ca == "((diego_instance_identity_ca.certificate))" {
+					continue
+				}
+
+				t.Errorf("CAs should be referenced from their certificate variables: %s in %s", ca, strings.Replace(path, operationsSubDirectory, "operations", 1))
+			}
+
+			return nil
+		})
+
+		if err != nil {
+			t.Errorf("walk error: %v", err)
 		}
 	})
 
 	t.Run("ops-files-don't-have-double-question-marks", func(t *testing.T) {
 		invalid_question_marks := regexp.MustCompile(`path: .*\?.*\?.*`)
 
-		filepath.Walk(operationsSubDirectory, func(path string, info os.FileInfo, err error) error {
+		err = filepath.Walk(operationsSubDirectory, func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				t.Errorf("filepath walk error: %v", err)
+				return nil
+			}
+
 			if info.IsDir() {
 				return nil
 			}
@@ -243,6 +283,10 @@ func TestSemantic(t *testing.T) {
 
 			return nil
 		})
+
+		if err != nil {
+			t.Errorf("walk error: %v", err)
+		}
 	})
 }
 
