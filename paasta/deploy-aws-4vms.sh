@@ -6,6 +6,7 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \
 	-o operations/min-aws.yml \
 	-o operations/min-cce.yml \
 	-o operations/min-use-router-public-network.yml \
+	-o operations/min-use-router-public-network-aws.yml \
 	-o operations/min-use-postgres.yml \
 	-o operations/min-rename-network-and-deployment.yml \
 	-l min-vars.yml \

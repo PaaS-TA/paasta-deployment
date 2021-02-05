@@ -1,0 +1,41 @@
+- type: replace
+  path: /releases/name=paasta-conf?
+  value:
+    name: paasta-conf
+    url:  http://45.248.73.44/index.php/s/Y8Cqeg2CKoyEe53/download
+    version: 1.0.0
+
+- type: replace
+  path: /instance_groups/name=router/jobs/-
+  value:
+    name: common_script
+    release: paasta-conf
+    properties:
+      pre_start_script: |-
+        #!/bin/bash
+
+        for target in $(find / -name haproxy.conf* ); do
+          echo "$target"
+          pCount=`cat $target | grep tcp-trafficcontroller | wc -l`
+
+          echo "config in tcp-trafficcontroller : ${pCount}"
+          if [ ${pCount} -eq "0" ] ; then
+            echo "haproxy.conf add wss : 4443 : $target"
+            {
+            echo ' '
+            echo 'frontend tcp-frontend-trafficcontroller'
+            echo '    mode tcp'
+            echo '    bind :4443'
+            echo '    default_backend tcp-trafficcontroller'
+            echo ' '
+            echo 'backend tcp-trafficcontroller'
+            echo '    mode tcp'
+            echo '    server node0 loggregator-trafficcontroller.service.cf.internal:8081 check inter 1000'
+            } >> $target
+          fi
+
+        done
+
+        ps -ef | grep haproxy
+        echo "if you see haproxy process then require monit restart tcp_router"
+
