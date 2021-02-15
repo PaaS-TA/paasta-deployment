@@ -6,7 +6,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/RZYon3JbYJgeTa8/download
+    url: https://nextcloud.paas-ta.org/index.php/s/RZYon3JbYJgeTa8/download
     version: 1.98.0-PaaS-TA
 
 - type: replace
@@ -17,7 +17,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/ms68pmWgyMG4w7A/download
+    url: https://nextcloud.paas-ta.org/index.php/s/ms68pmWgyMG4w7A/download
     version: 2.33.0-PaaS-TA
 
 - type: replace
@@ -28,7 +28,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/cffkJ6J45YPLMaH/download
+    url: https://nextcloud.paas-ta.org/index.php/s/cffkJ6J45YPLMaH/download
     version: 2.48.0-PaaS-TA
 
 - type: replace
@@ -39,7 +39,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/nkaE47s3MbjKnBD/download
+    url: https://nextcloud.paas-ta.org/index.php/s/nkaE47s3MbjKnBD/download
     version: 0.207.0-PaaS-TA
 
 - type: replace
@@ -50,7 +50,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/2bqskME6g22Hrca/download
+    url: https://nextcloud.paas-ta.org/index.php/s/2bqskME6g22Hrca/download
     version: 2.33.0-PaaS-TA
 
 - type: replace
@@ -61,6 +61,6 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/93NWzZTkkLMbM5Q/download
+    url: https://nextcloud.paas-ta.org/index.php/s/93NWzZTkkLMbM5Q/download
     version: 74.29.0-PaaS-TA
 

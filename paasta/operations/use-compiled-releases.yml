@@ -6,7 +6,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/jdJoqTny573Y4XC/download
+    url: https://nextcloud.paas-ta.org/index.php/s/jdJoqTny573Y4XC/download
     version: 1.0.36
 - type: replace
   path: /releases/name=bosh-dns-aliases
@@ -16,7 +16,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/pWQARKaf8QoHPmd/download
+    url: https://nextcloud.paas-ta.org/index.php/s/pWQARKaf8QoHPmd/download
     version: 0.0.3
 - type: replace
   path: /releases/name=bpm
@@ -26,7 +26,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/6obwAYn8s9Jkgks/download
+    url: https://nextcloud.paas-ta.org/index.php/s/6obwAYn8s9Jkgks/download
     version: 1.1.9
 - type: replace
   path: /releases/name=capi
@@ -36,7 +36,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/XM4WnfdxfTNonCL/download
+    url: https://nextcloud.paas-ta.org/index.php/s/XM4WnfdxfTNonCL/download
     version: 1.98.0
 - type: replace
   path: /releases/name=cf-cli
@@ -46,7 +46,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/jmepSzsxmp2HeEi/download
+    url: https://nextcloud.paas-ta.org/index.php/s/jmepSzsxmp2HeEi/download
     version: 1.29.0
 - type: replace
   path: /releases/name=cf-networking
@@ -56,7 +56,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/QSJkgrzf3SQ3DoS/download
+    url: https://nextcloud.paas-ta.org/index.php/s/QSJkgrzf3SQ3DoS/download
     version: 2.33.0
 - type: replace
   path: /releases/name=cf-smoke-tests
@@ -66,7 +66,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/GCJKfBZFmyZ5RLG/download
+    url: https://nextcloud.paas-ta.org/index.php/s/GCJKfBZFmyZ5RLG/download
     version: 41.0.1
 - type: replace
   path: /releases/name=cflinuxfs3
@@ -76,7 +76,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/JkqmxGqrRrWfkbe/download
+    url: https://nextcloud.paas-ta.org/index.php/s/JkqmxGqrRrWfkbe/download
     version: 0.204.0
 - type: replace
   path: /releases/name=credhub
@@ -86,7 +86,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/CJykKRe89w4s89n/download
+    url: https://nextcloud.paas-ta.org/index.php/s/CJykKRe89w4s89n/download
     version: 2.8.0
 - type: replace
   path: /releases/name=diego
@@ -96,7 +96,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/8BzrcNKHGWgp5yK/download
+    url: https://nextcloud.paas-ta.org/index.php/s/8BzrcNKHGWgp5yK/download
     version: 2.48.0
 - type: replace
   path: /releases/name=dotnet-core-buildpack
@@ -106,7 +106,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/qdsP3SNb35BNQHY/download
+    url: https://nextcloud.paas-ta.org/index.php/s/qdsP3SNb35BNQHY/download
     version: 2.3.14
 - type: replace
   path: /releases/name=garden-runc
@@ -116,7 +116,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/TFqSYLHrnW9MnQx/download
+    url: https://nextcloud.paas-ta.org/index.php/s/TFqSYLHrnW9MnQx/download
     version: 1.19.16
 - type: replace
   path: /releases/name=go-buildpack
@@ -126,7 +126,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/9zKWDdT6YWAx8R2/download
+    url: https://nextcloud.paas-ta.org/index.php/s/9zKWDdT6YWAx8R2/download
     version: 1.9.17
 - type: replace
   path: /releases/name=java-buildpack
@@ -136,7 +136,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/zkTWsfrmqJGznLW/download
+    url: https://nextcloud.paas-ta.org/index.php/s/zkTWsfrmqJGznLW/download
     version: 4.32.1
 - type: replace
   path: /releases/name=log-cache
@@ -146,7 +146,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/7aMoMJc5K68pocB/download
+    url: https://nextcloud.paas-ta.org/index.php/s/7aMoMJc5K68pocB/download
     version: 2.8.0
 - type: replace
   path: /releases/name=loggregator
@@ -156,7 +156,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/wmB4mTgbFzEXRTT/download
+    url: https://nextcloud.paas-ta.org/index.php/s/wmB4mTgbFzEXRTT/download
     version: 106.3.10
 - type: replace
   path: /releases/name=loggregator-agent
@@ -166,7 +166,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/z3GCERBtR6rsmD7/download
+    url: https://nextcloud.paas-ta.org/index.php/s/z3GCERBtR6rsmD7/download
     version: 6.1.1
 - type: replace
   path: /releases/name=nats
@@ -176,7 +176,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/sd6c5QjbSMAXo8m/download
+    url: https://nextcloud.paas-ta.org/index.php/s/sd6c5QjbSMAXo8m/download
     version: "34"
 - type: replace
   path: /releases/name=nginx-buildpack
@@ -186,7 +186,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/tojkn2QLBXNqa9y/download
+    url: https://nextcloud.paas-ta.org/index.php/s/tojkn2QLBXNqa9y/download
     version: 1.1.14
 - type: replace
   path: /releases/name=nodejs-buildpack
@@ -196,7 +196,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/zzPoxC3pfxaTJ7B/download
+    url: https://nextcloud.paas-ta.org/index.php/s/zzPoxC3pfxaTJ7B/download
     version: 1.7.26
 - type: replace
   path: /releases/name=php-buildpack
@@ -206,7 +206,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/Jgk6ZdxFG7DrSYH/download
+    url: https://nextcloud.paas-ta.org/index.php/s/Jgk6ZdxFG7DrSYH/download
     version: 4.4.20
 - type: replace
   path: /releases/name=pxc
@@ -216,7 +216,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/55jRN2BQtAkSaKB/download
+    url: https://nextcloud.paas-ta.org/index.php/s/55jRN2BQtAkSaKB/download
     version: 0.29.0
 - type: replace
   path: /releases/name=python-buildpack
@@ -226,7 +226,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/cKRaTWzajLK5eFF/download
+    url: https://nextcloud.paas-ta.org/index.php/s/cKRaTWzajLK5eFF/download
     version: 1.7.20
 - type: replace
   path: /releases/name=r-buildpack
@@ -236,7 +236,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/22bcYrgm9FtZgMA/download
+    url: https://nextcloud.paas-ta.org/index.php/s/22bcYrgm9FtZgMA/download
     version: 1.1.7
 - type: replace
   path: /releases/name=routing
@@ -246,7 +246,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/i78bTxZrNBsqoqD/download
+    url: https://nextcloud.paas-ta.org/index.php/s/i78bTxZrNBsqoqD/download
     version: 0.207.0
 - type: replace
   path: /releases/name=ruby-buildpack
@@ -256,7 +256,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/JaHwgPt7pYtyifC/download
+    url: https://nextcloud.paas-ta.org/index.php/s/JaHwgPt7pYtyifC/download
     version: 1.8.23
 - type: replace
   path: /releases/name=silk
@@ -266,7 +266,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/GQfnf9kZeaQy2a6/download
+    url: https://nextcloud.paas-ta.org/index.php/s/GQfnf9kZeaQy2a6/download
     version: 2.33.0
 - type: replace
   path: /releases/name=staticfile-buildpack
@@ -276,7 +276,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/DrrdQwsS2RdrfqD/download
+    url: https://nextcloud.paas-ta.org/index.php/s/DrrdQwsS2RdrfqD/download
     version: 1.5.10
 - type: replace
   path: /releases/name=statsd-injector
@@ -286,7 +286,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/5roKxGFoFymBQBT/download
+    url: https://nextcloud.paas-ta.org/index.php/s/5roKxGFoFymBQBT/download
     version: 1.11.15
 - type: replace
   path: /releases/name=uaa
@@ -296,7 +296,7 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/xYFQ3BRg7StFfKD/download
+    url: https://nextcloud.paas-ta.org/index.php/s/xYFQ3BRg7StFfKD/download
     version: 74.24.0
 - type: replace
   path: /releases/name=metrics-discovery
@@ -306,5 +306,5 @@
     stemcell:
       os: ubuntu-xenial
       version: "621.94"
-    url: http://45.248.73.44/index.php/s/nDtRg6ib9rigT62/download
+    url: https://nextcloud.paas-ta.org/index.php/s/nDtRg6ib9rigT62/download
     version: 3.0.1
