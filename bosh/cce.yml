@@ -14,7 +14,7 @@
 
 - type: replace
   path: /releases/name=bosh/url
-  value: http://45.248.73.44/index.php/s/3Ni8AEfSs22CAiC/download
+  value: https://nextcloud.paas-ta.org/index.php/s/3Ni8AEfSs22CAiC/download
 - type: replace
   path: /releases/name=bosh/version
   value: 271.2.0-PaaS-TA

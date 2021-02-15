@@ -1,6 +1,6 @@
 ---
 name: paasta
-manifest_version: v5.5
+manifest_version: v5.5.1
 update:
   canaries: 1
   canary_watch_time: 30000-1200000
@@ -3860,7 +3860,7 @@ releases:
   version: 1.29.0
   sha1: 0dd79b169473a95f1ff39e79f2695edf4c97f38d
 - name: paasta-conf
-  url:  http://45.248.73.44/index.php/s/Y8Cqeg2CKoyEe53/download
+  url:  https://nextcloud.paas-ta.org/index.php/s/Y8Cqeg2CKoyEe53/download
   version: 1.0.0
 stemcells:
 - alias: default
