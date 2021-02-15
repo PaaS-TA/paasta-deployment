@@ -1,5 +1,5 @@
 ## PaaS-TA
 
-- [PaaS-TA v5.5 설치 가이드](https://github.com/PaaS-TA/Guide/blob/v5.5.0/install-guide/paasta/PAAS-TA_MIN_INSTALL_GUIDE.md)
+- [PaaS-TA v5.5.1 설치 가이드](https://github.com/PaaS-TA/Guide/blob/v5.5.1/install-guide/paasta/PAAS-TA_MIN_INSTALL_GUIDE.md)
 
 - based on cf-deployment version : [v13.19.0](https://github.com/cloudfoundry/cf-deployment/tree/v13.19.0)
