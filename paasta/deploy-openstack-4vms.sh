@@ -4,6 +4,7 @@ BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"			 # bosh director alias name (PaaS-TA에
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \
 	-o operations/min-openstack.yml \
+	-o operations/min-cce.yml \
 	-o operations/min-use-router-public-network.yml \
 	-o operations/min-use-postgres.yml \
 	-o operations/min-rename-network-and-deployment.yml \
