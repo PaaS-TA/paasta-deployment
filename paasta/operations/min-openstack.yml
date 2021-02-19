@@ -1,0 +1,14 @@
+---
+- type: remove
+  path: /instance_groups/name=compute/vm_extensions?
+
+- type: remove
+  path: /instance_groups/name=control/vm_extensions?
+
+- type: replace
+  path: /instance_groups/name=compute/vm_type?
+  value: small-highmem-100GB-ephemeral-disk
+
+- type: replace
+  path: /instance_groups/name=control/vm_type?
+  value: small-50GB-ephemeral-disk

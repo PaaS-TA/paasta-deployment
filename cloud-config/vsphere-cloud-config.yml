@@ -281,3 +281,10 @@ vm_extensions:
 - name: 100GB_ephemeral_disk
   cloud_properties:
     disk: 102400
+- name: ssh-proxy-and-router-lb
+  cloud_properties:
+    ports:
+    - host: 80
+    - host: 443
+    - host: 2222
+    - host: 4443    
