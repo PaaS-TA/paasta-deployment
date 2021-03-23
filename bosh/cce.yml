@@ -16,7 +16,10 @@
   path: /releases/name=bosh/url	
 #  value: https://nextcloud.paas-ta.org/index.php/s/3Ni8AEfSs22CAiC/download	
   value: file:///home/ubuntu/workspace/releases/bosh-PaaS-TA/bosh-release-271.2.0-PaaS-TA-v2.tgz
-  version: 271.2.0-PaaS-TA-v2
+
+- type: replace
+  path: /releases/name=bosh/version
+  value: 271.2.0-PaaS-TA-v2
   	
 - type: replace	
   path: /instance_groups/name=bosh/properties/postgres/cce_enable?	
