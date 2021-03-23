@@ -10,4 +10,30 @@
         chage -M 90 vcap
         chage -M 90 jumpbox
         chmod o-w /var/tmp
-    release: os-conf
+    release: os-conf	
+    
+- type: replace	
+  path: /releases/name=bosh/url	
+#  value: https://nextcloud.paas-ta.org/index.php/s/3Ni8AEfSs22CAiC/download	
+  value: file:///home/ubuntu/workspace/releases/bosh-PaaS-TA/bosh-release-271.2.0-PaaS-TA-v2.tgz
+  version: 271.2.0-PaaS-TA-v2
+  	
+- type: replace	
+  path: /instance_groups/name=bosh/properties/postgres/cce_enable?	
+  value: true	
+	
+- type: replace	
+  path: /releases/name=paasta-conf?	
+  value:	
+    name: paasta-conf	
+    #url:  https://nextcloud.paas-ta.org/index.php/s/Y8Cqeg2CKoyEe53/download	
+    url: file:///home/ubuntu/workspace/relases/paasta-conf-release/paasta-conf-release-1.0.1.tgz	
+    version: 1.0.1	
+
+- type: replace	
+  path: /instance_groups/name=bosh/jobs/-	
+  value:	
+    name: tomcat_conf	
+    release: paasta-conf	
+    properties:	
+      cce_enable: true	
