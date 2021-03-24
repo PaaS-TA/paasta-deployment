@@ -20,7 +20,7 @@
 - type: replace
   path: /releases/name=bosh/version
   value: 271.2.0-PaaS-TA-v2
-  	
+
 - type: replace	
   path: /instance_groups/name=bosh/properties/postgres/cce_enable?	
   value: true	
