@@ -2,7 +2,7 @@
 
 bosh -e micro-bosh -d paasta -n deploy paasta-deployment.yml \
 	-o operations/aws.yml \
-	-o operations/cce.yml \
+	-o operations/cce-postgres.yml \
 	-o operations/use-compiled-releases-online.yml \
 	-o operations/use-haproxy.yml \
 	-o operations/use-haproxy-public-network.yml \
