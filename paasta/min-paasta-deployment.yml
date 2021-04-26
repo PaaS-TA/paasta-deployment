@@ -2569,7 +2569,7 @@ instance_groups:
     properties:
       tcp_router:
         debug_address: 127.0.0.1:17082
-        health_check_port: 8080
+        health_check_port: 8880
         oauth_secret: "((uaa_clients_tcp_router_secret))"
         router_group: default-tcp
       uaa:
