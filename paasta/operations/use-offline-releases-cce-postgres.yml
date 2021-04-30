@@ -18,11 +18,11 @@
 
 - type: replace
   path: /releases/name=cf-networking/url
-  value: file://((releases_dir))/paasta/cf-networking-release-2.33.0-PaaS-TA.tgz
+  value: file://((releases_dir))/paasta/cf-networking-release-2.33.0-PaaS-TA-v2.tgz
 
 - type: replace
   path: /releases/name=cf-networking/version
-  value: "2.33.0-PaaS-TA"
+  value: "2.33.0-PaaS-TA-v2"
 
 
 - type: replace
@@ -36,20 +36,20 @@
 
 - type: replace
   path: /releases/name=routing/url
-  value: file://((releases_dir))/paasta/routing-release-0.207.0-PaaS-TA.tgz
+  value: file://((releases_dir))/paasta/routing-release-0.207.0-PaaS-TA-v2.tgz
 
 - type: replace
   path: /releases/name=routing/version
-  value: "0.207.0-PaaS-TA"
+  value: "0.207.0-PaaS-TA-v2"
 
 
 - type: replace
   path: /releases/name=silk/url
-  value: file://((releases_dir))/paasta/silk-release-2.33.0-PaaS-TA.tgz
+  value: file://((releases_dir))/paasta/silk-release-2.33.0-PaaS-TA-v2.tgz
 
 - type: replace
   path: /releases/name=silk/version
-  value: "2.33.0-PaaS-TA"
+  value: "2.33.0-PaaS-TA-v2"
 
 
 - type: replace
