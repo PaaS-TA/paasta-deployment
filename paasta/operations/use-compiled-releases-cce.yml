@@ -1,3 +1,6 @@
+# paasta-deployment 5.5.2 use-compiled-releases*.yml 현재 지원 X 
+
+: << "END"
 - type: replace
   path: /releases/name=capi
   value:
@@ -63,4 +66,4 @@
       version: "621.94"
     url: https://nextcloud.paas-ta.org/index.php/s/93NWzZTkkLMbM5Q/download
     version: 74.29.0-PaaS-TA
-
+END

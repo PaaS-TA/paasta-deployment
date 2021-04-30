@@ -1,3 +1,6 @@
+# paasta-deployment 5.5.2 use-compiled-releases*.yml 현재 지원 X 
+
+: << "END"
 - type: replace
   path: /releases/name=binary-buildpack
   value:
@@ -308,3 +311,4 @@
       version: "621.94"
     url: https://nextcloud.paas-ta.org/index.php/s/nDtRg6ib9rigT62/download
     version: 3.0.1
+END
