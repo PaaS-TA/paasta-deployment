@@ -1,314 +1,310 @@
-# paasta-deployment 5.5.2 use-compiled-releases*.yml 현재 지원 X 
-
-: << "END"
 - type: replace
   path: /releases/name=binary-buildpack
   value:
     name: binary-buildpack
-    sha1: c94a5b479f55f6f8966f79d61dd09d562dbdb774
+    sha1: 9a5bdba32ad725f95a8e4bbd04eccb0318901b26
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/jdJoqTny573Y4XC/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/binary-buildpack-1.0.36-ubuntu-xenial-621.5-20200108-234257-757750724.tgz
     version: 1.0.36
 - type: replace
   path: /releases/name=bosh-dns-aliases
   value:
     name: bosh-dns-aliases
-    sha1: faa460fc22d77a6281bdb4d32550bb10867a321c
+    sha1: 1e1b5e00a97664f40fdcc9aa60ef8dbe72f6be57
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/pWQARKaf8QoHPmd/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/bosh-dns-aliases-0.0.3-ubuntu-xenial-621.5-20200222-004830-604272982.tgz
     version: 0.0.3
 - type: replace
   path: /releases/name=bpm
   value:
     name: bpm
-    sha1: 07f86828ea9a81f9c7ba6a33590959a53b13fe13
+    sha1: ab9a59c14cb6435a925bcb27096bfd6b602e8371
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/6obwAYn8s9Jkgks/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/bpm-1.1.9-ubuntu-xenial-621.5-20200828-001800-004506574.tgz
     version: 1.1.9
 - type: replace
   path: /releases/name=capi
   value:
     name: capi
-    sha1: f3808babfc96a9fbbc8c411597dc6fcb336cb804
+    sha1: a041d8d444dd6e75f9bdb5a0f391b68ca82bb051
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/XM4WnfdxfTNonCL/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/capi-1.98.0-ubuntu-xenial-621.5-20200828-204820-97612377.tgz
     version: 1.98.0
 - type: replace
   path: /releases/name=cf-cli
   value:
     name: cf-cli
-    sha1: 21dfa8112216180a36af4e5bfd2ce046153ee530
+    sha1: d4fed7a4dce1c60fc8f820e2dd089dbcf7cd18fb
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/jmepSzsxmp2HeEi/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/cf-cli-1.29.0-ubuntu-xenial-621.5-20200827-003934-035513701.tgz
     version: 1.29.0
 - type: replace
   path: /releases/name=cf-networking
   value:
     name: cf-networking
-    sha1: 3f06425a5129e36ff2e42a8153a9ca19c2c31d23
+    sha1: b54bd3db619cc894460e093309731da18443e7f8
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/QSJkgrzf3SQ3DoS/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/cf-networking-2.33.0-ubuntu-xenial-621.5-20200817-201754-014369924.tgz
     version: 2.33.0
 - type: replace
   path: /releases/name=cf-smoke-tests
   value:
     name: cf-smoke-tests
-    sha1: cd56db45aa007f4621a9d6533e0fd2a5f8844c34
+    sha1: 6bed27cc7cfe42155a475d3d274fa1e28183cd27
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/GCJKfBZFmyZ5RLG/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/cf-smoke-tests-41.0.1-ubuntu-xenial-621.5-20200806-210202-967335293.tgz
     version: 41.0.1
 - type: replace
   path: /releases/name=cflinuxfs3
   value:
     name: cflinuxfs3
-    sha1: 2440ed292833d4ad79c04b6fbce94a33b58a3747
+    sha1: cfa4a74994859cd513258fb2a6aebddad55a3096
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/JkqmxGqrRrWfkbe/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/cflinuxfs3-0.204.0-ubuntu-xenial-621.5-20200902-174534-860035437.tgz
     version: 0.204.0
 - type: replace
   path: /releases/name=credhub
   value:
     name: credhub
-    sha1: 2b63a0c699c2dac54e67c942225469a27feb65f5
+    sha1: dcc3d1e9c5be8d90188fd0cbd956ce89438f1449
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/CJykKRe89w4s89n/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/credhub-2.8.0-ubuntu-xenial-621.5-20200722-213239-910474426.tgz
     version: 2.8.0
 - type: replace
   path: /releases/name=diego
   value:
     name: diego
-    sha1: a0c5e02d264204991674100b521f760eb207a16a
+    sha1: 7c0d34e2d2d97ba8364443b8b499531f575ad4df
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/8BzrcNKHGWgp5yK/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/diego-2.48.0-ubuntu-xenial-621.5-20200810-181512-826253463.tgz
     version: 2.48.0
 - type: replace
   path: /releases/name=dotnet-core-buildpack
   value:
     name: dotnet-core-buildpack
-    sha1: 0e760920f908f7c5dbfc75a12b2c394a9e27df5f
+    sha1: 72a63f7af40a7bc252b4a2bcf31fa45ba7b64446
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/qdsP3SNb35BNQHY/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/dotnet-core-buildpack-2.3.14-ubuntu-xenial-621.5-20200901-002749-928003704.tgz
     version: 2.3.14
 - type: replace
   path: /releases/name=garden-runc
   value:
     name: garden-runc
-    sha1: 3e99ddaf56f1f5735aca59e0855f39195ae2819e
+    sha1: cc8f2bf3de0d928d5c6e2cc0e6ac3e27bb5fa341
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/TFqSYLHrnW9MnQx/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/garden-runc-1.19.16-ubuntu-xenial-621.5-20200807-113708-454698882.tgz
     version: 1.19.16
 - type: replace
   path: /releases/name=go-buildpack
   value:
     name: go-buildpack
-    sha1: 9468b4b7e05158213ff33c55e672bd127986639f
+    sha1: e1e59a4d917a7aa51857f5af7aad87411dda9d9c
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/9zKWDdT6YWAx8R2/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/go-buildpack-1.9.17-ubuntu-xenial-621.5-20200901-002649-01988736.tgz
     version: 1.9.17
 - type: replace
   path: /releases/name=java-buildpack
   value:
     name: java-buildpack
-    sha1: 6045163030515d88a42a7671aa8b303c0204b627
+    sha1: 7f9d550927dd2d9a0514429312b01399fcdcb10b
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/zkTWsfrmqJGznLW/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/java-buildpack-4.32.1-ubuntu-xenial-621.5-20200730-161440-291750792.tgz
     version: 4.32.1
 - type: replace
   path: /releases/name=log-cache
   value:
     name: log-cache
-    sha1: 26c50b9ade58be3bd1d7867a7705d4e3a470481e
+    sha1: b822c898b3078640c3981f975a82742af1c22ce0
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/7aMoMJc5K68pocB/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/log-cache-2.8.0-ubuntu-xenial-621.5-20200825-234204-304039028.tgz
     version: 2.8.0
 - type: replace
   path: /releases/name=loggregator
   value:
     name: loggregator
-    sha1: f24283fcf22bf1e529ca9ce543cdc601b6da868c
+    sha1: 78f496b9fd34903afeae4ad1526cdb71106a3776
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/wmB4mTgbFzEXRTT/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/loggregator-106.3.10-ubuntu-xenial-621.5-20200519-212341-955664784.tgz
     version: 106.3.10
 - type: replace
   path: /releases/name=loggregator-agent
   value:
     name: loggregator-agent
-    sha1: c088588c079bfe11b5f26c9298405bd4f28d6ac5
+    sha1: 95e3d9975e0ad4bceef8947ed4429a70fbcd426f
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/z3GCERBtR6rsmD7/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/loggregator-agent-6.1.1-ubuntu-xenial-621.5-20200723-224508-230785414.tgz
     version: 6.1.1
 - type: replace
   path: /releases/name=nats
   value:
     name: nats
-    sha1: 72786a1cb8e50c90b10a83c994218c4d92a1c051
+    sha1: b873ccd905cfad7bd2769cdd8ad9f5ddaa4fd35e
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/sd6c5QjbSMAXo8m/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/nats-34-ubuntu-xenial-621.5-20200420-231008-808089703.tgz
     version: "34"
 - type: replace
   path: /releases/name=nginx-buildpack
   value:
     name: nginx-buildpack
-    sha1: ddd9f0761d62429b57144691b5abd241bf99864c
+    sha1: 999e67a14e7b625e626b1af6fc70cdb4fd7f51ff
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/tojkn2QLBXNqa9y/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/nginx-buildpack-1.1.14-ubuntu-xenial-621.5-20200901-223849-994477302.tgz
     version: 1.1.14
 - type: replace
   path: /releases/name=nodejs-buildpack
   value:
     name: nodejs-buildpack
-    sha1: 4ecaa9efa31f067486188d07268366f933f22f74
+    sha1: 7a2f3edc9844a91171f49b3f6e355b6480ad5baf
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/zzPoxC3pfxaTJ7B/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/nodejs-buildpack-1.7.26-ubuntu-xenial-621.5-20200901-003052-048412314.tgz
     version: 1.7.26
 - type: replace
   path: /releases/name=php-buildpack
   value:
     name: php-buildpack
-    sha1: 273beefa6ab149b5d79ecd9ac68e4f451b09cd3c
+    sha1: dea18e83551880e07a650cb070ed17f3b8082724
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/Jgk6ZdxFG7DrSYH/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/php-buildpack-4.4.20-ubuntu-xenial-621.5-20200901-020833-492509495.tgz
     version: 4.4.20
 - type: replace
   path: /releases/name=pxc
   value:
     name: pxc
-    sha1: 4585f9219e1860e84dd205c7a6658d4b9f73ac4b
+    sha1: 2420c9344ebb447428aa6af494507690ace1e05c
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/55jRN2BQtAkSaKB/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/pxc-0.29.0-ubuntu-xenial-621.5-20200831-203332-921455085.tgz
     version: 0.29.0
 - type: replace
   path: /releases/name=python-buildpack
   value:
     name: python-buildpack
-    sha1: 9ed1c358c2040bfca3e34b3854691bf567fab33b
+    sha1: 19ab12b468cf7af9c9266f71fd45e57a3b4c0496
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/cKRaTWzajLK5eFF/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/python-buildpack-1.7.20-ubuntu-xenial-621.5-20200901-020925-528914093.tgz
     version: 1.7.20
 - type: replace
   path: /releases/name=r-buildpack
   value:
     name: r-buildpack
-    sha1: 40daaf659488aa4010647e06cc5cf3a0bb4b66bb
+    sha1: d0e88c6da938863a5cd271d065bd11218fc23e00
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/22bcYrgm9FtZgMA/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/r-buildpack-1.1.7-ubuntu-xenial-621.5-20200714-204428-80346537.tgz
     version: 1.1.7
 - type: replace
   path: /releases/name=routing
   value:
     name: routing
-    sha1: 5e514d0b9d49fed19e12ecd78894680cd7c8984a
+    sha1: 038c34801d81d16f5e9044054937bdcb8ee1e303
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/i78bTxZrNBsqoqD/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/routing-0.207.0-ubuntu-xenial-621.5-20200901-235427-258643595.tgz
     version: 0.207.0
 - type: replace
   path: /releases/name=ruby-buildpack
   value:
     name: ruby-buildpack
-    sha1: c4789422f06a6a65bcf7ad253522e5a9c8ea3e35
+    sha1: cbd0f1fd50dcf2631fde34fb78f816db34c21f43
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/JaHwgPt7pYtyifC/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/ruby-buildpack-1.8.23-ubuntu-xenial-621.5-20200812-234719-945687914.tgz
     version: 1.8.23
 - type: replace
   path: /releases/name=silk
   value:
     name: silk
-    sha1: 8356798d34e6ce075c4b69298ce20c2ba03bb2bc
+    sha1: 5754b7379c832fbb009857130b8aadb06dead97b
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/GQfnf9kZeaQy2a6/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/silk-2.33.0-ubuntu-xenial-621.5-20200817-202238-541406987.tgz
     version: 2.33.0
 - type: replace
   path: /releases/name=staticfile-buildpack
   value:
     name: staticfile-buildpack
-    sha1: 952937a24dd02d5a78392f975821dbef18c0f05b
+    sha1: a0ce9f214755f20de20e60d30a3bdc7a9ddf3295
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/DrrdQwsS2RdrfqD/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/staticfile-buildpack-1.5.10-ubuntu-xenial-621.5-20200901-011202-352065712.tgz
     version: 1.5.10
 - type: replace
   path: /releases/name=statsd-injector
   value:
     name: statsd-injector
-    sha1: 179854de232e65a4b0da3373a4272e4fa0592902
+    sha1: 17eb0307c90eb6717e4d365691096b6a27960128
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/5roKxGFoFymBQBT/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/statsd-injector-1.11.15-ubuntu-xenial-621.5-20200128-024358-434566739.tgz
     version: 1.11.15
 - type: replace
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: 70fcfcf92b859e0400e27b8dd5583f35ee2a8bfb
+    sha1: 496896101fd1ab5bb1607d1af515a59cd31a3150
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/xYFQ3BRg7StFfKD/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/uaa-74.24.0-ubuntu-xenial-621.5-20200819-222300-813105261.tgz
     version: 74.24.0
 - type: replace
   path: /releases/name=metrics-discovery
   value:
     name: metrics-discovery
-    sha1: ce81d7d38b9f0f6cc0b3c0e30b4ec6dace03506c
+    sha1: c6cb10f4f3a1b28819f6eaf95593bad9c53cc423
     stemcell:
       os: ubuntu-xenial
-      version: "621.94"
-    url: https://nextcloud.paas-ta.org/index.php/s/nDtRg6ib9rigT62/download
+      version: "621.5"
+    url: https://storage.googleapis.com/cf-deployment-compiled-releases/metrics-discovery-3.0.1-ubuntu-xenial-621.5-20200622-185652-089727215.tgz
     version: 3.0.1
-END
