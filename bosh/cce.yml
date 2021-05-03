@@ -14,10 +14,31 @@
 
 - type: replace
   path: /releases/name=bosh/url
-  value: https://nextcloud.paas-ta.org/index.php/s/3Ni8AEfSs22CAiC/download
+  value: https://nextcloud.paas-ta.org/index.php/s/RQJWY9HRSRnG3G7/download
 - type: replace
   path: /releases/name=bosh/version
-  value: 271.2.0-PaaS-TA
-- type: replace
+  value: 271.2.0-PaaS-TA-v3
+- type: replace 
   path: /releases/name=bosh/sha1
-  value: 50ffc69959ae47e758f4bc5f2903d793e4aa96cd
+  value: 5d83314714df5e740aa237e591204ab6d10e1343
+
+- type: replace
+  path: /instance_groups/name=bosh/properties/postgres/cce_enable?
+  value: true
+
+- type: replace
+  path: /releases/name=paasta-conf?
+  value:
+    name: paasta-conf
+    url: https://nextcloud.paas-ta.org/index.php/s/CTDsro382NyyAEL/download
+    version: 1.0.1
+    sha1: a6728109de67d44cebcaa28a2420e483f2f5ff72
+
+- type: replace
+  path: /instance_groups/name=bosh/jobs/-
+  value:
+    name: tomcat_conf
+    release: paasta-conf
+    properties:
+      cce_enable: true
+
