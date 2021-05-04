@@ -2,8 +2,8 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  https://nextcloud.paas-ta.org/index.php/s/Y8Cqeg2CKoyEe53/download
-    version: 1.0.0
+    url:  https://nextcloud.paas-ta.org/index.php/s/CTDsro382NyyAEL/download
+    version: 1.0.1
 
 - type: replace
   path: /instance_groups/name=router/jobs/-
@@ -13,11 +13,9 @@
     properties:
       pre_start_script: |-
         #!/bin/bash
-
         for target in $(find / -name haproxy.conf* ); do
           echo "$target"
           pCount=`cat $target | grep tcp-trafficcontroller | wc -l`
-
           echo "config in tcp-trafficcontroller : ${pCount}"
           if [ ${pCount} -eq "0" ] ; then
             echo "haproxy.conf add wss : 4443 : $target"
@@ -33,9 +31,6 @@
             echo '    server node0 loggregator-trafficcontroller.service.cf.internal:8081 check inter 1000'
             } >> $target
           fi
-
         done
-
         ps -ef | grep haproxy
         echo "if you see haproxy process then require monit restart tcp_router"
-

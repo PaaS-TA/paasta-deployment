@@ -25,6 +25,14 @@
     properties:
       cce_enable: true
 
+
+# CCE - PaaS-TA postgres set password
+- type: replace
+  path: /variables/- 
+  value:
+    name: cf_postgres_admin_password
+    type: password
+
 # CCE - PaaS-TA database patch 
 - type: replace
   path: /instance_groups/name=database/jobs/-
@@ -33,6 +41,7 @@
     release: paasta-conf
     properties:
       cce_enable: true
+      postgres_admin_password: ((cf_postgres_admin_password))
 
 # CCE - Release replace
 - type: replace
