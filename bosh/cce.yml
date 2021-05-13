@@ -13,6 +13,12 @@
     release: os-conf
 
 - type: replace
+  path: /instance_groups/name=bosh/jobs/name=postgres-10
+  value:
+    name: postgres-11
+    release: bosh
+
+- type: replace
   path: /releases/name=bosh/url
   value: https://nextcloud.paas-ta.org/index.php/s/RQJWY9HRSRnG3G7/download
 - type: replace
