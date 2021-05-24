@@ -4,6 +4,7 @@ addons:
     - paasta
     - pinpoint
     - pinpoint-monitoring  
+    - rabbitmq
     stemcell:
     - os: ubuntu-trusty
     - os: ubuntu-xenial
