@@ -38,7 +38,7 @@
     name: paasta-conf
     url: https://nextcloud.paas-ta.org/index.php/s/CTDsro382NyyAEL/download
     version: 1.0.1
-    sha1: 2318b288db660679d5cc5cdf9cee40d86ccc0c93
+    sha1: 8a5025702c72a1aa66ddd19b74b4493cfd16cdde
 
 - type: replace
   path: /instance_groups/name=bosh/jobs/-
