@@ -4,8 +4,8 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  https://nextcloud.paas-ta.org/index.php/s/CTDsro382NyyAEL/download
-    version: 1.0.1
+    url:  https://nextcloud.paas-ta.org/index.php/s/JjRiiZMpYtLXKck/download
+    version: 1.0.2
 
 # CCE - UAA tomcat patch
 - type: replace
@@ -82,3 +82,11 @@
     sha1: 4432cf7d0c67fbb4a7bce2194b8b4b86221d57dc
     url: https://nextcloud.paas-ta.org/index.php/s/rnZ7WXWFdMTmpbH/download
     version: 74.29.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=pxc
+  value:
+    name: pxc
+    sha1: ed99301e412319e2f62e4899c37f67293bddee96
+    url: https://nextcloud.paas-ta.org/index.php/s/nFc58sK45M6B8Pz/download
+    version: 0.29.0-PaaS-TA
