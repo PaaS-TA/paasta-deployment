@@ -16,5 +16,5 @@
   value: 1.0.1
 - type: replace
   path: /releases/name=bosh/sha1
-  value: a6728109de67d44cebcaa28a2420e483f2f5ff72
+  value: 8a5025702c72a1aa66ddd19b74b4493cfd16cdde
 
