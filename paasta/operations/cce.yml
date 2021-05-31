@@ -34,6 +34,11 @@
     properties:
       cce_enable: true
 
+- type: replace
+  path: /instance_groups/name=uaa/jobs/name=uaa/properties/uaa/servlet?
+  value:
+    idle-timeout: 600
+
 # CCE - Release replace
 - type: replace
   path: /releases/name=capi

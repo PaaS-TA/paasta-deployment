@@ -40,7 +40,7 @@ groups:
   - ship-it-minor
   - ship-it-major
   - release-notes-template
-- name: fr
+- name: fresh-luna
   jobs:
   - unit-test-ops-files
   - unit-test-golang-tests
@@ -53,7 +53,7 @@ groups:
   - fresh-cats
   - fresh-delete-deployment
   - bless-manifest
-- name: up
+- name: upgrade-trelawney
   jobs:
   - unit-test-ops-files
   - unit-test-golang-tests
@@ -66,7 +66,7 @@ groups:
   - upgrade-release-pool-manual
   - upgrade-delete-deployment
   - bless-manifest
-- name: ex
+- name: experimental-hermione
   jobs:
   - unit-test-ops-files
   - unit-test-golang-tests
@@ -80,7 +80,7 @@ groups:
   - experimental-smoke-tests
   - experimental-ops-files
   - bless-manifest
-- name: li
+- name: lite-snitch
   jobs:
   - unit-test-ops-files
   - unit-test-golang-tests
@@ -104,7 +104,7 @@ groups:
   - bbr-release-pool
   - bbr-release-pool-manual
   - bless-manifest
-- name: wi
+- name: windows
   jobs:
   - unit-test-ops-files
   - unit-test-golang-tests
@@ -115,13 +115,13 @@ groups:
   - windows-cats
   - windows-unclaim-env
   - bless-manifest
-- name: st
+- name: stable-bellatrix
   jobs:
   - stable-acquire-pool
   - stable-release-pool-manual
   - stable-deploy
   - stable-smoke-tests
-  - stable-semihourly-pool-acquisition
+  - stable-pool-acquisition
   - stable-periodic-cats
   - stable-update-cats-cfd-branch
 - name: ship-it
@@ -153,7 +153,7 @@ resources:
   icon: pool
   source:
     uri: git@github.com:cloudfoundry/relint-ci-pools
-    branch: master
+    branch: main
     pool: cf-deployment/fresh
     private_key: ((relint_ci_pools_readwrite_deploy_key.private_key))
 
@@ -162,7 +162,7 @@ resources:
   icon: pool
   source:
     uri: git@github.com:cloudfoundry/relint-ci-pools
-    branch: master
+    branch: main
     pool: cf-deployment/upgrade
     private_key: ((relint_ci_pools_readwrite_deploy_key.private_key))
 
@@ -171,7 +171,7 @@ resources:
   icon: pool
   source:
     uri: git@github.com:cloudfoundry/relint-ci-pools
-    branch: master
+    branch: main
     pool: cf-deployment/experimental
     private_key: ((relint_ci_pools_readwrite_deploy_key.private_key))
 
@@ -180,7 +180,7 @@ resources:
   icon: pool
   source:
     uri: git@github.com:cloudfoundry/relint-ci-pools
-    branch: master
+    branch: main
     pool: cf-deployment/lite
     private_key: ((relint_ci_pools_readwrite_deploy_key.private_key))
 
@@ -189,7 +189,7 @@ resources:
   icon: pool
   source:
     uri: git@github.com:cloudfoundry/relint-ci-pools
-    branch: master
+    branch: main
     pool: bbr
     private_key: ((relint_ci_pools_readwrite_deploy_key.private_key))
 
@@ -198,23 +198,23 @@ resources:
   icon: pool
   source:
     uri: git@github.com:cloudfoundry/relint-ci-pools
-    branch: master
+    branch: main
     pool: cf-deployment/stable
     private_key: ((relint_ci_pools_readwrite_deploy_key.private_key))
 
 - name: relint-envs
   type: git
-  icon: github-box
+  icon: github
   source:
-    branch: master
+    branch: main
     uri: git@github.com:cloudfoundry/relint-envs.git
     private_key: ((hagrid_env_readwrite_deploy_key.private_key))
 
-- name: half-hourly
+- name: every-6-hours
   type: time
   icon: clock-outline
   source:
-    interval: 30m
+    interval: 6h
 
 - name: daily
   type: time
@@ -224,28 +224,27 @@ resources:
 
 - name: cf-deployment-concourse-tasks
   type: git
-  icon: github-box
+  icon: github
   source:
-    branch: master
     uri: https://github.com/cloudfoundry/cf-deployment-concourse-tasks.git
 
 - name: runtime-ci
   type: git
-  icon: github-box
+  icon: github
   source:
-    branch: master
+    branch: main
     uri: https://github.com/cloudfoundry/runtime-ci.git
 
 - name: bosh-bootloader
   type: git
-  icon: github-box
+  icon: github
   source:
-    branch: master
+    branch: main
     uri: https://github.com/cloudfoundry/bosh-bootloader
 
 - name: cf-deployment-develop
   type: git
-  icon: github-box
+  icon: github
   source:
     branch: develop
     uri: git@github.com:cloudfoundry/cf-deployment.git
@@ -260,7 +259,7 @@ resources:
 
 - name: cf-deployment-release-candidate
   type: git
-  icon: github-box
+  icon: github
   source:
     branch: release-candidate
     uri: git@github.com:cloudfoundry/cf-deployment.git
@@ -273,11 +272,11 @@ resources:
     - ci/**
     - texts/**
 
-- name: cf-deployment-master
+- name: cf-deployment-main
   type: git
-  icon: github-box
+  icon: github
   source:
-    branch: master
+    branch: main
     uri: git@github.com:cloudfoundry/cf-deployment.git
     private_key: ((cf_deployment_readwrite_deploy_key.private_key))
     ignore_paths:
@@ -290,7 +289,7 @@ resources:
 
 - name: cf-deployment-all-branches
   type: git
-  icon: github-box
+  icon: github
   source:
     branch: develop
     uri: https://github.com/cloudfoundry/cf-deployment.git
@@ -304,7 +303,7 @@ resources:
 
 - name: cf-acceptance-tests-rc
   type: git
-  icon: github-box
+  icon: github
   source:
     branch: release-candidate
     uri: git@github.com:cloudfoundry/cf-acceptance-tests.git
@@ -312,14 +311,13 @@ resources:
 
 - name: cf-smoke-tests
   type: git
-  icon: github-box
+  icon: github
   source:
-    branch: master
     uri: https://github.com/cloudfoundry/cf-smoke-tests
 
 - name: bosh-deployment
   type: git
-  icon: github-box
+  icon: github
   source:
     branch: master
     uri: https://github.com/cloudfoundry/bosh-deployment.git
@@ -329,7 +327,7 @@ resources:
   source:
     driver: git
     uri: git@github.com:cloudfoundry/cf-relint-ci-semver.git
-    branch: master
+    branch: main
     private_key: ((cf_relint_ci_semver_readwrite_deploy_key.private_key))
     git_user: "CF MEGA BOT <cf-mega@pivotal.io>"
     file: cf-deployment-version
@@ -343,14 +341,14 @@ resources:
 
 - name: drats-master
   type: git
-  icon: github-box
+  icon: github
   source:
     branch: master
     uri: https://github.com/cloudfoundry-incubator/disaster-recovery-acceptance-tests.git
 
 - name: bbr-github-release
   type: github-release
-  icon: github-face
+  icon: github
   source:
     owner: cloudfoundry-incubator
     repository: bosh-backup-and-restore
@@ -363,11 +361,6 @@ resources:
       bucket: trelawney-upgrade-external-resource-state
       credentials: ((trelawney_gcp_service_account_json))
     env_name: trelawney
-    vars:
-      cf_db_name: "terraform-20200710002148588500000002"
-      project: "cf-relint-trelawney"
-      region: "us-central1"
-      service_account_key: ((trelawney_gcp_service_account_json))
 
 - name: toolsmiths-windows-env
   type: toolsmiths-cf-pool
@@ -375,8 +368,6 @@ resources:
     api_token: ((toolsmiths_api_token))
     hostname: environments.toolsmiths.cf-app.com
     pool_name: cf-deployment
-  tags:
-  - vsphere-cf-release-integration
 
 jobs:
 - name: unit-test-ops-files
@@ -391,7 +382,7 @@ jobs:
       image_resource:
         type: docker-image
         source:
-          repository: relintdockerhubpushbot/bosh-cli
+          repository: cloudfoundry/bosh-cli
       inputs:
       - name: cf-deployment-develop
       params:
@@ -429,7 +420,7 @@ jobs:
       image_resource:
         type: docker-image
         source:
-          repository: relintdockerhubpushbot/bosh-cli
+          repository: cloudfoundry/bosh-cli
       inputs:
       - name: cf-deployment-develop
       # params:
@@ -451,7 +442,7 @@ jobs:
       image_resource:
         type: docker-image
         source:
-          repository: relintdockerhubpushbot/bosh-cli
+          repository: cloudfoundry/bosh-cli
       inputs:
       - name: cf-deployment-develop
       - name: runtime-ci
@@ -471,7 +462,7 @@ jobs:
       image_resource:
         type: docker-image
         source:
-          repository: relintdockerhubpushbot/cf-deployment-concourse-tasks
+          repository: cloudfoundry/cf-deployment-concourse-tasks
       inputs:
       - name: cf-deployment-develop
       run:
@@ -561,7 +552,6 @@ jobs:
       BBL_STATE_DIR: environments/test/luna/bbl-state
       SYSTEM_DOMAIN: luna.cf-app.com
       OPS_FILES: |
-        operations/experimental/fast-deploy-with-downtime-and-danger.yml
         operations/rename-network-and-deployment.yml
         operations/set-bbs-active-key.yml
         operations/test/add-persistent-isolation-segment-diego-cell.yml
@@ -765,7 +755,7 @@ jobs:
   - in_parallel:
     - get: runtime-ci
     - get: cf-deployment-concourse-tasks
-    - get: cf-deployment-master
+    - get: cf-deployment-main
     - get: cf-deployment-develop
       passed: [upgrade-acquire-pool]
     - get: relint-envs
@@ -776,21 +766,32 @@ jobs:
     params:
       BBL_STATE_DIR: environments/test/trelawney/bbl-state
       IGNORE_ERRORS: true
+  - task: generate-external-db-vars-file
+    file: runtime-ci/tasks/generate-external-db-vars-file/task.yml
+    input_mapping:
+      bbl-state: relint-envs
+    params:
+      BBL_STATE_DIR: environments/test/trelawney/bbl-state
+      GCP_SERVICE_ACCOUNT_JSON: ((trelawney_gcp_service_account_json))
   - try:
       put: trelawney-external-resources
       params:
         action: destroy
         terraform_source: relint-envs/environments/test/trelawney/external-resource-templates
+        var_files:
+        - vars-file/db.tfvars
       get_params:
         action: destroy
   - put: trelawney-external-resources
     params:
       terraform_source: relint-envs/environments/test/trelawney/external-resource-templates
       delete_on_failure: true
+      var_files:
+      - vars-file/db.tfvars
   - task: collect-ops-files-latest-release
     file: cf-deployment-concourse-tasks/collect-ops-files/task.yml
     input_mapping:
-      base-ops-files: cf-deployment-master
+      base-ops-files: cf-deployment-main
       new-ops-files: relint-envs
     params:
       BASE_OPS_FILE_DIR: operations
@@ -811,7 +812,7 @@ jobs:
     file: cf-deployment-concourse-tasks/bosh-deploy/task.yml
     input_mapping:
       bbl-state: relint-envs
-      cf-deployment: cf-deployment-master
+      cf-deployment: cf-deployment-main
       ops-files: collected-ops-files
       vars-files: updated-bbl-state-with-db-vars
     params:
@@ -993,6 +994,7 @@ jobs:
   - in_parallel:
     - get: cf-deployment-concourse-tasks
     - get: relint-envs
+    - get: runtime-ci
   - task: delete-deployment-cf
     file: cf-deployment-concourse-tasks/bosh-delete-deployment/task.yml
     input_mapping:
@@ -1006,13 +1008,21 @@ jobs:
       bbl-state: relint-envs
     params:
       BBL_STATE_DIR: environments/test/trelawney/bbl-state
-  - try:
-      put: trelawney-external-resources
-      params:
-        action: destroy
-        terraform_source: relint-envs/environments/test/trelawney/external-resource-templates
-      get_params:
-        action: destroy
+  - task: generate-external-db-vars-file
+    file: runtime-ci/tasks/generate-external-db-vars-file/task.yml
+    input_mapping:
+      bbl-state: relint-envs
+    params:
+      BBL_STATE_DIR: environments/test/trelawney/bbl-state
+      GCP_SERVICE_ACCOUNT_JSON: ((trelawney_gcp_service_account_json))
+  - put: trelawney-external-resources
+    params:
+      action: destroy
+      terraform_source: relint-envs/environments/test/trelawney/external-resource-templates
+      var_files:
+      - vars-file/db.tfvars
+    get_params:
+      action: destroy
   - put: upgrade-pool
     params: {release: upgrade-pool}
 
@@ -1051,7 +1061,7 @@ jobs:
   - in_parallel:
     - get: runtime-ci
     - get: cf-deployment-concourse-tasks
-    - get: cf-deployment-master
+    - get: cf-deployment-main
     - get: cf-deployment-develop
       passed: [ experimental-acquire-pool ]
     - get: relint-envs
@@ -1065,7 +1075,7 @@ jobs:
   - task: collect-ops-files-latest-release
     file: cf-deployment-concourse-tasks/collect-ops-files/task.yml
     input_mapping:
-      base-ops-files: cf-deployment-master
+      base-ops-files: cf-deployment-main
       new-ops-files: relint-envs
     params:
       BASE_OPS_FILE_DIR: operations
@@ -1075,14 +1085,13 @@ jobs:
     file: cf-deployment-concourse-tasks/bosh-deploy/task.yml
     input_mapping:
       bbl-state: relint-envs
-      cf-deployment: cf-deployment-master
+      cf-deployment: cf-deployment-main
       ops-files: collected-ops-files
       vars-files: relint-envs
     params:
       BBL_STATE_DIR: environments/test/hermione/bbl-state
       SYSTEM_DOMAIN: hermione.cf-app.com
       OPS_FILES: |
-        operations/experimental/fast-deploy-with-downtime-and-danger.yml
         operations/aws.yml
         operations/use-compiled-releases.yml
         operations/use-external-blobstore.yml
@@ -1557,7 +1566,7 @@ jobs:
       SYSTEM_DOMAIN: baba-yaga.cf-app.com
   - task: run-drats
     privileged: true
-    file: drats-master/ci/drats-with-integration-config/task.yml
+    file: drats-master/ci/tasks/drats-with-integration-config/task.yml
     input_mapping:
       disaster-recovery-acceptance-tests: drats-master
       bbr-binary-release: bbr-github-release
@@ -1580,8 +1589,6 @@ jobs:
     - put: toolsmiths-windows-env
       params:
         action: claim
-      tags:
-      - vsphere-cf-release-integration
     - get: cf-deployment-develop
       trigger: true
       passed:
@@ -1599,8 +1606,6 @@ jobs:
     - get: toolsmiths-windows-env
       passed:
       - windows-claim-env
-      tags:
-      - vsphere-cf-release-integration
       trigger: true
     - get: cf-deployment-concourse-tasks
     - get: cf-deployment-develop
@@ -1663,8 +1668,6 @@ jobs:
     - get: toolsmiths-windows-env
       passed:
       - windows-deploy
-      tags:
-      - vsphere-cf-release-integration
       trigger: true
     - get: cf-deployment-concourse-tasks
     - get: cf-acceptance-tests-rc
@@ -1695,22 +1698,18 @@ jobs:
   - get: toolsmiths-windows-env
     passed:
     - windows-cats
-    tags:
-    - vsphere-cf-release-integration
     trigger: true
   - put: toolsmiths-windows-env
     params:
       action: unclaim
       env_file: toolsmiths-windows-env/metadata
-    tags:
-    - vsphere-cf-release-integration
 
 - name: stable-acquire-pool
   public: true
   serial: true
   plan:
   - in_parallel:
-    - get: cf-deployment-master
+    - get: cf-deployment-main
       trigger: true
     - put: stable-pool
       params: {acquire: true}
@@ -1734,12 +1733,12 @@ jobs:
   - in_parallel:
     - get: runtime-ci
     - get: cf-deployment-concourse-tasks
-    - get: cf-deployment-master
+    - get: cf-deployment-main
     - get: relint-envs
   - task: collect-ops-files
     file: cf-deployment-concourse-tasks/collect-ops-files/task.yml
     input_mapping:
-      base-ops-files: cf-deployment-master
+      base-ops-files: cf-deployment-main
       new-ops-files: relint-envs
     params:
       BASE_OPS_FILE_DIR: "operations"
@@ -1749,7 +1748,7 @@ jobs:
     file: cf-deployment-concourse-tasks/bosh-deploy/task.yml
     input_mapping:
       bbl-state: relint-envs
-      cf-deployment: cf-deployment-master
+      cf-deployment: cf-deployment-main
       ops-files: collected-ops-files
       vars-files: relint-envs
     params:
@@ -1800,7 +1799,7 @@ jobs:
     - in_parallel:
       - get: relint-envs
         passed: [stable-deploy]
-      - get: cf-deployment-master
+      - get: cf-deployment-main
         passed: [stable-deploy]
       - get: cf-deployment-concourse-tasks
   - task: bosh-run-errand-smoke-tests
@@ -1813,13 +1812,13 @@ jobs:
   - put: stable-pool
     params: {release: stable-pool}
 
-- name: stable-semihourly-pool-acquisition
+- name: stable-pool-acquisition
   serial: true
   public: true
   plan:
   - timeout: 4h
     do:
-    - get: half-hourly
+    - get: every-6-hours
       trigger: true
     - put: stable-pool
       params: {claim: bellatrix}
@@ -1835,14 +1834,13 @@ jobs:
     do:
     - get: stable-pool
       trigger: true
-      passed: [ stable-semihourly-pool-acquisition ]
+      passed: [ stable-pool-acquisition ]
     - in_parallel:
       - get: cf-deployment-concourse-tasks
       - get: cf-acceptance-tests-rc
       - get: relint-envs
-      - get: cf-deployment-master
+      - get: cf-deployment-main
       - get: runtime-ci
-        passed: [ stable-deploy ]
     - task: enable-docker-and-tasks
       file: cf-deployment-concourse-tasks/set-feature-flags/task.yml
       input_mapping:
@@ -1895,14 +1893,14 @@ jobs:
       passed: [ stable-periodic-cats ]
     - in_parallel:
       - get: runtime-ci
-      - get: cf-deployment-master
+      - get: cf-deployment-main
         passed: [ stable-periodic-cats ]
       - get: cf-acceptance-tests-rc
         passed: [ stable-periodic-cats ]
     - task: update-branch
       file: runtime-ci/tasks/update-cats-branch-with-cf-deployment-version/task.yml
       input_mapping:
-        cf-deployment: cf-deployment-master
+        cf-deployment: cf-deployment-main
         cf-acceptance-tests: cf-acceptance-tests-rc
       params:
         CATS_BRANCH: release-candidate
@@ -1938,7 +1936,7 @@ jobs:
     - get: runtime-ci
     - get: cf-deployment-version
       params: {bump: patch}
-    - get: cf-deployment-master
+    - get: cf-deployment-main
     - get: cf-deployment-develop
     - get: cf-deployment-release-candidate
       passed: [bless-manifest]
@@ -1946,7 +1944,7 @@ jobs:
     file: runtime-ci/tasks/check-stemcell-versions-for-ship-it/task.yml
   - task: update-cf-deployment-manifest-version
     file: runtime-ci/tasks/record-cfd-version-in-manifest/task.yml
-  - put: cf-deployment-master
+  - put: cf-deployment-main
     params:
       repository: cf-deployment-rc-with-updated-version
       tag: cf-deployment-version/version
@@ -1965,7 +1963,7 @@ jobs:
     - get: runtime-ci
     - get: cf-deployment-version
       params: {bump: minor}
-    - get: cf-deployment-master
+    - get: cf-deployment-main
     - get: cf-deployment-develop
     - get: cf-deployment-release-candidate
       passed: [bless-manifest]
@@ -1973,7 +1971,7 @@ jobs:
     file: runtime-ci/tasks/check-stemcell-versions-for-ship-it/task.yml
   - task: update-cf-deployment-manifest-version
     file: runtime-ci/tasks/record-cfd-version-in-manifest/task.yml
-  - put: cf-deployment-master
+  - put: cf-deployment-main
     params:
       repository: cf-deployment-rc-with-updated-version
       tag: cf-deployment-version/version
@@ -1992,7 +1990,7 @@ jobs:
     - get: runtime-ci
     - get: cf-deployment-version
       params: {bump: major}
-    - get: cf-deployment-master
+    - get: cf-deployment-main
     - get: cf-deployment-develop
     - get: cf-deployment-release-candidate
       passed: [bless-manifest]
@@ -2000,7 +1998,7 @@ jobs:
     file: runtime-ci/tasks/check-stemcell-versions-for-ship-it/task.yml
   - task: update-cf-deployment-manifest-version
     file: runtime-ci/tasks/record-cfd-version-in-manifest/task.yml
-  - put: cf-deployment-master
+  - put: cf-deployment-main
     params:
       repository: cf-deployment-rc-with-updated-version
       tag: cf-deployment-version/version
@@ -2017,7 +2015,7 @@ jobs:
   plan:
   - in_parallel:
     - get: runtime-ci
-    - get: cf-deployment-master
+    - get: cf-deployment-main
     - get: cf-deployment-release-candidate
       passed:
       - bless-manifest

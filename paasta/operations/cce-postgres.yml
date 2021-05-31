@@ -42,6 +42,12 @@
       cce_enable: true
       postgres_admin_password: ((cf_postgres_admin_password))
 
+- type: replace
+  path: /instance_groups/name=uaa/jobs/name=uaa/properties/uaa/servlet?
+  value:
+    idle-timeout: 600
+
+
 # CCE - Release replace
 - type: replace
   path: /releases/name=capi

@@ -1,8 +1,3 @@
 - type: replace
   path: /releases/name=haproxy/url
-  value: file://((releases_dir))/paasta/haproxy-boshrelease-10.1.0.tgz
-
-- type: replace
-  path: /releases/name=haproxy/version
-  value: "10.1.0"
-
+  value: file://((releases_dir))/paasta/haproxy-boshrelease-10.5.0.tgz
