@@ -4,8 +4,8 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  https://nextcloud.paas-ta.org/index.php/s/JjRiiZMpYtLXKck/download
-    version: 1.0.2
+    url:  https://nextcloud.paas-ta.org/index.php/s/CTDsro382NyyAEL/download
+    version: 1.0.1
 
 # CCE - UAA tomcat patch
 - type: replace
@@ -47,9 +47,12 @@
   path: /releases/name=capi
   value:
     name: capi
-    sha1: f31d7b7ad0396bce77ab9152661103d159127b25
-    url: https://nextcloud.paas-ta.org/index.php/s/dHNiRE8gCNXFnBo/download
-    version: 1.98.0-PaaS-TA-v3
+    #sha1: f31d7b7ad0396bce77ab9152661103d159127b25
+    #url: https://nextcloud.paas-ta.org/index.php/s/dHNiRE8gCNXFnBo/download
+    #version: 1.98.0-PaaS-TA-v3
+    sha1: 62d45b23e716c57aa98f9ffd34a517ded0dbb3f5
+    url: https://nextcloud.paas-ta.org/index.php/s/jT2jgAFNxxTgRr8/download
+    version: 1.98.0-PaaS-TA-v4
 
 - type: replace
   path: /releases/name=cf-networking

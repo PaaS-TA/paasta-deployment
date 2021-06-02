@@ -4,8 +4,8 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  https://nextcloud.paas-ta.org/index.php/s/JjRiiZMpYtLXKck/download
-    version: 1.0.2
+    url:  https://nextcloud.paas-ta.org/index.php/s/CTDsro382NyyAEL/download
+    version: 1.0.1
 
 # CCE - UAA tomcat patch
 - type: replace
@@ -39,9 +39,12 @@
   path: /releases/name=capi
   value:
     name: capi
-    sha1: f31d7b7ad0396bce77ab9152661103d159127b25
-    url: https://nextcloud.paas-ta.org/index.php/s/dHNiRE8gCNXFnBo/download
-    version: 1.98.0-PaaS-TA-v3
+    #sha1: f31d7b7ad0396bce77ab9152661103d159127b25
+    #url: https://nextcloud.paas-ta.org/index.php/s/dHNiRE8gCNXFnBo/download
+    #url: file:///home/ubuntu/workspace/sunny/github/PaaS-TA-capi-release/capi-release-1.98.0-PaaS-TA-v4.tgz
+    sha1: 62d45b23e716c57aa98f9ffd34a517ded0dbb3f5
+    url: https://nextcloud.paas-ta.org/index.php/s/jT2jgAFNxxTgRr8/download
+    version: 1.98.0-PaaS-TA-v4
 
 - type: replace
   path: /releases/name=cf-networking
@@ -82,11 +85,3 @@
     sha1: 4432cf7d0c67fbb4a7bce2194b8b4b86221d57dc
     url: https://nextcloud.paas-ta.org/index.php/s/rnZ7WXWFdMTmpbH/download
     version: 74.29.0-PaaS-TA
-
-- type: replace
-  path: /releases/name=pxc
-  value:
-    name: pxc
-    sha1: ed99301e412319e2f62e4899c37f67293bddee96
-    url: https://nextcloud.paas-ta.org/index.php/s/nFc58sK45M6B8Pz/download
-    version: 0.29.0-PaaS-TA
