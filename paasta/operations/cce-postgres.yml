@@ -54,6 +54,31 @@
     url: https://nextcloud.paas-ta.org/index.php/s/jT2jgAFNxxTgRr8/download
     version: 1.98.0-PaaS-TA-v4
 
+
+# CCE - PaaS-TA api/nginx patch 
+- type: replace
+  path: /instance_groups/name=api/jobs/-
+  value:
+    name: common_script
+    release: paasta-conf
+    properties:
+      pre_start_script: |+
+        #!/bin/bash
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    off;" /var/vcap/jobs/cloud_controller_ng/config/nginx.conf
+        echo "added disable_symlinks in nginx.conf"
+
+# CCE - PaaS-TA blobstore/nginx patch 
+- type: replace
+  path: /instance_groups/name=singleton-blobstore/jobs/-
+  value:
+    name: common_script
+    release: paasta-conf
+    properties:
+      pre_start_script: |+
+        #!/bin/bash
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    off;" /var/vcap/jobs/blobstore/config/nginx.conf
+        echo "added disable_symlinks in nginx.conf"
+
 - type: replace
   path: /releases/name=cf-networking
   value:
