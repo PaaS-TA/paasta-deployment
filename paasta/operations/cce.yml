@@ -4,8 +4,8 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  https://nextcloud.paas-ta.org/index.php/s/CTDsro382NyyAEL/download
-    version: 1.0.1
+    url:  https://nextcloud.paas-ta.org/index.php/s/JjRiiZMpYtLXKck/download
+    version: 1.0.2
 
 # CCE - UAA tomcat patch
 - type: replace
@@ -25,7 +25,14 @@
     properties:
       cce_enable: true
 
-# CCE - PaaS-TA database patch 
+# CCE - PaaS-TA postgres set password
+- type: replace
+  path: /variables/-
+  value:
+    name: cf_postgres_admin_password
+    type: password
+
+# CCE - PaaS-TA database patch
 - type: replace
   path: /instance_groups/name=database/jobs/-
   value:
@@ -33,57 +40,118 @@
     release: paasta-conf
     properties:
       cce_enable: true
+      postgres_admin_password: ((cf_postgres_admin_password))
 
+# CCE - PaaS-TA uaa patch
 - type: replace
   path: /instance_groups/name=uaa/jobs/name=uaa/properties/uaa/servlet?
   value:
     idle-timeout: 600
+
+# CCE - PaaS-TA api/nginx patch
+- type: replace
+  path: /instance_groups/name=api/jobs/-
+  value:
+    name: common_script
+    release: paasta-conf
+    properties:
+      pre_start_script: |+
+        #!/bin/bash
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    off;" /var/vcap/jobs/cloud_controller_ng/config/nginx.conf
+        echo "added disable_symlinks in nginx.conf"
+        sed -i'' -r -e "/listen    9022;/i\    root    /var/vcap/packages/nginx/html;" /var/vcap/jobs/cloud_controller_ng/config/nginx.conf
+        echo "added root default config  in nginx.conf"
+
+# CCE - PaaS-TA blobstore/nginx patch
+- type: replace
+  path: /instance_groups/name=singleton-blobstore/jobs/-
+  value:
+    name: common_script
+    release: paasta-conf
+    properties:
+      pre_start_script: |+
+        #!/bin/bash
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    off;" /var/vcap/jobs/blobstore/config/nginx.conf
+        echo "added disable_symlinks in nginx.conf"
 
 # CCE - Release replace
 - type: replace
   path: /releases/name=capi
   value:
     name: capi
-    sha1: f31d7b7ad0396bce77ab9152661103d159127b25
-    url: https://nextcloud.paas-ta.org/index.php/s/dHNiRE8gCNXFnBo/download
-    version: 1.98.0-PaaS-TA-v3
+    sha1: b88e34ea3c6a07e999cbb5a1a8606c0f592f5040
+    url: https://nextcloud.paas-ta.org/index.php/s/9rA6rYjynoFqEAo/download
+    version: 1.109.0-PaaS-TA
 
+# CCE - Release replace
 - type: replace
   path: /releases/name=cf-networking
   value:
     name: cf-networking
-    sha1: 4981b6f9d0d5f87a22e1852b8bf239cd6701d6b4
-    url: https://nextcloud.paas-ta.org/index.php/s/DewM5n2ACrzwBrH/download
-    version: 2.33.0-PaaS-TA
+    sha1: 0f23bfea4c036b9cf8352d7b3bf78a8ae75c2448
+    url: https://nextcloud.paas-ta.org/index.php/s/kNw82LWRnPZSNiF/download
+    version: 2.36.0-PaaS-TA
 
+# CCE - Release replace
 - type: replace
   path: /releases/name=diego
   value:
     name: diego
-    sha1: 329ab10d3b8792de4697c2a7076caade0fd4b39d
-    url: https://nextcloud.paas-ta.org/index.php/s/WLQxEydt93pNxjs/download
-    version: 2.48.0-PaaS-TA
+    sha1: d7cd8b1bce9d50dea0196b1b73dd675126cfb06f
+    url: https://nextcloud.paas-ta.org/index.php/s/KQ7g7BgLCjqNHzC/download
+    version: 2.49.0-PaaS-TA
 
+# CCE - Release replace
 - type: replace
   path: /releases/name=routing
   value:
     name: routing
-    sha1: 11b201117f131b2ac63d7fea957b13f40bcc82d3
-    url: https://nextcloud.paas-ta.org/index.php/s/Ce2oKEESn7ty5ro/download
-    version: 0.207.0-PaaS-TA
+    sha1: 7535f9caf5eb9f880a9fb55e3bfce2c7b37c833c
+    url: https://nextcloud.paas-ta.org/index.php/s/ZMTkHxrMiMQKgJJ/download
+    version: 0.213.0-PaaS-TA
 
+# CCE - Release replace
 - type: replace
   path: /releases/name=silk
   value:
     name: silk
-    sha1: 09399d2591045e1b266b28bd41ba41e1d9ec6985
-    url: https://nextcloud.paas-ta.org/index.php/s/Xi96J9mCsGyzx94/download
-    version: 2.33.0-PaaS-TA
+    sha1: 20d21af238f4a620dacad67be32bb98f2e2fdde7
+    url: https://nextcloud.paas-ta.org/index.php/s/oJfRCNEsrx2QQWJ/download
+    version: 2.36.0-PaaS-TA
 
+# CCE - Release replace
 - type: replace
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: 4432cf7d0c67fbb4a7bce2194b8b4b86221d57dc
-    url: https://nextcloud.paas-ta.org/index.php/s/rnZ7WXWFdMTmpbH/download
-    version: 74.29.0-PaaS-TA
+    sha1: a7207164abe1ec8a7ed03ba64617edf2e5c1ac9b
+    url: https://nextcloud.paas-ta.org/index.php/s/eoYte935HYE2AoQ/download
+    version: 75.1.0-PaaS-TA
+
+# CCE - Release replace
+- type: replace
+  path: /releases/name=pxc
+  value:
+    name: pxc
+    sha1: 5729b06533242b3ed4192d51251b5f3a09640b99
+    url: https://nextcloud.paas-ta.org/index.php/s/C33GfmCN6DFF54m/download
+    version: 0.34.0-PaaS-TA
+
+# CCE - Release replace
+- type: replace
+  path: /releases/name=credhub
+  value:
+    name: credhub
+    sha1: f60d84d89a2ca5ef0b4c904e7d618b6f20bae761
+    url: https://nextcloud.paas-ta.org/index.php/s/s6Dz7ZQoDN2fAad/download
+    version: 2.9.0-PaaS-TA
+
+# CCE - Release replace
+#- type: replace
+#  path: /releases/name=postgres?
+#  value:
+#    name: postgres
+#    sha1: c6d8e7897a17183eee9b45a4e3fbe911155224a6
+#    url: https://nextcloud.paas-ta.org/index.php/s/NZjRscmNkN6E9L7/download
+#    version: 43-PaaS-TA
+
