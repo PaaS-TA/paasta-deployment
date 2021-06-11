@@ -10,6 +10,11 @@
         chage -M 90 vcap
         chage -M 90 jumpbox
         chmod o-w /var/tmp
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    off;" /var/vcap/jobs/director/config/nginx.conf
+        echo "added disable_symlinks in nginx.conf"
+        sed -i'' -r -e "/listen 25555 ssl;/a\    root html;" /var/vcap/jobs/director/config/nginx.conf
+        echo "added root default config  in nginx.conf"
+
     release: os-conf
 
 - type: replace
@@ -20,13 +25,13 @@
 
 - type: replace
   path: /releases/name=bosh/url
-  value: https://nextcloud.paas-ta.org/index.php/s/RQJWY9HRSRnG3G7/download
+  value: https://nextcloud.paas-ta.org/index.php/s/tYLZ27i2ZcDtNbx/download
 - type: replace
   path: /releases/name=bosh/version
-  value: 271.2.0-PaaS-TA-v3
+  value: 271.2.0-PaaS-TA-v5
 - type: replace 
   path: /releases/name=bosh/sha1
-  value: 5d83314714df5e740aa237e591204ab6d10e1343
+  value: 56cd00ae684e756762d5a518dfe02546c6cb82fd
 
 - type: replace
   path: /instance_groups/name=bosh/properties/postgres/cce_enable?
