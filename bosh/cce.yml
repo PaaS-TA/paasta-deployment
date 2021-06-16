@@ -10,6 +10,7 @@
         chage -M 90 vcap
         chage -M 90 jumpbox
         chmod o-w /var/tmp
+        ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime  
         sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/director/config/nginx.conf
         echo "added disable_symlinks in nginx.conf"
         mkdir -p /var/vcap/data/director/tmp/html
