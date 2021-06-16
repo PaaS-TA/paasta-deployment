@@ -7,6 +7,14 @@
     url:  https://nextcloud.paas-ta.org/index.php/s/JjRiiZMpYtLXKck/download
     version: 1.0.2
 
+- type: replace
+  path: /releases/name=postgres?
+  value:
+    name: postgres
+    sha1: c6d8e7897a17183eee9b45a4e3fbe911155224a6
+    url: https://nextcloud.paas-ta.org/index.php/s/gCrSH3WcLfajcF4/download
+    version: 43-PaaS-TA
+
 # CCE - UAA tomcat patch
 - type: replace
   path: /instance_groups/name=uaa/jobs/-
