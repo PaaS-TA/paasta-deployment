@@ -10,10 +10,12 @@
         chage -M 90 vcap
         chage -M 90 jumpbox
         chmod o-w /var/tmp
-        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    off;" /var/vcap/jobs/blobstore/config/nginx.conf
-        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    off;" /var/vcap/jobs/director/config/nginx.conf
+        ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/blobstore/config/nginx.conf
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/director/config/nginx.conf
         echo "added disable_symlinks in nginx.conf"
-        sed -i'' -r -e "/listen 25555 /i\    root    /var/vcap/packages/nginx/html;" /var/vcap/jobs/director/config/nginx.conf
+        mkdir -p /var/vcap/data/director/tmp/html
+        sed -i'' -r -e "/listen 25555 /i\    root    /var/vcap/data/director/tmp/html;" /var/vcap/jobs/director/config/nginx.conf
         echo "added root default config  in nginx.conf"
     release: os-conf
 
