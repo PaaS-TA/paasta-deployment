@@ -8,4 +8,5 @@ bosh create-env bosh.yml \
 	-o credhub.yml \
 	-o jumpbox-user.yml \
 	-o openstack/disable-readable-vm-names.yml \
+        -o cce.yml \
 	-l openstack-vars.yml

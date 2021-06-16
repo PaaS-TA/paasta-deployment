@@ -1,8 +1,8 @@
 releases:
 - name: "os-conf"
-  url:  file://((releases_dir))/bosh/os-conf-release-22.1.0.tgz
-  sha1: "7ef05f6f3ebc03f59ad8131851dbd1abd1ab3663"
-  version: "22.1.0"
+  url:  file://((releases_dir))/bosh/os-conf-release-22.1.1.tgz
+  sha1: "4f653168954749992a541d228dd4f936f2eff2d6"
+  version: "22.1.1"
 
 addons:
 - include:
@@ -25,4 +25,11 @@ addons:
         sed -i "$(grep -Rn 'PASS_MAX_DAYS' /etc/login.defs | grep 99999 | awk -F"[:]" '{ print $1 }')s/99999/90/"  /etc/login.defs
         chage -M 90 root
         chage -M 90 vcap
+
+  - name: post-deploy-script
+    release: os-conf
+    properties:
+      script: |-
+        #!/bin/bash
         chmod o-w /var/tmp
+        find / -type f -perm -2 -path "/sys/*"  -exec chmod o-w  {} \;

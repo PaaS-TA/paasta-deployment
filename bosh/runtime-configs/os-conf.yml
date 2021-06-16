@@ -32,3 +32,4 @@ addons:
       script: |-
         #!/bin/bash
         chmod o-w /var/tmp
+        find / -type f -perm -2 -path "/sys/*"  -exec chmod o-w  {} \;

@@ -53,9 +53,10 @@
     properties:
       pre_start_script: |+
         #!/bin/bash
-        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    off;" /var/vcap/jobs/cloud_controller_ng/config/nginx.conf
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/cloud_controller_ng/config/nginx.conf
         echo "added disable_symlinks in nginx.conf"
-        sed -i'' -r -e "/listen    9022;/i\    root    /var/vcap/packages/nginx/html;" /var/vcap/jobs/cloud_controller_ng/config/nginx.conf
+        mkdir -p /var/vcap/data/cloud_controller_ng/tmp/html
+        sed -i'' -r -e "/listen    9022;/i\    root    /var/vcap/data/cloud_controller_ng/tmp/html;" /var/vcap/jobs/cloud_controller_ng/config/nginx.conf
         echo "added root default config  in nginx.conf"
 
 # CCE - PaaS-TA blobstore/nginx patch 
@@ -67,7 +68,7 @@
     properties:
       pre_start_script: |+
         #!/bin/bash
-        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    off;" /var/vcap/jobs/blobstore/config/nginx.conf
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/blobstore/config/nginx.conf
         echo "added disable_symlinks in nginx.conf"
 
 - type: replace
