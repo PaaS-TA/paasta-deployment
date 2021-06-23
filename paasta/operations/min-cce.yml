@@ -106,7 +106,7 @@
 #    properties:
 #      pre_start_script: |+
 #        #!/bin/bash
-#        if [ -f /var/vcap/jobs/blobstre/config/nginx.conf ]; then
+#        if [ -f /var/vcap/jobs/blobstore/config/nginx.conf ]; then
 #            sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/blobstore/config/nginx.conf
 #            echo "added disable_symlinks in nginx.conf"
 #        fi
