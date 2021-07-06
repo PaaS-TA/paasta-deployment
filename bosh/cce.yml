@@ -19,6 +19,31 @@
         echo "added root default config  in nginx.conf"
     release: os-conf
 
+#- path: /instance_groups/name=bosh/jobs/-
+#  type: replace
+#  value:
+#    name: common_script
+#    properties:
+#      post_start_script: |-
+#        #!/bin/bash
+#          echo "starting commont_script/post_start_script"
+#          if [ -d /var/vcap/data/uaa/tomcat/webapps/ROOT ]; then
+#            chmod -R 600 /var/vcap/data/uaa/tomcat/webapps
+#            echo "chmod -R 600 tomcat files"
+#          else
+#            echo "where is ROOT?"
+#          fi
+#          echo "finished common_script/post_start_script"
+#    release: paasta-conf
+
+- path: /instance_groups/name=bosh/jobs/-
+  type: replace
+  value:
+    name: postgres_conf
+    release: paasta-conf
+    properties:
+      cce_enable: true
+
 - path: /instance_groups/name=bosh/jobs/-
   type: replace
   value:
