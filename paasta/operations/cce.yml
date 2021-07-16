@@ -153,13 +153,3 @@
     sha1: f60d84d89a2ca5ef0b4c904e7d618b6f20bae761
     url: https://nextcloud.paas-ta.org/index.php/s/s6Dz7ZQoDN2fAad/download
     version: 2.9.0-PaaS-TA
-
-# CCE - Release replace
-#- type: replace
-#  path: /releases/name=postgres?
-#  value:
-#    name: postgres
-#    sha1: c6d8e7897a17183eee9b45a4e3fbe911155224a6
-#    url: https://nextcloud.paas-ta.org/index.php/s/NZjRscmNkN6E9L7/download
-#    version: 43-PaaS-TA
-
