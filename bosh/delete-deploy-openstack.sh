@@ -7,5 +7,6 @@ bosh delete-env bosh.yml \
 	-o uaa.yml \
 	-o credhub.yml \
 	-o jumpbox-user.yml \
+	-o cce.yml \
 	-o openstack/disable-readable-vm-names.yml \
 	-l openstack-vars.yml
