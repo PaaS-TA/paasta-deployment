@@ -1,6 +1,6 @@
 ---
 name: paasta
-manifest_version: v5.5.2
+manifest_version: v5.6
 update:
   canaries: 1
   canary_watch_time: 30000-1200000
@@ -55,7 +55,6 @@ addons:
 - name: loggr-syslog-agent
   include:
     stemcell:
-    - os: ubuntu-trusty
     - os: ubuntu-xenial
   exclude:
     jobs:
@@ -94,6 +93,7 @@ addons:
   - name: prom_scraper
     release: loggregator-agent
     properties:
+      scrape_interval: 60s
       scrape:
         tls:
           ca_cert: "((prom_scraper_scrape_tls.ca))"
@@ -112,7 +112,6 @@ addons:
       release: cf-smoke-tests
   include:
     stemcell:
-    - os: ubuntu-trusty
     - os: ubuntu-xenial
   jobs:
   - name: metrics-discovery-registrar
@@ -386,9 +385,6 @@ instance_groups:
     release: nats
     provides:
       nats-tls: {as: nats-tls, shared: true}
-    custom_provider_definitions:
-    - name: nats-tls-address
-      type: address
     properties:
       nats:
         hostname: nats.service.cf.internal
@@ -478,6 +474,11 @@ instance_groups:
   - name: route_registrar
     release: routing
     properties:
+      nats:
+        tls:
+          enabled: true
+          client_cert: "((nats_client_cert.certificate))"
+          client_key: "((nats_client_cert.private_key))"
       route_registrar:
         routes:
         - name: cf-mysql-proxy
@@ -762,8 +763,6 @@ instance_groups:
           ## PAAS-TA PORTAL USER ACCOUNT ADD END
         ca_certs:
         - "((mysql_server_certificate.ca))"
-        servlet:
-          idle-timeout: 600
       uaadb:
         address: sql-db.service.cf.internal
         databases:
@@ -778,6 +777,11 @@ instance_groups:
   - name: route_registrar
     release: routing
     properties:
+      nats:
+        tls:
+          enabled: true
+          client_cert: "((nats_client_cert.certificate))"
+          client_key: "((nats_client_cert.private_key))"
       route_registrar:
         routes:
         - health_check:
@@ -836,6 +840,11 @@ instance_groups:
   - name: route_registrar
     release: routing
     properties:
+      nats:
+        tls:
+          enabled: true
+          client_cert: "((nats_client_cert.certificate))"
+          client_key: "((nats_client_cert.private_key))"
       route_registrar:
         routes:
         - name: blobstore
@@ -1013,6 +1022,11 @@ instance_groups:
   - name: route_registrar
     release: routing
     properties:
+      nats:
+        tls:
+          enabled: true
+          client_cert: "((nats_client_cert.certificate))"
+          client_key: "((nats_client_cert.private_key))"
       route_registrar:
         routes:
         - name: api
@@ -1470,6 +1484,11 @@ instance_groups:
     release: log-cache
   - name: route_registrar
     properties:
+      nats:
+        tls:
+          enabled: true
+          client_cert: "((nats_client_cert.certificate))"
+          client_key: "((nats_client_cert.private_key))"
       route_registrar:
         routes:
         - name: log-cache-reverse-proxy
@@ -1732,6 +1751,11 @@ instance_groups:
   - name: route_registrar
     release: routing
     properties:
+      nats:
+        tls:
+          enabled: true
+          client_cert: "((nats_client_cert.certificate))"
+          client_key: "((nats_client_cert.private_key))"
       route_registrar:
         routes:
         - name: doppler
@@ -1826,24 +1850,30 @@ variables:
 - name: cc_staging_upload_password
   type: password
 - name: cf_app_sd_ca
+  type: certificate
   options:
     common_name: service-discovery-controller.service.cf.internal
     is_ca: true
-  type: certificate
 - name: cf_app_sd_client_tls
+  type: certificate
+  update_mode: converge
   options:
     ca: cf_app_sd_ca
     common_name: service-discovery-controller.service.cf.internal
+    alternative_names:
+    - service-discovery-controller.service.cf.internal
     extended_key_usage:
     - client_auth
-  type: certificate
 - name: cf_app_sd_server_tls
+  type: certificate
+  update_mode: converge
   options:
     ca: cf_app_sd_ca
     common_name: service-discovery-controller.service.cf.internal
+    alternative_names:
+    - service-discovery-controller.service.cf.internal
     extended_key_usage:
     - server_auth
-  type: certificate
 - name: cf_mysql_mysql_admin_password
   type: password
 - name: cf_mysql_mysql_cluster_health_password
@@ -1873,27 +1903,33 @@ variables:
 - name: silk_ca
   type: certificate
   options:
-    is_ca: true
     common_name: silk-ca
+    is_ca: true
 - name: silk_controller
   type: certificate
+  update_mode: converge
   options:
     ca: silk_ca
     common_name: silk-controller.service.cf.internal
+    alternative_names:
+    - silk-controller.service.cf.internal
     extended_key_usage:
     - server_auth
 - name: silk_daemon
   type: certificate
+  update_mode: converge
   options:
     ca: silk_ca
     common_name: silk-daemon
+    alternative_names:
+    - silk-daemon
     extended_key_usage:
     - client_auth
 - name: network_policy_ca
   type: certificate
   options:
-    is_ca: true
     common_name: networkPolicyCA
+    is_ca: true
 - name: network_policy_server_external
   type: certificate
   options:
@@ -1905,16 +1941,22 @@ variables:
     - server_auth
 - name: network_policy_server
   type: certificate
+  update_mode: converge
   options:
     ca: network_policy_ca
     common_name: policy-server.service.cf.internal
+    alternative_names:
+    - policy-server.service.cf.internal
     extended_key_usage:
     - server_auth
 - name: network_policy_client
   type: certificate
+  update_mode: converge
   options:
     ca: network_policy_ca
     common_name: clientName
+    alternative_names:
+    - clientName
     extended_key_usage:
     - client_auth
 - name: uaa_clients_routing_api_client_secret
@@ -1964,18 +2006,24 @@ variables:
 - name: service_cf_internal_ca
   type: certificate
   options:
-    is_ca: true
     common_name: internalCA
+    is_ca: true
 - name: blobstore_tls
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
     common_name: blobstore.service.cf.internal
+    alternative_names:
+    - blobstore.service.cf.internal
 - name: diego_auctioneer_client
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
-    common_name: auctioneer client
+    common_name: auctioneer-client
+    alternative_names:
+    - auctioneer-client
     extended_key_usage:
     - client_auth
 - name: diego_auctioneer_server
@@ -1983,16 +2031,19 @@ variables:
   options:
     ca: service_cf_internal_ca
     common_name: auctioneer.service.cf.internal
-    extended_key_usage:
-    - server_auth
     alternative_names:
     - "*.auctioneer.service.cf.internal"
     - auctioneer.service.cf.internal
+    extended_key_usage:
+    - server_auth
 - name: diego_bbs_client
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
-    common_name: bbs client
+    common_name: bbs-client
+    alternative_names:
+    - bbs-client
     extended_key_usage:
     - client_auth
 - name: diego_bbs_server
@@ -2000,17 +2051,20 @@ variables:
   options:
     ca: service_cf_internal_ca
     common_name: bbs.service.cf.internal
-    extended_key_usage:
-    - server_auth
-    - client_auth
     alternative_names:
     - "*.bbs.service.cf.internal"
     - bbs.service.cf.internal
+    extended_key_usage:
+    - server_auth
+    - client_auth
 - name: diego_rep_client
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
-    common_name: rep client
+    common_name: rep-client
+    alternative_names:
+    - rep-client
     extended_key_usage:
     - client_auth
 - name: diego_rep_agent_v2
@@ -2018,113 +2072,145 @@ variables:
   options:
     ca: service_cf_internal_ca
     common_name: cell.service.cf.internal
-    extended_key_usage:
-    - client_auth
-    - server_auth
     alternative_names:
     - "*.cell.service.cf.internal"
     - cell.service.cf.internal
     - 127.0.0.1
     - localhost
+    extended_key_usage:
+    - client_auth
+    - server_auth
 - name: loggregator_ca
   type: certificate
   options:
-    is_ca: true
     common_name: loggregatorCA
+    is_ca: true
 - name: loggregator_tls_statsdinjector
   type: certificate
+  update_mode: converge
   options:
     ca: loggregator_ca
     common_name: statsdinjector
+    alternative_names:
+    - statsdinjector
     extended_key_usage:
     - client_auth
 - name: loggregator_tls_agent
   type: certificate
+  update_mode: converge
   options:
     ca: loggregator_ca
     common_name: metron
+    alternative_names:
+    - metron
     extended_key_usage:
     - client_auth
     - server_auth
 - name: loggregator_tls_doppler
   type: certificate
+  update_mode: converge
   options:
     ca: loggregator_ca
     common_name: doppler
+    alternative_names:
+    - doppler
     extended_key_usage:
     - client_auth
     - server_auth
 - name: loggregator_tls_tc
   type: certificate
+  update_mode: converge
   options:
     ca: loggregator_ca
     common_name: trafficcontroller
+    alternative_names:
+    - trafficcontroller
     extended_key_usage:
     - client_auth
     - server_auth
 - name: loggregator_tls_cc_tc
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
     common_name: trafficcontroller
+    alternative_names:
+    - trafficcontroller
     extended_key_usage:
     - client_auth
 - name: loggregator_rlp_gateway_tls_cc
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
     common_name: rlp-gateway
+    alternative_names:
+    - rlp-gateway
     extended_key_usage:
     - client_auth
 - name: loggregator_tls_rlp
   type: certificate
+  update_mode: converge
   options:
     ca: loggregator_ca
     common_name: reverselogproxy
+    alternative_names:
+    - reverselogproxy
     extended_key_usage:
     - client_auth
     - server_auth
 - name: loggregator_rlp_gateway
   type: certificate
+  update_mode: converge
   options:
     ca: loggregator_ca
     common_name: rlp_gateway
+    alternative_names:
+    - rlp_gateway
     extended_key_usage:
     - client_auth
 - name: logs_provider
+  type: certificate
+  update_mode: converge
   options:
     ca: loggregator_ca
     common_name: log-cache
+    alternative_names:
+    - log-cache
     extended_key_usage:
     - client_auth
     - server_auth
-  type: certificate
 - name: log_cache_ca
+  type: certificate
   options:
     common_name: log-cache
     is_ca: true
-  type: certificate
 - name: log_cache
+  type: certificate
+  update_mode: converge
   options:
+    ca: log_cache_ca
+    common_name: log-cache
     alternative_names:
     - log_cache
     - log-cache
     - logcache
-    ca: log_cache_ca
-    common_name: log-cache
     extended_key_usage:
     - client_auth
     - server_auth
-  type: certificate
 - name: log_cache_to_loggregator_agent
+  type: certificate
+  update_mode: converge
   options:
     ca: loggregator_ca
     common_name: log-cache
+    alternative_names:
+    - log-cache
     extended_key_usage:
     - client_auth
-  type: certificate
 - name: cc_logcache_tls
   type: certificate
+  update_mode: converge
   options:
     ca: log_cache_ca
     common_name: "api.((system_domain))"
@@ -2133,22 +2219,27 @@ variables:
     - cloud-controller-ng.service.cf.internal
 - name: logcache_ssl
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
     common_name: log-cache
     alternative_names:
+    - log-cache
     - log-cache.((system_domain))
     - "*.log-cache.((system_domain))"
 - name: log_cache_proxy_tls
   type: certificate
+  update_mode: converge
   options:
     ca: log_cache_ca
     common_name: localhost
+    alternative_names:
+    - localhost
 - name: router_ca
   type: certificate
   options:
-    is_ca: true
     common_name: routerCA
+    is_ca: true
 - name: router_ssl
   type: certificate
   options:
@@ -2164,23 +2255,29 @@ variables:
     is_ca: true
 - name: routing_api_tls
   type: certificate
+  update_mode: converge
   options:
     ca: routing_api_ca
     common_name: routing-api.service.cf.internal
+    alternative_names:
+    - routing-api.service.cf.internal
     extended_key_usage:
       - server_auth
 - name: routing_api_tls_client
   type: certificate
+  update_mode: converge
   options:
     ca: routing_api_ca
     common_name: routing-api-client
+    alternative_names:
+    - routing-api-client
     extended_key_usage:
       - client_auth
 - name: uaa_ca
   type: certificate
   options:
-    is_ca: true
     common_name: uaaCA
+    is_ca: true
 - name: uaa_ssl
   type: certificate
   options:
@@ -2190,14 +2287,20 @@ variables:
     - uaa.service.cf.internal
 - name: uaa_login_saml
   type: certificate
+  update_mode: converge
   options:
     ca: uaa_ca
     common_name: uaa_login_saml
+    alternative_names:
+    - uaa_login_saml
 - name: cc_tls
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
     common_name: cloud-controller-ng.service.cf.internal
+    alternative_names:
+    - cloud-controller-ng.service.cf.internal
     extended_key_usage:
     - client_auth
     - server_auth
@@ -2211,23 +2314,32 @@ variables:
     - cloud-controller-ng.service.cf.internal
 - name: cc_bridge_tps
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
     common_name: tps_watcher
+    alternative_names:
+    - tps_watcher
     extended_key_usage:
     - client_auth
 - name: cc_bridge_cc_uploader
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
     common_name: cc_uploader
+    alternative_names:
+    - cc_uploader
     extended_key_usage:
     - client_auth
 - name: cc_bridge_cc_uploader_server
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
     common_name: cc-uploader.service.cf.internal
+    alternative_names:
+    - cc-uploader.service.cf.internal
     extended_key_usage:
     - server_auth
 - name: diego_locket_server
@@ -2235,16 +2347,19 @@ variables:
   options:
     ca: service_cf_internal_ca
     common_name: locket.service.cf.internal
-    extended_key_usage:
-    - server_auth
     alternative_names:
     - "*.locket.service.cf.internal"
     - locket.service.cf.internal
+    extended_key_usage:
+    - server_auth
 - name: diego_locket_client
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
-    common_name: locket client
+    common_name: locket-client
+    alternative_names:
+    - locket-client
     extended_key_usage:
     - client_auth
 - name: locket_database_password
@@ -2264,11 +2379,11 @@ variables:
   type: certificate
   options:
     ca: service_cf_internal_ca
-    extended_key_usage:
-    - client_auth
     common_name: gorouter_backend_tls
     alternative_names:
     - gorouter.service.cf.internal
+    extended_key_usage:
+    - client_auth
 - name: credhub_ca
   type: certificate
   options:
@@ -2286,11 +2401,11 @@ variables:
   type: certificate
   options:
     ca: service_cf_internal_ca
-    extended_key_usage:
-    - client_auth
     common_name: ssh_proxy_backends_tls
     alternative_names:
     - ssh-proxy.service.cf.internal
+    extended_key_usage:
+    - client_auth
 - name: pxc_galera_ca
   type: certificate
   options:
@@ -2303,181 +2418,240 @@ variables:
     is_ca: true
 - name: galera_server_certificate
   type: certificate
+  update_mode: converge
   options:
     ca: pxc_galera_ca
     common_name: galera_server_certificate
+    alternative_names:
+    - galera_server_certificate
     extended_key_usage:
     - server_auth
     - client_auth
 - name: mysql_server_certificate
   type: certificate
+  update_mode: converge
   options:
     ca: pxc_server_ca
     common_name: sql-db.service.cf.internal
+    alternative_names:
+    - sql-db.service.cf.internal
 
 - name: loggregator_rlp_gateway_tls
   type: certificate
+  update_mode: converge
   options:
+    ca: service_cf_internal_ca
+    common_name: log-stream.((system_domain))
     alternative_names:
     - log-stream.((system_domain))
     - log-api.service.cf.internal
-    ca: service_cf_internal_ca
-    common_name: log-stream.((system_domain))
 
 - name: loggregator_trafficcontroller_tls
   type: certificate
+  update_mode: converge
   options:
+    ca: service_cf_internal_ca
+    common_name: doppler.((system_domain))
     alternative_names:
     - doppler.((system_domain))
     - log-api.service.cf.internal
-    ca: service_cf_internal_ca
-    common_name: doppler.((system_domain))
 
 - name: metric_scraper_ca
   type: certificate
   options:
-    is_ca: true
     common_name: metricScraperCA
+    is_ca: true
 
 - name: metrics_agent_tls
+  type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: metrics_agent
+    alternative_names:
+    - metrics_agent
     extended_key_usage:
       - server_auth
-  type: certificate
 - name: metrics_discovery_metrics_tls
+  type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: metrics_discovery_metrics
+    alternative_names:
+    - metrics_discovery_metrics
     extended_key_usage:
       - server_auth
-  type: certificate
 - name: scrape_config_generator_metrics_tls
+  type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: scrape_config_generator_metrics
+    alternative_names:
+    - scrape_config_generator_metrics
     extended_key_usage:
       - server_auth
-  type: certificate
 
 - name: log_cache_metrics_tls
   type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: log_cache_metrics
+    alternative_names:
+    - log_cache_metrics
     extended_key_usage:
     - server_auth
 
 - name: log_cache_cf_auth_proxy_metrics_tls
   type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: log_cache_cf_auth_proxy_metrics
+    alternative_names:
+    - log_cache_cf_auth_proxy_metrics
     extended_key_usage:
     - server_auth
 
 - name: log_cache_gateway_metrics_tls
   type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: log_cache_gateway_metrics
+    alternative_names:
+    - log_cache_gateway_metrics
     extended_key_usage:
     - server_auth
 
 - name: forwarder_agent_metrics_tls
   type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: forwarder_agent_metrics
+    alternative_names:
+    - forwarder_agent_metrics
     extended_key_usage:
     - server_auth
 
 - name: loggregator_agent_metrics_tls
   type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: loggregator_agent_metrics
+    alternative_names:
+    - loggregator_agent_metrics
     extended_key_usage:
     - server_auth
 
 - name: loggr_udp_forwarder_tls
   type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: loggr_udp_forwarder_metrics
+    alternative_names:
+    - loggr_udp_forwarder_metrics
     extended_key_usage:
     - server_auth
 
 - name: syslog_agent_api_tls
   type: certificate
+  update_mode: converge
   options:
     ca: loggregator_ca
     common_name: syslog-agent
+    alternative_names:
+    - syslog-agent
     extended_key_usage:
     - client_auth
 
 - name: binding_cache_api_tls
   type: certificate
+  update_mode: converge
   options:
     ca: service_cf_internal_ca
     common_name: binding-cache
+    alternative_names:
+    - binding-cache
     extended_key_usage:
     - client_auth
 
 - name: binding_cache_tls
   type: certificate
+  update_mode: converge
   options:
     ca: loggregator_ca
     common_name: binding-cache
+    alternative_names:
+    - binding-cache
     extended_key_usage:
     - server_auth
 
 - name: syslog_agent_metrics_tls
   type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: syslog_agent_metrics
+    alternative_names:
+    - syslog_agent_metrics
     extended_key_usage:
     - server_auth
 
 - name: loggr_syslog_binding_cache_metrics_tls
   type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: loggr_syslog_binding_cache_metrics
+    alternative_names:
+    - loggr_syslog_binding_cache_metrics
     extended_key_usage:
     - server_auth
 
 - name: prom_scraper_scrape_tls
   type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: prom_scraper
+    alternative_names:
+    - prom_scraper
     extended_key_usage:
     - client_auth
 
 - name: prom_scraper_metrics_tls
   type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: prom_scraper_metrics
+    alternative_names:
+    - prom_scraper_metrics
     extended_key_usage:
     - server_auth
 
 - name: rlp_gateway_metrics_tls
   type: certificate
+  update_mode: converge
   options:
     ca: metric_scraper_ca
     common_name: rlp_gateway_metrics
+    alternative_names:
+    - rlp_gateway_metrics
     extended_key_usage:
     - server_auth
 
 - name: nats_internal_ca
   type: certificate
   options:
-    is_ca: true
     common_name: nats_internal
+    is_ca: true
 
 - name: nats_internal_cert
   type: certificate
@@ -2494,154 +2668,157 @@ variables:
 - name: nats_ca
   type: certificate
   options:
-    is_ca: true
     common_name: nats
+    is_ca: true
 
 - name: nats_client_cert
   type: certificate
+  update_mode: converge
   options:
     ca: nats_ca
-    common_name: "nats_client"
+    common_name: nats_client
+    alternative_names:
+    - nats_client
     extended_key_usage:
     - client_auth
 
 - name: nats_server_cert
   type: certificate
+  update_mode: converge
   options:
     ca: nats_ca
     common_name: nats.service.cf.internal
+    alternative_names:
+    - "*.nats.service.cf.internal"
+    - nats.service.cf.internal
     extended_key_usage:
     - server_auth
-  consumes:
-    alternative_name:
-      from: nats-tls-address
-      properties: { wildcard: true }
 
 releases:
 - name: binary-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/binary-buildpack-release?v=1.0.36
-  version: 1.0.36
-  sha1: 0269a613be68f988682bbf56504b78477965b1c4
+  url: https://bosh.io/d/github.com/cloudfoundry/binary-buildpack-release?v=1.0.37
+  version: 1.0.37
+  sha1: a661323f02c24c6646465fb35ae9fa991ea1f243
 - name: bpm
   url: https://bosh.io/d/github.com/cloudfoundry/bpm-release?v=1.1.9
   version: 1.1.9
   sha1: dcf0582d838a73de29da273552ae79ac3098ee8b
 - name: capi
-  url: https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.98.0
-  version: 1.98.0
-  sha1: e4b0b8a1ef10b71da5b09248150c3295197ee0b6
+  url: https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.109.0
+  version: 1.109.0
+  sha1: 9013a3c0e0e4f846554e76fe2adae72046aa60a3
 - name: cf-networking
-  url: https://bosh.io/d/github.com/cloudfoundry/cf-networking-release?v=2.33.0
-  version: 2.33.0
-  sha1: 0497597194cf22fcd474e949a9299336cca78e9e
+  url: https://bosh.io/d/github.com/cloudfoundry/cf-networking-release?v=2.36.0
+  version: 2.36.0
+  sha1: e6f22502bba6c7ee91b69b52b7e9f0a1a878ac90
 - name: cf-smoke-tests
-  url: https://bosh.io/d/github.com/cloudfoundry/cf-smoke-tests-release?v=41.0.1
-  version: 41.0.1
-  sha1: 0bbdb6970b594e7e4dde08937c39b80d8414f2ba
+  url: https://bosh.io/d/github.com/cloudfoundry/cf-smoke-tests-release?v=41.0.2
+  version: 41.0.2
+  sha1: b1eb4efe1f88367708ac8cbb08dc78a09dde9c4b
 - name: cflinuxfs3
-  url: https://bosh.io/d/github.com/cloudfoundry/cflinuxfs3-release?v=0.204.0
-  version: 0.204.0
-  sha1: b622aaba6db936785e16c4d2b92e45c6202c78e3
+  url: https://bosh.io/d/github.com/cloudfoundry/cflinuxfs3-release?v=0.236.0
+  version: 0.236.0
+  sha1: b61444763ea4cc048df95d1259e1c94eddeb8fe0
 - name: credhub
-  url: https://bosh.io/d/github.com/pivotal-cf/credhub-release?v=2.8.0
-  version: 2.8.0
-  sha1: 3a9732bab2fa80bb9431941193b6569ef29af491
+  url: https://bosh.io/d/github.com/pivotal-cf/credhub-release?v=2.9.0
+  version: 2.9.0
+  sha1: 36d3a92588c33bc3a7ce54cd4714c96cc7d1bee2
 - name: diego
-  url: https://bosh.io/d/github.com/cloudfoundry/diego-release?v=2.48.0
-  version: 2.48.0
-  sha1: fbf8ebfeda1f326f5d6834b9a621b88a548e06e3
+  url: https://bosh.io/d/github.com/cloudfoundry/diego-release?v=2.49.0
+  version: 2.49.0
+  sha1: 5e8e6600cc6cf69dd25ce76bda6a144cc00bfdd7
 - name: dotnet-core-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/dotnet-core-buildpack-release?v=2.3.14
-  version: 2.3.14
-  sha1: 428c47a32ef47ea4e848586a36126567bf90255c
+  url: https://bosh.io/d/github.com/cloudfoundry/dotnet-core-buildpack-release?v=2.3.26
+  version: 2.3.26
+  sha1: 122d5e36f1d676897d207d012e5312ed89e58f22
 - name: garden-runc
-  url: https://bosh.io/d/github.com/cloudfoundry/garden-runc-release?v=1.19.16
-  version: 1.19.16
-  sha1: c5bb4211adb7e94750b56e81eda9bb8e09eab3a0
+  url: https://bosh.io/d/github.com/cloudfoundry/garden-runc-release?v=1.19.23
+  version: 1.19.23
+  sha1: dbdcf0fdbe31243ffa03e922605ffa6ace79a59b
 - name: go-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/go-buildpack-release?v=1.9.17
-  version: 1.9.17
-  sha1: 7a9125eab62a498928e5d6a7eb68083867e06c48
+  url: https://bosh.io/d/github.com/cloudfoundry/go-buildpack-release?v=1.9.29
+  version: 1.9.29
+  sha1: 269a3c9d5e7ef15fea4473b08a022e3e3cc9b15d
 - name: java-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/java-buildpack-release?v=4.32.1
-  version: 4.32.1
-  sha1: 80433833d696c5219be4eadcf6af6abb6a4862a3
+  url: https://bosh.io/d/github.com/cloudfoundry/java-buildpack-release?v=4.37
+  version: "4.37"
+  sha1: 0d4d939490b0f16f4d2f8dfd937185479bf9f877
 - name: loggregator
-  url: https://bosh.io/d/github.com/cloudfoundry/loggregator-release?v=106.3.10
-  version: 106.3.10
-  sha1: 31992561334a0c2b42ea830b3af90d012172e7e5
+  url: https://bosh.io/d/github.com/cloudfoundry/loggregator-release?v=106.5.0
+  version: 106.5.0
+  sha1: 1a4c1a9988d4f83af515daaa44f57ee0c3b1859d
 - name: metrics-discovery
-  url: https://bosh.io/d/github.com/cloudfoundry/metrics-discovery-release?v=3.0.1
-  version: 3.0.1
-  sha1: 4219b58972d20f6fccf1a4a167d915e34d86ee8a
+  url: https://bosh.io/d/github.com/cloudfoundry/metrics-discovery-release?v=3.0.3
+  version: 3.0.3
+  sha1: c414dd33b34231dfb8f655ed77c54a2fc21775fa
 - name: nats
-  url: https://bosh.io/d/github.com/cloudfoundry/nats-release?v=34
-  version: "34"
-  sha1: 0d7f4c3203c926e79d85d07b1ac215d73c9268c3
+  url: https://bosh.io/d/github.com/cloudfoundry/nats-release?v=39
+  version: "39"
+  sha1: 269e60d95ec9694e6807a7f8e32634c7e2651232
 - name: nginx-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/nginx-buildpack-release?v=1.1.14
-  version: 1.1.14
-  sha1: 884bde94b271dcd76ec55d2cf558a46a6ce74e36
+  url: https://bosh.io/d/github.com/cloudfoundry/nginx-buildpack-release?v=1.1.24
+  version: 1.1.24
+  sha1: ba31065113e36b5abe0863f198a60c245c1304c3
 - name: r-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/r-buildpack-release?v=1.1.7
-  version: 1.1.7
-  sha1: c7ee8762d9ce8da4882c924cb46e77bef3b2fafc
+  url: https://bosh.io/d/github.com/cloudfoundry/r-buildpack-release?v=1.1.16
+  version: 1.1.16
+  sha1: 4d28ca4b4172ead69dc6a0a8cbd672eb3f96fe96
 - name: nodejs-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/nodejs-buildpack-release?v=1.7.26
-  version: 1.7.26
-  sha1: e229fbf3db222cf858582a377941e4cfdabd9e60
+  url: https://bosh.io/d/github.com/cloudfoundry/nodejs-buildpack-release?v=1.7.48
+  version: 1.7.48
+  sha1: 8fafac84f7eb0f8d7b3eab14fa577b3dff619d98
 - name: php-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/php-buildpack-release?v=4.4.20
-  version: 4.4.20
-  sha1: e04da739cb73eb1c7f52ba4849c90bec589c2331
+  url: https://bosh.io/d/github.com/cloudfoundry/php-buildpack-release?v=4.4.36
+  version: 4.4.36
+  sha1: f169ae43c11d5e872e5020e1e65d32375d82cb31
 - name: pxc
-  url: https://bosh.io/d/github.com/cloudfoundry-incubator/pxc-release?v=0.29.0
-  version: 0.29.0
-  sha1: c19daef997278873389762ad9a569d01dec20b49
+  url: https://bosh.io/d/github.com/cloudfoundry-incubator/pxc-release?v=0.34.0
+  version: 0.34.0
+  sha1: 120e34ff5188277d2fee171fad66d26f62e73b58
 - name: python-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/python-buildpack-release?v=1.7.20
-  version: 1.7.20
-  sha1: 9f32a3dc2d0d179083d3c2a395d8d6ee7379d9c8
+  url: https://bosh.io/d/github.com/cloudfoundry/python-buildpack-release?v=1.7.37
+  version: 1.7.37
+  sha1: b7a2cbfca8796b0e01964c206a0634246a115b6e
 - name: routing
-  url: https://bosh.io/d/github.com/cloudfoundry/routing-release?v=0.207.0
-  version: 0.207.0
-  sha1: 9e703259a07f032e7ca96dca2730d0e0c2b61685
+  url: https://bosh.io/d/github.com/cloudfoundry/routing-release?v=0.213.0
+  version: 0.213.0
+  sha1: 1b1c9284789f69a81ac5a469506ee5b7d3c072a6
 - name: ruby-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/ruby-buildpack-release?v=1.8.23
-  version: 1.8.23
-  sha1: e32eac05ad44279b6c5b3de50998f967e31e7f1b
+  url: https://bosh.io/d/github.com/cloudfoundry/ruby-buildpack-release?v=1.8.37
+  version: 1.8.37
+  sha1: 9ffd878d903666d014697a2e84a904a7951ed91d
 - name: silk
-  url: https://bosh.io/d/github.com/cloudfoundry/silk-release?v=2.33.0
-  version: 2.33.0
-  sha1: 9a2ed4dec4eff614614d6a66b77cd04182e25122
+  url: https://bosh.io/d/github.com/cloudfoundry/silk-release?v=2.36.0
+  version: 2.36.0
+  sha1: 602d199dd2e5657384ba169f6261083683bfe693
 - name: staticfile-buildpack
-  url: https://bosh.io/d/github.com/cloudfoundry/staticfile-buildpack-release?v=1.5.10
-  version: 1.5.10
-  sha1: a5bdeeadf2f648c3b322373f74532cb80d6e83d8
+  url: https://bosh.io/d/github.com/cloudfoundry/staticfile-buildpack-release?v=1.5.19
+  version: 1.5.19
+  sha1: aa85e5aa9b4a0459676e6e43e08783b88897bf8c
 - name: statsd-injector
   url: https://bosh.io/d/github.com/cloudfoundry/statsd-injector-release?v=1.11.15
   version: 1.11.15
   sha1: a0a2d33c6ab7d8fec8c017ea6f2c5a344af1407c
 - name: uaa
-  url: https://bosh.io/d/github.com/cloudfoundry/uaa-release?v=74.24.0
-  version: 74.24.0
-  sha1: 0de84931c008aa55664a5fc47ace4f694f95d688
+  url: https://bosh.io/d/github.com/cloudfoundry/uaa-release?v=75.1.0
+  version: 75.1.0
+  sha1: d23e29e8e16c127e640ea992aa5e7ac4184000c7
 - name: loggregator-agent
-  url: https://bosh.io/d/github.com/cloudfoundry/loggregator-agent-release?v=6.1.1
-  version: 6.1.1
-  sha1: c8f15cb137a5106cd83834721ee2709f37715930
+  url: https://bosh.io/d/github.com/cloudfoundry/loggregator-agent-release?v=6.2.0
+  version: 6.2.0
+  sha1: 7210bac9c456bf20fd6de2175c562e443f249249
 - name: log-cache
-  url: https://bosh.io/d/github.com/cloudfoundry/log-cache-release?v=2.8.0
-  version: 2.8.0
-  sha1: 3b158b60a25bb9e48039012ba124cb419a28d397
+  url: https://bosh.io/d/github.com/cloudfoundry/log-cache-release?v=2.10.0
+  version: 2.10.0
+  sha1: e08ce756f0760c013d5d6fecfbdc4546a585f789
 - name: bosh-dns-aliases
   url: https://bosh.io/d/github.com/cloudfoundry/bosh-dns-aliases-release?v=0.0.3
   version: 0.0.3
   sha1: b0d0a0350ed87f1ded58b2ebb469acea0e026ccc
 - name: cf-cli
-  url: https://bosh.io/d/github.com/bosh-packages/cf-cli-release?v=1.29.0
-  version: 1.29.0
-  sha1: 0dd79b169473a95f1ff39e79f2695edf4c97f38d
+  url: https://bosh.io/d/github.com/bosh-packages/cf-cli-release?v=1.32.0
+  version: 1.32.0
+  sha1: b89a74153143fe8af2c681ed0cd64185ae61f5f9
 stemcells:
 - alias: default
   os: ((stemcell_os))

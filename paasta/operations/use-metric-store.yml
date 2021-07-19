@@ -2,9 +2,9 @@
   path: /releases/name=metric-store?
   value:
     name: metric-store
-    sha1: 70cc38d6bacb0c6b4ecded6f7d52b0204e10cbe2
-    url: https://bosh.io/d/github.com/cloudfoundry/metric-store-release?v=1.4.3
-    version: 1.4.3
+    sha1: 84d70685d882e427a69bd482aba101744981cc60
+    url: https://bosh.io/d/github.com/cloudfoundry/metric-store-release?v=1.5.2
+    version: 1.5.2
 - type: replace
   path: /instance_groups/name=metric-store?
   value:
@@ -138,6 +138,8 @@
   value:
     name: metric_store_to_logs_provider
     options:
+      alternative_names:
+      - metric-store
       ca: loggregator_ca
       common_name: metric-store
       extended_key_usage:
@@ -219,22 +221,31 @@
   value:
     name: metric_store_proxy_tls
     options:
+      alternative_names:
+      - localhost
       ca: metric_store_ca
       common_name: localhost
     type: certificate
+    update_mode: converge
 - type: replace
   path: /variables/name=metric_store_metrics_server?
   value:
     name: metric_store_metrics_server
     options:
+      alternative_names:
+      - metric-store
       ca: metric_scraper_ca
       common_name: metric-store
     type: certificate
+    update_mode: converge
 - type: replace
   path: /variables/name=metric_store_metrics_client?
   value:
     name: metric_store_metrics_client
     options:
+      alternative_names:
+      - metric-store-client
       ca: metric_scraper_ca
       common_name: metric-store-client
     type: certificate
+    update_mode: converge

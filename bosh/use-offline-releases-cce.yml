@@ -1,20 +1,8 @@
 - type: replace
   path: /releases/name=bosh/url
-  value: file://((releases_dir))/bosh/bosh-271.2.0-PaaS-TA-v3.tgz
-- type: replace
-  path: /releases/name=bosh/version
-  value: 271.2.0-PaaS-TA-v3
-- type: replace
-  path: /releases/name=bosh/sha1
-  value: 5d83314714df5e740aa237e591204ab6d10e1343
+  value: file://((releases_dir))/bosh/bosh-271.8.0-PaaS-TA-ubuntu-xenial-621.125-compiled.tgz
 
 - type: replace
   path: /releases/name=paasta-conf/url
-  value: file://((releases_dir))/bosh/paasta-conf-release-1.0.1.tgz
-- type: replace
-  path: /releases/name=bosh/version
-  value: 1.0.1
-- type: replace
-  path: /releases/name=bosh/sha1
-  value: 8a5025702c72a1aa66ddd19b74b4493cfd16cdde
+  value: file://((releases_dir))/bosh/paasta-conf-release-1.0.2.tgz
 
