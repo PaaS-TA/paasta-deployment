@@ -4,14 +4,15 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  https://nextcloud.paas-ta.org/index.php/s/CTDsro382NyyAEL/download
-    version: 1.0.1
+    #url:  https://nextcloud.paas-ta.org/index.php/s/CTDsro382NyyAEL/download
+    #version: 1.0.1
+    url: https://nextcloud.paas-ta.org/index.php/s/JjRiiZMpYtLXKck/download
+    version: 1.0.2
 
 # test - UAA signatureAlgorithm
 - type: replace
   path: /instance_groups/name=control/jobs/name=uaa/properties/login/saml/signatureAlgorithm?
   value: "SHA256"
-
 
 
 
@@ -34,6 +35,13 @@
     properties:
       cce_enable: true
 
+
+
+
+
+
+
+
 # CCE - PaaS-TA database patch 
 - type: replace
   path: /instance_groups/name=database/jobs/-
@@ -43,14 +51,65 @@
     properties:
       cce_enable: true
 
+
 # CCE - Release replace
 - type: replace
   path: /releases/name=capi
   value:
     name: capi
-    sha1: f31d7b7ad0396bce77ab9152661103d159127b25
-    url: https://nextcloud.paas-ta.org/index.php/s/dHNiRE8gCNXFnBo/download
-    version: 1.98.0-PaaS-TA-v3
+    #sha1: f31d7b7ad0396bce77ab9152661103d159127b25
+    #url: https://nextcloud.paas-ta.org/index.php/s/dHNiRE8gCNXFnBo/download
+    #version: 1.98.0-PaaS-TA-v3
+    sha1: 62d45b23e716c57aa98f9ffd34a517ded0dbb3f5
+    url: https://nextcloud.paas-ta.org/index.php/s/jT2jgAFNxxTgRr8/download
+    version: 1.98.0-PaaS-TA-v4
+
+# CCE - PaaS-TA control(api).nginx patch
+- type: remove
+  path: /addons/name=min-configuration
+
+- type: replace
+  path: /instance_groups/name=control/jobs/-
+  value:
+    name: common_script
+    release: paasta-conf
+    properties:
+      pre_start_script: |+
+        #!/bin/bash
+        mount -o remount,size=32m /var/vcap/data/sys/run
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/cloud_controller_ng/config/nginx.conf
+        echo "added disable_symlinks in nginx.conf"
+        mkdir -p /var/vcap/data/cloud_controller_ng/tmp/html
+        sed -i'' -r -e "/   9022/i\    root /var/vcap/data/cloud_controller_ng/tmp/html;" /var/vcap/jobs/cloud_controller_ng/config/nginx.conf
+        echo "added root default config in nginx.conf"
+
+# CCE - PaaS-TA database(blobstore).nginx patch
+- type: replace
+  path: /instance_groups/name=database/jobs/-
+  value:
+    name: common_script
+    release: paasta-conf
+    properties:
+      pre_start_script: |+
+        #!/bin/bash
+        if [ -f /var/vcap/jobs/blobstore/config/nginx.conf ]; then
+            sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/blobstore/config/nginx.conf
+            echo "added disable_symlinks in nginx.conf"
+        fi
+
+# CCE - PaaS-TA (7vm)blobstore.nginx patch
+#- type: replace
+#  path: /instance_groups/name=singleton-blobstore/jobs/-
+#  value:
+#    name: common_script
+#    release: paasta-conf
+#    properties:
+#      pre_start_script: |+
+#        #!/bin/bash
+#        if [ -f /var/vcap/jobs/blobstore/config/nginx.conf ]; then
+#            sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/blobstore/config/nginx.conf
+#            echo "added disable_symlinks in nginx.conf"
+#        fi
 
 - type: replace
   path: /releases/name=cf-networking
@@ -88,6 +147,17 @@
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: 4432cf7d0c67fbb4a7bce2194b8b4b86221d57dc
-    url: https://nextcloud.paas-ta.org/index.php/s/rnZ7WXWFdMTmpbH/download
-    version: 74.29.0-PaaS-TA
+    #sha1: 4432cf7d0c67fbb4a7bce2194b8b4b86221d57dc
+    #url: https://nextcloud.paas-ta.org/index.php/s/rnZ7WXWFdMTmpbH/download
+    #version: 74.29.0-PaaS-TA
+    sha1: a7207164abe1ec8a7ed03ba64617edf2e5c1ac9b
+    url: https://nextcloud.paas-ta.org/index.php/s/eoYte935HYE2AoQ/download
+    version: 75.1.0-PaaS-TA
+
+- type: replace
+  path: /releases/name=pxc
+  value:
+    name: pxc
+    sha1: ed99301e412319e2f62e4899c37f67293bddee96
+    url: https://nextcloud.paas-ta.org/index.php/s/nFc58sK45M6B8Pz/download
+    version: 0.29.0-PaaS-TA

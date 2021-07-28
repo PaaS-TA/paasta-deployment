@@ -3,7 +3,6 @@ BOSH_ENVIRONMENT="${BOSH_ENVIRONMENT}"                   # bosh director alias n
 
 bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \
         -o operations/min-openstack.yml \
-        -o operations/min-cce-postgres.yml \
         -o operations/min-create-vm-singleton-blobstore.yml \
         -o operations/min-create-vm-tcp-router.yml \
         -o operations/min-use-haproxy.yml \
@@ -11,5 +10,6 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \
         -o operations/min-use-postgres.yml \
         -o operations/min-rename-network-and-deployment.yml \
         -o operations/min-option-network-and-deployment.yml \
+        -o operations/min-cce-postgres.yml \
         -l min-vars.yml \
         -l ../common/common_vars.yml
