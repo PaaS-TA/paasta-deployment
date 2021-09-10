@@ -4,7 +4,7 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  https://nextcloud.paas-ta.org/index.php/s/JjRiiZMpYtLXKck/download
+    url:  https://nextcloud.paas-ta.org/index.php/s/N3gYDsWDmEEWo6b/download
     version: 1.0.3
 
 - type: replace
