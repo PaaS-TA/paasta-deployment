@@ -5,7 +5,7 @@
   value:
     name: paasta-conf
     url:  https://nextcloud.paas-ta.org/index.php/s/JjRiiZMpYtLXKck/download
-    version: 1.0.2
+    version: 1.0.3
 
 - type: replace
   path: /releases/name=postgres?
@@ -48,6 +48,8 @@
     properties:
       cce_enable: true
       postgres_admin_password: ((cf_postgres_admin_password))
+      database:
+        port: ((paasta_database_port))
 
 # CCE - PaaS-TA uaa patch
 - type: replace

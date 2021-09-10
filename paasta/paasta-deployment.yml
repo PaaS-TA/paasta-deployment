@@ -1,6 +1,6 @@
 ---
 name: paasta
-manifest_version: v5.6
+manifest_version: v5.6.1
 update:
   canaries: 1
   canary_watch_time: 30000-1200000
@@ -12,6 +12,7 @@ addons:
   include:
     stemcell:
     - os: ubuntu-xenial
+    - os: ubuntu-bionic
   exclude:
     jobs:
     - name: smoke_tests
@@ -38,6 +39,7 @@ addons:
   include:
     stemcell:
     - os: ubuntu-xenial
+    - os: ubuntu-bionic
   jobs:
   - name: loggr-forwarder-agent
     release: loggregator-agent
@@ -56,6 +58,7 @@ addons:
   include:
     stemcell:
     - os: ubuntu-xenial
+    - os: ubuntu-bionic
   exclude:
     jobs:
     - name: smoke_tests
@@ -85,6 +88,7 @@ addons:
   include:
     stemcell:
       - os: ubuntu-xenial
+      - os: ubuntu-bionic
   exclude:
     jobs:
     - name: smoke_tests
@@ -113,6 +117,7 @@ addons:
   include:
     stemcell:
     - os: ubuntu-xenial
+    - os: ubuntu-bionic
   jobs:
   - name: metrics-discovery-registrar
     properties:
@@ -134,6 +139,7 @@ addons:
   include:
     stemcell:
     - os: ubuntu-xenial
+    - os: ubuntu-bionic
   jobs:
   - name: metrics-agent
     properties:
@@ -157,6 +163,7 @@ addons:
   include:
     stemcell:
     - os: ubuntu-xenial
+    - os: ubuntu-bionic
   jobs:
   - name: bpm
     release: bpm
