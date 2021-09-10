@@ -17,6 +17,9 @@
         mkdir -p /var/vcap/data/director/tmp/html
         sed -i'' -r -e "/listen 25555 /i\    root    /var/vcap/data/director/tmp/html;" /var/vcap/jobs/director/config/nginx.conf
         echo "added root default config  in nginx.conf"
+        cd  /lib/x86_64-linux-gnu/
+        ln -s libreadline.so.7.0 libreadline.so.6
+        echo "modified libreadline-so-6-issue-in-ubuntu-18-04"
     release: os-conf
 
 - path: /instance_groups/name=bosh/jobs/-
