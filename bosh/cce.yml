@@ -66,7 +66,7 @@
   path: /releases/name=bosh?
   value: 
     name: bosh
-    sha1: 23a8d3c7cbacf4c65e2d0cfe222343eb3d8c31f8
+    sha1: 77e8d0837bcf8c18e8cdeb886b236c61ddab4346
     url: https://nextcloud.paas-ta.org/index.php/s/tTx54RtNb4XcGpW/download 
     version: 271.8.0-PaaS-TA-v2
 
