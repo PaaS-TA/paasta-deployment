@@ -1,3 +1,75 @@
+# Related Repositories
+
+<table>
+  <tr>
+    <td colspan=2 align=center>플랫폼</td>
+    <td colspan=2 align=center><a href="https://github.com/PaaS-TA/paasta-deployment">🚩 어플리케이션 플랫폼</a></td>
+    <td colspan=2 align=center><a href="https://github.com/PaaS-TA/paas-ta-container-platform">컨테이너 플랫폼</a></td>
+  </tr>
+  <tr>
+    <td colspan=2 rowspan=2 align=center>포털</td>
+    <td colspan=2 align=center><a href="https://github.com/PaaS-TA/portal-deployment">AP 포털</a></td>
+    <td colspan=2 align=center><a href="https://github.com/PaaS-TA/container-platform-portal-release">CP 포털</a></td>
+  </tr>
+  <tr align=center>
+    <td colspan=4><a href="https://github.com/PaaS-TA/PaaS-TA-Monitoring">모니터링 대시보드</a></td>
+  </tr>
+  <tr align=center>
+    <td rowspan=2 colspan=2><a href="https://github.com/PaaS-TA/monitoring-deployment">모니터링</a></td>
+    <td><a href="https://github.com/PaaS-TA/PaaS-TA-Monitoring-Release">Monitoring</a></td>
+    <td><a href="https://github.com/PaaS-TA/paas-ta-monitoring-logsearch-release">Logsearch</a></td>
+    <td><a href="https://github.com/PaaS-TA/paas-ta-monitoring-influxdb-release">InfluxDB</a></td>
+    <td><a href="https://github.com/PaaS-TA/paas-ta-monitoring-redis-release">Redis</a></td>
+  </tr>
+  <tr align=center>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-PINPOINT-MONITORING-RELEASE">Pinpoint</td>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-PINPOINT-MONITORING-BUILDPACK">Pinpoint Buildpack</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tr>
+  <tr align=center>
+    <td rowspan=4 colspan=2><a href="https://github.com/PaaS-TA/service-deployment">AP 서비스</a></td>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-CUBRID-RELEASE">Cubrid Release</a></td>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-API-GATEWAY-SERVICE-RELEASE">Gateway</a></td>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-GLUSTERFS-RELEASE">GlusterFS</a></td>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-APP-LIFECYCLE-SERVICE-RELEASE">Lifecycle</a></td>
+  </tr>
+  <tr align=center>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-LOGGING-SERVICE-RELEASE">Logging</a></td>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-MONGODB-SHARD-RELEASE">MongoDB</a></td>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-MYSQL-RELEASE">MySQL</a></td>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-PINPOINT-RELEASE">Pinpoint APM</a></td>
+  </tr>
+  <tr align=center>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-DELIVERY-PIPELINE-RELEASE">Pipeline</a></td>
+    <td align=center><a href="https://github.com/PaaS-TA/rabbitmq-release">RabbitMQ</a></td>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-ON-DEMAND-REDIS-RELEASE">Redis</a></td>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-SOURCE-CONTROL-RELEASE">Source Control</a></td>
+  </tr>
+  <tr align=center>
+    <td><a href="https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-RELEASE-NEW">WEB-IDE</a></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr align=center>
+    <td rowspan=1 colspan=2><a href="https://github.com/PaaS-TA/paas-ta-container-platform-deployment">CP 서비스</a></td>
+    <td><a href="https://github.com/PaaS-TA/container-platform-pipeline-release">Pipeline</a></td>
+    <td><a href="https://github.com/PaaS-TA/container-platform-source-control-release">Source Control</a></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+<i>*🚩 You are here.</i>
+
+
+
+  
+
+  
+
+
 ## Notice
 #### 릴리즈의 경로가 http://45.248.73.44/ 에서 https://nextcloud.paas-ta.org/ 로 변경되었습니다  
 #### paasta-deployment 5.5.0 이하의 버전을 사용할 경우 <br>
@@ -10,35 +82,6 @@
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/okpc579"><img src="https://avatars.githubusercontent.com/u/55691511?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ruby</b></sub></a><br /><a href="https://github.com/PaaS-TA/paasta-deployment/commits?author=okpc579" title="Code">💻</a><a href="https://github.com/PaaS-TA/paasta-deployment/issues?q=author:okpc579" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://github.com/lena-kim"><img src="https://avatars.githubusercontent.com/u/27713031?v=4?s=100" width="100px;" alt=""/><br /><sub><b>lena-kim</b></sub></a><br /><a href="https://github.com/PaaS-TA/paasta-deployment/commits?author=lena-kim" title="Code">💻</a><a href="#ideas-lena-kim" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://github.com/thansrb"><img src="https://avatars.githubusercontent.com/u/31251109?v=4?s=100" width="100px;" alt=""/><br /><sub><b>thansrb</b></sub></a><br /><a href="https://github.com/PaaS-TA/paasta-deployment/commits?author=thansrb" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/jinhyojin"><img src="https://avatars.githubusercontent.com/u/76993633?v=4?s=100" width="100px;" alt=""/><br /><sub><b>jinhyojin</b></sub></a><br /><a href="https://github.com/PaaS-TA/paasta-deployment/commits?author=jinhyojin" title="Code">💻</a><a href="#ideas-jinhyojin" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://github.com/moonii"><img src="https://avatars.githubusercontent.com/u/12425077?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sunny</b></sub></a><br /><a href="https://github.com/PaaS-TA/paasta-deployment/commits?author=moonii" title="Code">💻</a><a href="https://github.com/PaaS-TA/paasta-deployment/pulls?q=is&Apr+reviewed-by&moonii" title="Reviewed Pull Requests">👀</a></td></td>
-    <td align="center"><a href="https://github.com/RomulusKim"><img src="https://avatars.githubusercontent.com/u/73581918?v=4?s=100" width="100px;" alt=""/><br /><sub><b>RomulusKim</b></sub></a><br /><a href="https://github.com/PaaS-TA/paasta-deployment/commits?author=RomulusKim" title="Code">💻</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/hsohans"><img src="https://avatars.githubusercontent.com/u/51317201?v=4?s=100" width="100px;" alt=""/><br /><sub><b>hsohans</b></sub></a><br /><a href="https://github.com/PaaS-TA/paasta-deployment/commits?author=hsohans" title="Code">💻</a></td>
-  </tr>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
+<a href="https://github.com/PaaS-TA/paasta-deployment/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=PaaS-TA/paasta-deployment" />
+</a>
