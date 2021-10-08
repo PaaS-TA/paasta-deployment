@@ -89,9 +89,9 @@
   path: /releases/name=capi
   value:
     name: capi
-    sha1: b88e34ea3c6a07e999cbb5a1a8606c0f592f5040
-    url: https://nextcloud.paas-ta.org/index.php/s/9rA6rYjynoFqEAo/download
-    version: 1.109.0-PaaS-TA
+    sha1: 021fdc2ccadf374fa8be81b977f41b1c1943d575
+    url: https://nextcloud.paas-ta.org/index.php/s/QG5m7697NA5drsN/download
+    version: 1.109.0-PaaS-TA-v2
 
 # CCE - Release replace
 - type: replace
