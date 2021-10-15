@@ -4,5 +4,5 @@
 
 - type: replace
   path: /resource_pools/name=vms/stemcell?/url
-  value: file://((releases_dir))/bosh/light-bosh-stemcell-621.125-google-kvm-ubuntu-xenial-go_agent.tgz
+  value: file://((releases_dir))/bosh/light-bosh-stemcell-1.34-google-kvm-ubuntu-bionic-go_agent.tgz
 

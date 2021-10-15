@@ -1,7 +1,7 @@
 - type: replace
   path: /releases/name=bosh/url
-  value: file://((releases_dir))/bosh/bosh-271.8.0-ubuntu-xenial-621.125-20210430-221230-174525687-20210430221231.tgz
+  value: file://((releases_dir))/bosh/bosh-271.8.0.tgz
   
 - type: replace
   path: /releases/name=bpm/url
-  value: file://((releases_dir))/bosh/bpm-1.1.9-ubuntu-xenial-621.125-20210430-220830-7146796-20210430220832.tgz
+  value: file://((releases_dir))/bosh/bpm-release-1.1.9.tgz
