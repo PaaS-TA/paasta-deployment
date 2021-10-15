@@ -17,6 +17,9 @@
         mkdir -p /var/vcap/data/director/tmp/html
         sed -i'' -r -e "/listen 25555 /i\    root    /var/vcap/data/director/tmp/html;" /var/vcap/jobs/director/config/nginx.conf
         echo "added root default config  in nginx.conf"
+        cd  /lib/x86_64-linux-gnu/
+        ln -s libreadline.so.7.0 libreadline.so.6
+        echo "modified libreadline-so-6-issue-in-ubuntu-18-04"
     release: os-conf
 
 - path: /instance_groups/name=bosh/jobs/-
@@ -61,11 +64,11 @@
 
 - type: replace
   path: /releases/name=bosh?
-  value: 
+  value:
     name: bosh
-    sha1: 23a8d3c7cbacf4c65e2d0cfe222343eb3d8c31f8
-    url: https://nextcloud.paas-ta.org/index.php/s/B9JWpxAxYrE6wrA/download 
-    version: 271.8.0-PaaS-TA
+    sha1: 74a0e35ecf385047e56d8474a08598ad87e52bf2
+    url: https://nextcloud.paas-ta.org/index.php/s/KbMyfnnCMPJi2NH/download
+    version: 271.11.0-PaaS-TA
 
 - type: replace
   path: /instance_groups/name=bosh/properties/postgres/cce_enable?

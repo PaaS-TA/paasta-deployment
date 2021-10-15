@@ -9,6 +9,7 @@ addons:
     stemcell:
     - os: ubuntu-trusty
     - os: ubuntu-xenial
+    - os: ubuntu-bionic
   name: os-configuration
   jobs:
   - name: sysctl

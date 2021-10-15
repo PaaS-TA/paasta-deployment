@@ -1,10 +1,10 @@
 - type: replace
   path: /releases/name=paasta-conf/url
-  value: file://((releases_dir))/paasta/paasta-conf-release-1.0.2.tgz
+  value: file://((releases_dir))/paasta/paasta-conf-release-1.0.3.tgz
 
 - type: replace
   path: /releases/name=capi/url
-  value: file://((releases_dir))/paasta/capi-release-1.109.0-PaaS-TA.tgz
+  value: file://((releases_dir))/paasta/capi-release-1.109.0-PaaS-TA-v2.tgz
 
 - type: replace
   path: /releases/name=cf-networking/url
