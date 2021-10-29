@@ -32,3 +32,6 @@ addons:
       script: |-
         #!/bin/bash
         chmod o-w /var/tmp
+        find / \( -nouser -o -nogroup \) -xdev -exec chown root:root {} \;
+        find /sys /var /usr /home /etc /tmp /bin /sbin -type f -perm -2 -exec chmod o-w {} \;
+

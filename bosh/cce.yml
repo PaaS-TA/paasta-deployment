@@ -36,8 +36,17 @@
           else
             echo "where is ROOT?"
           fi
+          echo "linux 18.04 cce enable"
+          find / \( -nouser -o -nogroup \) -xdev -exec chown root:root {} \;
+          find /sys /var /usr /home /etc /tmp /bin /sbin -type f -perm -2 -exec chmod o-w {} \;
           echo "finished common_script/post_start_script"
     release: paasta-conf
+
+- type: replace
+  path: /variables/-
+  value:
+    name: cf_postgres_admin_password
+    type: password
 
 - path: /instance_groups/name=bosh/jobs/-
   type: replace
@@ -46,6 +55,7 @@
     release: paasta-conf
     properties:
       cce_enable: true
+      postgres_admin_password: ((cf_postgres_admin_password))
 
 - path: /instance_groups/name=bosh/jobs/-
   type: replace
@@ -78,9 +88,10 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    sha1: 182e06c6a09d1af2e4386c16126fcee6731979d7
-    url: https://nextcloud.paas-ta.org/index.php/s/JjRiiZMpYtLXKck/download
-    version: 1.0.2
+    #sha1: 182e06c6a09d1af2e4386c16126fcee6731979d7
+    #url: https://nextcloud.paas-ta.org/index.php/s/JjRiiZMpYtLXKck/download
+    url: file:///home/ubuntu/workspace/zins/paasta-5.6.1/release/paasta-conf-release/paasta-conf-1.0.4.tgz
+    version: 1.0.4
 
 - type: replace
   path: /instance_groups/name=bosh/jobs/-

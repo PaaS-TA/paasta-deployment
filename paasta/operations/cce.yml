@@ -4,8 +4,8 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  https://nextcloud.paas-ta.org/index.php/s/N3gYDsWDmEEWo6b/download
-    version: 1.0.3
+    url:  https://nextcloud.paas-ta.org/index.php/s/eysAPEKdyX9d9mj/download
+    version: 1.0.4
 
 - type: replace
   path: /releases/name=postgres?
@@ -134,9 +134,9 @@
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: a7207164abe1ec8a7ed03ba64617edf2e5c1ac9b
-    url: https://nextcloud.paas-ta.org/index.php/s/eoYte935HYE2AoQ/download
-    version: 75.1.0-PaaS-TA
+    sha1: acbd979c4184048a2bad5f25cffe6ec146ee2fb4
+    url: https://nextcloud.paas-ta.org/index.php/s/B2wZSE6LEnRJn3c/download
+    version: 75.1.0-PaaS-TA-v2
 
 # CCE - Release replace
 - type: replace
