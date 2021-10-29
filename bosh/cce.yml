@@ -88,9 +88,8 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    #sha1: 182e06c6a09d1af2e4386c16126fcee6731979d7
-    #url: https://nextcloud.paas-ta.org/index.php/s/JjRiiZMpYtLXKck/download
-    url: file:///home/ubuntu/workspace/zins/paasta-5.6.1/release/paasta-conf-release/paasta-conf-1.0.4.tgz
+    sha1: 20f10047456498368be1a0c69f57ab820f2984dd
+    url:  https://nextcloud.paas-ta.org/index.php/s/eysAPEKdyX9d9mj/download
     version: 1.0.4
 
 - type: replace
