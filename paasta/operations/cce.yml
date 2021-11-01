@@ -134,7 +134,7 @@
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: acbd979c4184048a2bad5f25cffe6ec146ee2fb4
+    sha1: c56b0bd3031a673b3753fba35d3f2caff2f497e2
     url: https://nextcloud.paas-ta.org/index.php/s/B2wZSE6LEnRJn3c/download
     version: 75.1.0-PaaS-TA-v2
 
