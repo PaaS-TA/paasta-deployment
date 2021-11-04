@@ -1,8 +1,0 @@
-- type: replace
-  path: /releases/name=bosh-aws-cpi/url
-  value: file://((releases_dir))/bosh/bosh-aws-cpi-release-86.tgz
-
-- type: replace
-  path: /resource_pools/name=vms/stemcell?/url
-  value: file://((releases_dir))/bosh/light-bosh-stemcell-1.34-aws-xen-hvm-ubuntu-bionic-go_agent.tgz
-

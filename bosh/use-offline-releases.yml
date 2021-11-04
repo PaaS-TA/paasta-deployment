@@ -1,7 +1,0 @@
-- type: replace
-  path: /releases/name=bosh/url
-  value: file://((releases_dir))/bosh/bosh-271.8.0.tgz
-  
-- type: replace
-  path: /releases/name=bpm/url
-  value: file://((releases_dir))/bosh/bpm-release-1.1.9.tgz

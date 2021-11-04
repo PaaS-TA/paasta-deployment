@@ -1,8 +1,0 @@
-- type: replace
-  path: /releases/name=bosh-openstack-cpi/url
-  value: file://((releases_dir))/bosh/bosh-openstack-cpi-release-44.tgz
-
-- type: replace
-  path: /resource_pools/name=vms/stemcell?/url
-  value: file://((releases_dir))/bosh/bosh-stemcell-1.34-openstack-kvm-ubuntu-bionic-go_agent.tgz
-

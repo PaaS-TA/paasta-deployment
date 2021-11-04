@@ -1,3 +1,0 @@
-- type: replace
-  path: /releases/name=uaa/url
-  value: file://((releases_dir))/bosh/uaa-release-75.2.0.tgz
