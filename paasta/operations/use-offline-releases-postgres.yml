@@ -1,3 +1,0 @@
-- type: replace
-  path: /releases/name=postgres/url
-  value: file://((releases_dir))/paasta/postgres-release-43.tgz

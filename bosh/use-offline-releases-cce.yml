@@ -1,8 +1,0 @@
-- type: replace
-  path: /releases/name=bosh/url
-  value: file://((releases_dir))/bosh/bosh-271.11.0-PaaS-TA.tgz
-
-- type: replace
-  path: /releases/name=paasta-conf/url
-  value: file://((releases_dir))/bosh/paasta-conf-release-1.0.2.tgz
-

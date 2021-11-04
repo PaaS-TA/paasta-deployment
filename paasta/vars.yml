@@ -1,7 +1,6 @@
 # SERVICE VARIABLE
 deployment_name: "paasta"		# Deployment Name
 network_name: "default"			# VM에 별도로 지정하지 않는 Default Network Name
-releases_dir: "<RELEASE_DIR>" # Release Directory (offline으로 릴리즈 다운받아 사용시 설정, e.g. /home/ubuntu/workspace/paasta-#.#/release) 
 haproxy_public_ip: "52.78.32.153"	# HAProxy IP (Public IP, HAproxy VM 배포시 필요)
 haproxy_public_network_name: "vip"	# PaaS-TA Public Network Name
 haproxy_private_network_name: "private" # PaaS-TA Private Network Name (vSphere use-haproxy-public-network-vsphere.yml 포함 배포시 설정 필요)

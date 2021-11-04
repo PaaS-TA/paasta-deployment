@@ -1,3 +1,0 @@
-- type: replace
-  path: /releases/name=credhub/url
-  value: file://((releases_dir))/bosh/credhub-release-2.9.0.tgz

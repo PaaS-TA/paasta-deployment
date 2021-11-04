@@ -1,8 +1,0 @@
-- type: replace
-  path: /releases/name=bosh-vsphere-cpi/url
-  value: file://((releases_dir))/bosh/bosh-vsphere-cpi-release-58.tgz
-
-- type: replace
-  path: /resource_pools/name=vms/stemcell?/url
-  value: file://((releases_dir))/bosh/bosh-stemcell-1.34-vsphere-esxi-ubuntu-bionic-go_agent.tgz
-
