@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BOSH_DEPLOYMENT_PATH="<BOSH_DEPLOYMENT_PATH>" # (e.g. ~/workspace/paasta-#.#/deployment/paasta-deployment/bosh)
+BOSH_DEPLOYMENT_PATH="<BOSH_DEPLOYMENT_PATH>" # (e.g. ~/workspace/paasta-deployment/bosh)
 CURRENT_IAAS="aws"						# (e.g. aws/azure/gcp/openstack/vsphere/bosh-lite)
 BOSH_IP="10.0.1.6"						# (e.g. 10.0.1.6)
 BOSH_CLIENT_ADMIN_ID="admin"			# (e.g. admin)
