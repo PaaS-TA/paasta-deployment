@@ -1,9 +1,0 @@
-- type: replace
-  path: /releases/name=os-conf/url
-  value: file://((releases_dir))/bosh/os-conf-release-22.1.0.tgz
-- type: replace
-  path: /releases/name=os-conf/version
-  value: 22.1.0
-- type: replace
-  path: /releases/name=os-conf/sha1
-  value: 7ef05f6f3ebc03f59ad8131851dbd1abd1ab3663
