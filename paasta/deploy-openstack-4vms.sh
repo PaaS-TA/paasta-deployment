@@ -9,4 +9,4 @@ bosh -e ${BOSH_ENVIRONMENT} -d paasta -n deploy min-paasta-deployment.yml \
 		-o operations/min-rename-network-and-deployment.yml \
 		-o operations/min-cce.yml \
 		-l min-vars.yml \
-		-l ../common/common_vars.yml
+		-l ../../common/common_vars.yml
