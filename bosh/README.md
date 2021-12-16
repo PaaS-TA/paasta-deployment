@@ -1,6 +1,4 @@
 ## BOSH
 
-- [BOSH 설치 가이드](https://github.com/PaaS-TA/Guide/blob/v5.5.1/install-guide/bosh/PAAS-TA_BOSH2_INSTALL_GUIDE_V5.0.md)
-
-- based on bosh-deployment commit hash : [62ec37e](https://github.com/cloudfoundry/bosh-deployment/tree/62ec37e2b571818c8ccfc7871327bb2bcd3ba90d)
+- based on bosh-deployment commit hash : [49273e0](https://github.com/cloudfoundry/bosh-deployment/tree/49273e09bc62cd556306bb18471c3cd3ee0eaa4c)
 

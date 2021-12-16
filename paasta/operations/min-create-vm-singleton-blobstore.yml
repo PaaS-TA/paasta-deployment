@@ -49,3 +49,15 @@
               component: blobstore
             uris:
             - blobstore.((system_domain))
+
+# CCE - PaaS-TA blobstore/nginx patch : 7vms
+- type: replace
+  path: /instance_groups/name=singleton-blobstore/jobs/-
+  value:
+    name: common_script
+    release: paasta-conf
+    properties:
+      pre_start_script: |+
+        #!/bin/bash
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/blobstore/config/nginx.conf
+        echo "added disable_symlinks in nginx.conf"

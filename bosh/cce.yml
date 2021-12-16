@@ -10,14 +10,94 @@
         chage -M 90 vcap
         chage -M 90 jumpbox
         chmod o-w /var/tmp
+        ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/blobstore/config/nginx.conf
+        sed -i'' -r -e "/keepalive_timeout/i\  disable_symlinks    on;" /var/vcap/jobs/director/config/nginx.conf
+        echo "added disable_symlinks in nginx.conf"
+        mkdir -p /var/vcap/data/director/tmp/html
+        sed -i'' -r -e "/listen 25555 /i\    root    /var/vcap/data/director/tmp/html;" /var/vcap/jobs/director/config/nginx.conf
+        echo "added root default config  in nginx.conf"
+        cd  /lib/x86_64-linux-gnu/
+        ln -s libreadline.so.7.0 libreadline.so.6
+        echo "modified libreadline-so-6-issue-in-ubuntu-18-04"
     release: os-conf
 
+- path: /instance_groups/name=bosh/jobs/-
+  type: replace
+  value:
+    name: common_script
+    properties:
+      post_start_script: |-
+        #!/bin/bash
+          echo "starting commont_script/post_start_script"
+          if [ -d /var/vcap/data/uaa/tomcat/webapps/ROOT ]; then
+            chmod -R 700 /var/vcap/data/uaa/tomcat/webapps
+            echo "chmod -R 700 tomcat files"
+          else
+            echo "where is ROOT?"
+          fi
+          echo "linux 18.04 cce enable"
+          find / \( -nouser -o -nogroup \) -xdev -exec chown root:root {} \;
+          find /sys /var /usr /home /etc /tmp /bin /sbin -type f -perm -2 -exec chmod o-w {} \;
+          echo "finished common_script/post_start_script"
+    release: paasta-conf
+
 - type: replace
-  path: /releases/name=bosh/url
-  value: https://nextcloud.paas-ta.org/index.php/s/3Ni8AEfSs22CAiC/download
+  path: /variables/-
+  value:
+    name: cf_postgres_admin_password
+    type: password
+
+- path: /instance_groups/name=bosh/jobs/-
+  type: replace
+  value:
+    name: postgres_conf
+    release: paasta-conf
+    properties:
+      cce_enable: true
+      postgres_admin_password: ((cf_postgres_admin_password))
+
+- path: /instance_groups/name=bosh/jobs/-
+  type: replace
+  value:
+    name: sysctl
+    release: os-conf
+    properties:
+      sysctl:
+      - net.ipv4.tcp_timestamps=0
+
 - type: replace
-  path: /releases/name=bosh/version
-  value: 271.2.0-PaaS-TA
+  path: /instance_groups/name=bosh/jobs/name=postgres-10
+  value:
+    name: postgres-cce
+    release: bosh
+
 - type: replace
-  path: /releases/name=bosh/sha1
-  value: 50ffc69959ae47e758f4bc5f2903d793e4aa96cd
+  path: /releases/name=bosh?
+  value:
+    name: bosh
+    sha1: 74a0e35ecf385047e56d8474a08598ad87e52bf2
+    url: https://nextcloud.paas-ta.org/index.php/s/KbMyfnnCMPJi2NH/download
+    version: 271.11.0-PaaS-TA
+
+- type: replace
+  path: /instance_groups/name=bosh/properties/postgres/cce_enable?
+  value: true
+
+- type: replace
+  path: /releases/name=paasta-conf?
+  value:
+    name: paasta-conf
+    sha1: 20f10047456498368be1a0c69f57ab820f2984dd
+    url:  https://nextcloud.paas-ta.org/index.php/s/eysAPEKdyX9d9mj/download
+    version: 1.0.4
+
+- type: replace
+  path: /instance_groups/name=bosh/jobs/-
+  value:
+    name: tomcat_conf
+    release: paasta-conf
+    properties:
+      cce_enable: true
+
+

@@ -1,7 +1,6 @@
 # SERVICE VARIABLE
 deployment_name: "paasta"		# Deployment Name
 network_name: "default"			# VM에 별도로 지정하지 않는 Default Network Name
-releases_dir: "/home/ubuntu/workspace/paasta-5.5.1/release"	# Release Directory (offline으로 릴리즈 다운받아 사용시 설정)
 haproxy_public_ip: "52.78.32.153"	# HAProxy IP (Public IP, HAproxy VM 배포시 필요)
 haproxy_public_network_name: "vip"	# PaaS-TA Public Network Name
 haproxy_private_network_name: "private" # PaaS-TA Private Network Name (vSphere use-haproxy-public-network-vsphere.yml 포함 배포시 설정 필요)
@@ -23,8 +22,8 @@ syslog_fallback_servers: []             # [MONITORING] PaaS-TA Syslog Fallback S
 
 
 # STEMCELL
-stemcell_os: "ubuntu-xenial"		# Stemcell OS
-stemcell_version: "621.94"		# Stemcell Version
+stemcell_os: "ubuntu-bionic"		# Stemcell OS
+stemcell_version: "1.34"		# Stemcell Version
 
 # SMOKE-TEST
 smoke_tests_azs: ["z1"]			# Smoke-Test 가용 존
