@@ -134,9 +134,9 @@
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: 6216399c457ffe84599aed41a53c3184ca7476a1
-    url: https://nextcloud.paas-ta.org/index.php/s/jMRABZZto5Dg4mQ/download
-    version: 75.1.0-PaaS-TA-v3
+    sha1: d31457bdd200b7bb02e4e6f5ca24e3dbf69ffe82
+    url: https://nextcloud.paas-ta.org/index.php/s/f2mjNX3RT93RxJg/download
+    version: 75.1.0-PaaS-TA-v3.1
 
 # CCE - Release replace
 - type: replace
@@ -152,6 +152,6 @@
   path: /releases/name=credhub
   value:
     name: credhub
-    sha1: 5d142be13e2a4ea92a3b8a6fa486ec8077064a97
-    url: https://nextcloud.paas-ta.org/index.php/s/3kYJjZG9aXrWrwo/download
-    version: 2.9.0-PaaS-TA-v2
+    sha1: 3da7d1901351c87e79dea4285ba85b3f2b013a2a
+    url: https://nextcloud.paas-ta.org/index.php/s/fLYAatkdj8XE35R/download
+    version: 2.9.0-PaaS-TA-v2.1
