@@ -161,3 +161,22 @@
     url: https://nextcloud.paas-ta.org/index.php/s/fLYAatkdj8XE35R/download
     version: 2.9.0-PaaS-TA-v2.1
 
+# CVE - Release replace
+- type: replace
+  path: /releases/name=php-buildpack
+  value:
+    name: php-buildpack
+    sha1: a91a3a479012dbc37f1185d28cc2b0cb110bcc92
+    url: https://bosh.io/d/github.com/cloudfoundry/php-buildpack-release?v=4.4.53
+    version: 4.4.53
+    
+
+# CVE - Release replace
+- type: replace
+  path: /releases/name=java-buildpack
+  value:
+    name: java-buildpack
+    sha1: b11614fa65da34b171701287f1f1aa6da4ebba63
+    url: https://bosh.io/d/github.com/cloudfoundry/java-buildpack-release?v=4.45
+    version: 4.45
+
