@@ -104,14 +104,14 @@
   path: /releases/name=uaa?
   value:
     name: uaa
-    sha1: d31457bdd200b7bb02e4e6f5ca24e3dbf69ffe82
-    url: https://nextcloud.paas-ta.org/index.php/s/f2mjNX3RT93RxJg/download
-    version: 75.1.0-PaaS-TA-v3.1
+    sha1: ec32aaecb2210c02cbd4ccf37dbab3c875743c1f
+    url: https://nextcloud.paas-ta.org/index.php/s/MrDmqYTQggaiSxr/download
+    version: 75.1.0-PaaS-TA-v3.2
 
 - type: replace
   path: /releases/name=credhub?
   value:
     name: credhub
-    sha1: 3da7d1901351c87e79dea4285ba85b3f2b013a2a
-    url: https://nextcloud.paas-ta.org/index.php/s/fLYAatkdj8XE35R/download
-    version: 2.9.0-PaaS-TA-v2.1
+    sha1: 0ce5fa8c272a59adb6aaa75e1b8f26c69e390cdc
+    url: https://nextcloud.paas-ta.org/index.php/s/mQLwieLS53YJqFg/download
+    version: 2.9.0-PaaS-TA-v2.2
