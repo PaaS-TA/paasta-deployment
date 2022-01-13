@@ -1,0 +1,7 @@
+
+- type: remove
+  path: /instance_groups/name=router/networks/0/default?
+
+- type: replace
+  path: /instance_groups/name=router/networks/1/default?
+  value: [dns, gateway]
