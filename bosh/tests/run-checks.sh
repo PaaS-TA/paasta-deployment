@@ -2,14 +2,15 @@
 
 set -eu
 
-cd ..
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)
+cd "${script_dir}/.."
 
-tmp_file=/tmp/bosh-deployment-test
-touch $tmp_file
+tmp_file="/tmp/bosh-deployment-test"
+touch "${tmp_file}"
 
-clean_tmp() {
-  rm -f $tmp_file
-  rm -f ${tmp_file}.*
+function clean_tmp() {
+  rm -f "${tmp_file}"
+  rm -f "${tmp_file}."*
 }
 
 trap clean_tmp EXIT
@@ -21,7 +22,7 @@ function bosh() {
 }
 
 echo -e "\nCheck YAML syntax\n"
-find .|grep yml|xargs -n1 bosh int
+find . -type "f" -name "*.yml" -print | tee /dev/stderr | xargs -n1 bosh interpolate > /dev/null
 
 echo -e "\nUsed compiled releases\n"
 grep -r -i s3.amazonaws.com/bosh-compiled-release-tarballs . | grep -v grep | grep -v ./.git
@@ -34,6 +35,25 @@ echo -e "\nExamples\n"
 echo "- AWS"
 bosh create-env bosh.yml \
   -o aws/cpi.yml \
+  --state=$tmp_file \
+  --vars-store $(mktemp ${tmp_file}.XXXXXX) \
+  -v director_name=test \
+  -v private_cidr=test \
+  -v private_gw=test \
+  -v bosh_ip=test \
+  -v access_key_id=test \
+  -v secret_access_key=test \
+  -v az=test \
+  -v region=test \
+  -v default_key_name=test \
+  -v default_security_groups=[test] \
+  -v private_key=test \
+  -v subnet_id=test
+
+echo "- AWS with signed URLs"
+bosh create-env bosh.yml \
+  -o aws/cpi.yml \
+  -o misc/blobstore-signed-urls.yml \
   --state=$tmp_file \
   --vars-store $(mktemp ${tmp_file}.XXXXXX) \
   -v director_name=test \
@@ -192,7 +212,7 @@ bosh create-env bosh.yml \
   -v external_db_user_uaa=test \
   -v external_db_name_uaa=test \
   -v external_db_password_uaa=test \
-  -v external_db_scheme_uaa=test 
+  -v external_db_scheme_uaa=test
 
 echo "- AWS (cloud-config)"
 bosh update-cloud-config aws/cloud-config.yml \
@@ -431,6 +451,43 @@ bosh create-env bosh.yml \
   -v storage_account_name=test \
   -v default_security_group=nsg-bosh
 
+echo "- Azure (managed-identity)"
+bosh create-env bosh.yml \
+  -o azure/cpi.yml \
+  -o azure/use-managed-identity.yml \
+  --state=$tmp_file \
+  --vars-store $(mktemp ${tmp_file}.XXXXXX) \
+  -v director_name=test \
+  -v private_cidr=10.0.0.0/24 \
+  -v private_gw=10.0.0.1 \
+  -v bosh_ip=10.0.0.4 \
+  -v vnet_name=boshvnet-crp \
+  -v subnet_name=Bosh \
+  -v subscription_id=test \
+  -v azure-managed-identity=test \
+  -v resource_group_name=test \
+  -v storage_account_name=test \
+  -v default_security_group=nsg-bosh
+
+echo "- Azure (managed-identity-for-bosh-managed-vms)"
+bosh create-env bosh.yml \
+  -o azure/cpi.yml \
+  -o azure/use-managed-identity.yml \
+  -o azure/use-managed-identity-for-bosh-managed-vms.yml \
+  --state=$tmp_file \
+  --vars-store $(mktemp ${tmp_file}.XXXXXX) \
+  -v director_name=test \
+  -v private_cidr=10.0.0.0/24 \
+  -v private_gw=10.0.0.1 \
+  -v bosh_ip=10.0.0.4 \
+  -v vnet_name=boshvnet-crp \
+  -v subnet_name=Bosh \
+  -v subscription_id=test \
+  -v azure-managed-identity=test \
+  -v resource_group_name=test \
+  -v storage_account_name=test \
+  -v default_security_group=nsg-bosh
+
 echo "- Azure (cloud-config)"
 bosh update-cloud-config azure/cloud-config.yml \
   -v private_cidr=10.0.16.0/24 \
@@ -499,7 +556,7 @@ bosh create-env bosh.yml \
   -v private_cidr=10.245.0.0/16 \
   -v private_gw=10.245.0.1 \
   -v bosh_ip=10.245.0.10 \
-  -v docker_host=tcp://192.168.50.8:4243 \
+  -v docker_host=tcp://192.168.56.8:4243 \
   --var-file docker_tls.ca=$tmp_file \
   --var-file docker_tls.certificate=$tmp_file \
   --var-file docker_tls.private_key=$tmp_file \

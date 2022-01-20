@@ -3,15 +3,15 @@
   type: replace
   value:
     name: bosh-openstack-cpi
-    sha1: 7c9be83eb11214db85ef5320f26ec9db8fab353f
-    url: https://bosh.io/d/github.com/cloudfoundry/bosh-openstack-cpi-release?v=44
-    version: 44
+    sha1: aec512de92c14784cc90036dcc1e24a0c8bf7371
+    url: https://bosh.io/d/github.com/cloudfoundry/bosh-openstack-cpi-release?v=46
+    version: 46
 - name: stemcell
   path: /resource_pools/name=vms/stemcell?
   type: replace
   value:
-    sha1: 2f16587f3d7f6374f706f1e321e7a437ddf0ab9f
-    url: https://storage.googleapis.com/bosh-core-stemcells/1.34/bosh-stemcell-1.34-openstack-kvm-ubuntu-bionic-go_agent.tgz
+    sha1: 73fab5b041a8fea18cdbd0dc907ab2f2d51e94f7
+    url: https://storage.googleapis.com/bosh-core-stemcells/1.54/bosh-stemcell-1.54-openstack-kvm-ubuntu-bionic-go_agent.tgz
 - path: /resource_pools/name=vms/cloud_properties?
   type: replace
   value:
@@ -21,26 +21,6 @@
   type: replace
   value:
     net_id: ((net_id))
-- path: /instance_groups/name=bosh/jobs/-
-  type: replace
-  value:
-    name: registry
-    release: bosh
-- path: /instance_groups/name=bosh/properties/registry?
-  type: replace
-  value:
-    address: ((bosh_ip))
-    db:
-      adapter: postgres
-      database: bosh
-      host: 127.0.0.1
-      password: ((postgres_password))
-      user: postgres
-    endpoint: http://registry:((registry_password))@((bosh_ip)):25777
-    host: ((bosh_ip))
-    password: ((registry_password))
-    port: 25777
-    username: registry
 - path: /instance_groups/name=bosh/jobs/-
   type: replace
   value:
@@ -85,8 +65,3 @@
     project: ((openstack_project))
     region: ((region))
     username: ((openstack_username))
-- path: /variables/-
-  type: replace
-  value:
-    name: registry_password
-    type: password

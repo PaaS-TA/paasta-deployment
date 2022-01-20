@@ -3,17 +3,17 @@
   type: replace
   value:
     name: garden-runc
-    sha1: 107c4e7e57daa8a122df09abc0fe76e59c2468d4
-    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/garden-runc-1.19.25-ubuntu-xenial-621.125-20210505-103137-483562469-20210505103139.tgz
-    version: 1.19.25
+    sha1: b7aa92c7a118a1b8b66b3fc82e180b81fc8f2d67
+    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/garden-runc-1.19.31-ubuntu-bionic-1.54-20220111-201831-576318822-20220111201835.tgz
+    version: 1.19.31
 - path: /releases/-
   release: bosh-warden-cpi
   type: replace
   value:
     name: bosh-warden-cpi
-    sha1: 541f92d59c1849a6a4a6e38a86d1af1c23e019c4
-    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/bosh-warden-cpi-41-ubuntu-xenial-621.125-20210430-221130-235747763-20210430221131.tgz
-    version: 41
+    sha1: 42c02435ea33686fcbac2ecbe542cda9b2e36720
+    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/bosh-warden-cpi-43-ubuntu-bionic-1.54-20220111-161519-664546349-20220111161521.tgz
+    version: 43
 - path: /instance_groups/name=bosh/jobs/-
   type: replace
   value:
@@ -68,7 +68,7 @@
   type: replace
   value:
     options:
-      blobstore_path: /var/vcap/store/tmp/compiled_package_cache
+      blobstore_path: /var/vcap/store/director/compiled_package_cache
     provider: local
 - path: /variables/name=nats_server_tls/options/alternative_names?/-
   type: replace

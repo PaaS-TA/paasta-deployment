@@ -22,6 +22,10 @@
         echo "modified libreadline-so-6-issue-in-ubuntu-18-04"
     release: os-conf
 
+- type: replace
+  path: /instance_groups/name=bosh/properties/director/log_access_events?
+  value: true
+
 - path: /instance_groups/name=bosh/jobs/-
   type: replace
   value:

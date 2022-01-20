@@ -3,14 +3,14 @@
   type: replace
   value:
     name: bosh
-    sha1: 7da6c331bd5a17ed43e57ae5ae70ec2717046c23
-    url: https://bosh.io/d/github.com/cloudfoundry/bosh?v=271.8.0
-    version: 271.8.0
+    sha1: 029d238f033775a6dbe5ab89eaba9ae6e1bfe3e0
+    url: https://bosh.io/d/github.com/cloudfoundry/bosh?v=271.19.0
+    version: 271.19.0
 - path: /releases/name=bpm?
   release: bpm
   type: replace
   value:
     name: bpm
-    sha1: dcf0582d838a73de29da273552ae79ac3098ee8b
-    url: https://bosh.io/d/github.com/cloudfoundry/bpm-release?v=1.1.9
-    version: 1.1.9
+    sha1: 0d48aa01a65b947b97570234eb2401e821a8bd35
+    url: https://bosh.io/d/github.com/cloudfoundry/bpm-release?v=1.1.15
+    version: 1.1.15
