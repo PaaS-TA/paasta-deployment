@@ -3,15 +3,15 @@
   type: replace
   value:
     name: bosh-azure-cpi
-    sha1: d0546e6a516ee1cff077b44f3db12386a8a2f439
-    url: https://bosh.io/d/github.com/cloudfoundry/bosh-azure-cpi-release?v=37.6.0
-    version: 37.6.0
+    sha1: 42b9d32621d7cdc0a7eda9754197d01fcdaf4593
+    url: https://bosh.io/d/github.com/cloudfoundry/bosh-azure-cpi-release?v=38.0.0
+    version: 38.0.0
 - name: stemcell
   path: /resource_pools/name=vms/stemcell?
   type: replace
   value:
-    sha1: 514f7ca1a717345408cbc471497899f434267b39
-    url: https://storage.googleapis.com/bosh-core-stemcells/1.54/bosh-stemcell-1.54-azure-hyperv-ubuntu-bionic-go_agent.tgz
+    sha1: 3217b12b31ccf3936a45bdbef65c49ffa150a26d
+    url: https://storage.googleapis.com/bosh-core-stemcells/1.59/bosh-stemcell-1.59-azure-hyperv-ubuntu-bionic-go_agent.tgz
 - path: /resource_pools/name=vms/cloud_properties?
   type: replace
   value:

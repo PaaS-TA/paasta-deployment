@@ -3,6 +3,6 @@
   type: replace
   value:
     name: backup-and-restore-sdk
-    sha1: 11e27c00b9e57db548cdb1b8b9f72580f18daee0
-    url: https://bosh.io/d/github.com/cloudfoundry-incubator/backup-and-restore-sdk-release?v=1.18.31
-    version: 1.18.31
+    sha1: 673413cf22f6335c2109d70f1ed42ccdd87edbe2
+    url: https://bosh.io/d/github.com/cloudfoundry-incubator/backup-and-restore-sdk-release?v=1.18.33
+    version: 1.18.33
