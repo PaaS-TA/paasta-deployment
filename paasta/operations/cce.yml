@@ -4,15 +4,15 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  https://nextcloud.paas-ta.org/index.php/s/eysAPEKdyX9d9mj/download
-    version: 1.0.4
+    url:  https://nextcloud.paas-ta.org/index.php/s/TqKAsxz83PiMoXF/download
+    version: 1.0.5
 
 - type: replace
   path: /releases/name=postgres?
   value:
     name: postgres
-    url:  https://nextcloud.paas-ta.org/index.php/s/rtRpHStMYktmx95/download
-    version: 43-PaaS-TA
+    url:  https://nextcloud.paas-ta.org/index.php/s/bmTijQJQaBPMWE6/download
+    version: 43-PaaS-TA-v3
 
 # CCE - UAA tomcat patch
 - type: replace
@@ -89,72 +89,45 @@
   path: /releases/name=capi
   value:
     name: capi
-    sha1: 021fdc2ccadf374fa8be81b977f41b1c1943d575
-    url: https://nextcloud.paas-ta.org/index.php/s/QG5m7697NA5drsN/download
-    version: 1.109.0-PaaS-TA-v2
-
-# CCE - Release replace
-- type: replace
-  path: /releases/name=cf-networking
-  value:
-    name: cf-networking
-    sha1: 0f23bfea4c036b9cf8352d7b3bf78a8ae75c2448
-    url: https://nextcloud.paas-ta.org/index.php/s/kNw82LWRnPZSNiF/download
-    version: 2.36.0-PaaS-TA
-
-# CCE - Release replace
-- type: replace
-  path: /releases/name=diego
-  value:
-    name: diego
-    sha1: d7cd8b1bce9d50dea0196b1b73dd675126cfb06f
-    url: https://nextcloud.paas-ta.org/index.php/s/KQ7g7BgLCjqNHzC/download
-    version: 2.49.0-PaaS-TA
+    sha1: 24633dcc64a3369eecdc1b12372c0777efa3ed8f
+    url: https://nextcloud.paas-ta.org/index.php/s/B2Db4Ym4erssTAT/download
+    version: 1.123.0-PaaS-TA
 
 # CCE - Release replace
 - type: replace
   path: /releases/name=routing
   value:
     name: routing
-    sha1: 7535f9caf5eb9f880a9fb55e3bfce2c7b37c833c
-    url: https://nextcloud.paas-ta.org/index.php/s/ZMTkHxrMiMQKgJJ/download
-    version: 0.213.0-PaaS-TA
-
-# CCE - Release replace
-- type: replace
-  path: /releases/name=silk
-  value:
-    name: silk
-    sha1: 20d21af238f4a620dacad67be32bb98f2e2fdde7
-    url: https://nextcloud.paas-ta.org/index.php/s/oJfRCNEsrx2QQWJ/download
-    version: 2.36.0-PaaS-TA
+    sha1: 240395b382c8607c59b37e1d58c46567c9b311cf
+    url: https://nextcloud.paas-ta.org/index.php/s/DjH4HH3aEkGY98Q/download
+    version: 0.228.0-PaaS-TA
 
 # CCE - Release replace
 - type: replace
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: ba02806e021a0e0d7d1dbc9822212e33cf639407
-    url: https://nextcloud.paas-ta.org/index.php/s/Xpca9yyjaRpXEx3/download
-    version: 75.1.0-PaaS-TA-v3.3
+    sha1: d1f6ddc9255956ac76786e288a5c37722fb22f8d
+    url: https://nextcloud.paas-ta.org/index.php/s/erF5gWZc9xNGFR9/download
+    version: 75.15.0-PaaS-TA
 
 # CCE - Release replace
 - type: replace
   path: /releases/name=pxc
   value:
     name: pxc
-    sha1: 5729b06533242b3ed4192d51251b5f3a09640b99
-    url: https://nextcloud.paas-ta.org/index.php/s/C33GfmCN6DFF54m/download
-    version: 0.34.0-PaaS-TA
+    sha1: 04070f902471a71087d21b778750244ce3a97925
+    url: https://nextcloud.paas-ta.org/index.php/s/rYiC8mXftFFLiG7/download
+    version: 0.40.0-PaaS-TA
 
 # CCE - Release replace
 - type: replace
   path: /releases/name=credhub
   value:
     name: credhub
-    sha1: 1352c1bc45576fd8caf0851e0c20eb950702664a
-    url: https://nextcloud.paas-ta.org/index.php/s/Litaed4ckiX6RKk/download
-    version: 2.9.0-PaaS-TA-v2.3
+    sha1: bc6288bfe1afeee48248dd84a85108071f2a7948
+    url: https://nextcloud.paas-ta.org/index.php/s/B8oR4LH4EkeEN9Q/download
+    version: 2.11.1-PaaS-TA
 
 
 # CVE - Release replace
