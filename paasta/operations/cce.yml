@@ -116,7 +116,7 @@
   path: /releases/name=pxc
   value:
     name: pxc
-    sha1: 04070f902471a71087d21b778750244ce3a97925
+    sha1: 683105b983a6f35bad7f40df065ff153848af8ef
     url: https://nextcloud.paas-ta.org/index.php/s/rYiC8mXftFFLiG7/download
     version: 0.40.0-PaaS-TA
 
@@ -125,7 +125,7 @@
   path: /releases/name=credhub
   value:
     name: credhub
-    sha1: bc6288bfe1afeee48248dd84a85108071f2a7948
+    sha1: 8792e336dfa79705e5bee1d73042cf4a30fd7965
     url: https://nextcloud.paas-ta.org/index.php/s/B8oR4LH4EkeEN9Q/download
     version: 2.11.1-PaaS-TA
 
