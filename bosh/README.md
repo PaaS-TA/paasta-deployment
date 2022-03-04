@@ -1,4 +1,3 @@
 ## BOSH
 
-- based on bosh-deployment commit hash : [49273e0](https://github.com/cloudfoundry/bosh-deployment/tree/49273e09bc62cd556306bb18471c3cd3ee0eaa4c)
-
+- based on bosh-deployment commit hash : [594c1a6](https://github.com/cloudfoundry/bosh-deployment/tree/594c1a68c8560c54cc9e4decdf827947fe5a13b9)

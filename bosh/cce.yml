@@ -22,6 +22,10 @@
         echo "modified libreadline-so-6-issue-in-ubuntu-18-04"
     release: os-conf
 
+- type: replace
+  path: /instance_groups/name=bosh/properties/director/log_access_events?
+  value: true
+
 - path: /instance_groups/name=bosh/jobs/-
   type: replace
   value:
@@ -76,9 +80,9 @@
   path: /releases/name=bosh?
   value:
     name: bosh
-    sha1: 74a0e35ecf385047e56d8474a08598ad87e52bf2
-    url: https://nextcloud.paas-ta.org/index.php/s/KbMyfnnCMPJi2NH/download
-    version: 271.11.0-PaaS-TA
+    sha1: 9e6ab4ba743266ff3302c9464bf66c4edc367089
+    url: https://nextcloud.paas-ta.org/index.php/s/e7sWdSQYsatY8Nb/download
+    version: 271.20.0-PaaS-TA
 
 - type: replace
   path: /instance_groups/name=bosh/properties/postgres/cce_enable?
@@ -100,18 +104,3 @@
     properties:
       cce_enable: true
 
-- type: replace
-  path: /releases/name=uaa?
-  value:
-    name: uaa
-    sha1: ba02806e021a0e0d7d1dbc9822212e33cf639407
-    url: https://nextcloud.paas-ta.org/index.php/s/Xpca9yyjaRpXEx3/download
-    version: 75.1.0-PaaS-TA-v3.3
-
-- type: replace
-  path: /releases/name=credhub?
-  value:
-    name: credhub
-    sha1: 1352c1bc45576fd8caf0851e0c20eb950702664a
-    url: https://nextcloud.paas-ta.org/index.php/s/Litaed4ckiX6RKk/download
-    version: 2.9.0-PaaS-TA-v2.3

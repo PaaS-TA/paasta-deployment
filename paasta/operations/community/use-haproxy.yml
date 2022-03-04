@@ -2,9 +2,9 @@
   path: /releases/-
   value:
     name: haproxy
-    sha1: f534db38b07f16e708396a59f71b2cb8919f8e17
-    url: https://bosh.io/d/github.com/cloudfoundry-incubator/haproxy-boshrelease?v=10.5.0
-    version: 10.5.0
+    sha1: 4cc5ff35eb059e9c01b03396b7ac165b12472c8e
+    url: https://bosh.io/d/github.com/cloudfoundry-incubator/haproxy-boshrelease?v=11.9.1
+    version: 11.9.1
 - type: replace
   path: /instance_groups/name=smoke-tests
   value:
