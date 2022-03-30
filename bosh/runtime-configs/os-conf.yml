@@ -26,6 +26,7 @@ addons:
         sed -i "$(grep -Rn 'PASS_MAX_DAYS' /etc/login.defs | grep 99999 | awk -F"[:]" '{ print $1 }')s/99999/90/"  /etc/login.defs
         chage -M 90 root
         chage -M 90 vcap
+        ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
   - name: post-deploy-script
     release: os-conf
