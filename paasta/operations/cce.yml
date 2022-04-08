@@ -107,9 +107,9 @@
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: d1f6ddc9255956ac76786e288a5c37722fb22f8d
-    url: https://nextcloud.paas-ta.org/index.php/s/erF5gWZc9xNGFR9/download
-    version: 75.15.0-PaaS-TA
+    sha1: bf72b2ac74d8c6df675b5fda7bdf411a9af07036
+    url: https://nextcloud.paas-ta.org/index.php/s/aGQb6b4Gq7iPDRt/download
+    version: 75.18.0-PaaS-TA
 
 # CCE - Release replace
 - type: replace
