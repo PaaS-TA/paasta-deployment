@@ -107,9 +107,9 @@
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: bf72b2ac74d8c6df675b5fda7bdf411a9af07036
-    url: https://nextcloud.paas-ta.org/index.php/s/aGQb6b4Gq7iPDRt/download
-    version: 75.18.0-PaaS-TA
+    sha1: d9702921bc055548772ffc7d89399b3347ddf818
+    url: https://nextcloud.paas-ta.org/index.php/s/KEMSkjKXRW4gsCW/download
+    version: 75.19.0-PaaS-TA
 
 # CCE - Release replace
 - type: replace
@@ -145,6 +145,6 @@
   path: /releases/name=java-buildpack
   value:
     name: java-buildpack
-    sha1: ed240a6a338a9ac3e2f890bcce87d160abc9c4e8
-    url: https://bosh.io/d/github.com/cloudfoundry/java-buildpack-release?v=4.48
-    version: 4.48
+    sha1: 62199cc3aa4dff2e2aa75db89daad13542c5e9c6
+    url: https://bosh.io/d/github.com/cloudfoundry/java-buildpack-release?v=4.48.3
+    version: 4.48.3
