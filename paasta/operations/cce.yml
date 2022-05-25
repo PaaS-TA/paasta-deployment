@@ -11,7 +11,7 @@
   path: /releases/name=postgres?
   value:
     name: postgres
-    sha1: 728a8f2429d8e3354e1ba7b16b473e85f6f1b40f
+    sha1: eda6c862c0edde443381199a750d28774b06bb31
     url:  https://nextcloud.paas-ta.org/index.php/s/znqQxgMaWTPQL4B/download
     version: 43-PaaS-TA-v4
 
@@ -117,8 +117,8 @@
   path: /releases/name=pxc
   value:
     name: pxc
-    sha1: 2059ad13c5b616516b9041d38c78db4511cc6b77
-    url: https://nextcloud.paas-ta.org/index.php/s/EqC5W52cdt5t9kk/download
+    sha1: eae46c8c30d81e3ee4fde428b77466eff8136326
+    url: https://nextcloud.paas-ta.org/index.php/s/JBbAD2ZYCAyBP5M/download
     version: 0.42.0-PaaS-TA
 
 # CCE - Release replace
