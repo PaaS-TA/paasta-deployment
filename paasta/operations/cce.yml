@@ -11,8 +11,9 @@
   path: /releases/name=postgres?
   value:
     name: postgres
-    url:  https://nextcloud.paas-ta.org/index.php/s/bmTijQJQaBPMWE6/download
-    version: 43-PaaS-TA-v3
+    sha1: eda6c862c0edde443381199a750d28774b06bb31
+    url:  https://nextcloud.paas-ta.org/index.php/s/znqQxgMaWTPQL4B/download
+    version: 43-PaaS-TA-v4
 
 # CCE - UAA tomcat patch
 - type: replace
@@ -107,18 +108,18 @@
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: d9702921bc055548772ffc7d89399b3347ddf818
-    url: https://nextcloud.paas-ta.org/index.php/s/KEMSkjKXRW4gsCW/download
-    version: 75.19.0-PaaS-TA
+    sha1: 72beceffd33d326acb9b7bfa88bb18e8a8f6aaf8
+    url: https://nextcloud.paas-ta.org/index.php/s/dZ2EtD45Z7fkcWH/download
+    version: 75.20.0-PaaS-TA
 
 # CCE - Release replace
 - type: replace
   path: /releases/name=pxc
   value:
     name: pxc
-    sha1: 683105b983a6f35bad7f40df065ff153848af8ef
-    url: https://nextcloud.paas-ta.org/index.php/s/rYiC8mXftFFLiG7/download
-    version: 0.40.0-PaaS-TA
+    sha1: eae46c8c30d81e3ee4fde428b77466eff8136326
+    url: https://nextcloud.paas-ta.org/index.php/s/JBbAD2ZYCAyBP5M/download
+    version: 0.42.0-PaaS-TA
 
 # CCE - Release replace
 - type: replace
