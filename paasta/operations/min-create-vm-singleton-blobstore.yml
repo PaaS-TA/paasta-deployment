@@ -40,6 +40,10 @@
     - name: route_registrar
       release: routing
       properties:
+        nats:
+          tls_enabled: true
+          cert_chain: "((nats_client_cert.certificate))"
+          private_key: "((nats_client_cert.private_key))"
         route_registrar:
           routes:
           - name: blobstore

@@ -1,8 +1,8 @@
 releases:
 - name: "os-conf"
-  url:  "https://bosh.io/d/github.com/cloudfoundry/os-conf-release?v=22.1.1"
-  sha1: "4f653168954749992a541d228dd4f936f2eff2d6"
-  version: "22.1.1"
+  version: "22.1.2"
+  url: "https://bosh.io/d/github.com/cloudfoundry/os-conf-release?v=22.1.2"
+  sha1: "386293038ae3d00813eaa475b4acf63f8da226ef"
 
 addons:
 - include:
@@ -26,6 +26,7 @@ addons:
         sed -i "$(grep -Rn 'PASS_MAX_DAYS' /etc/login.defs | grep 99999 | awk -F"[:]" '{ print $1 }')s/99999/90/"  /etc/login.defs
         chage -M 90 root
         chage -M 90 vcap
+        ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
   - name: post-deploy-script
     release: os-conf

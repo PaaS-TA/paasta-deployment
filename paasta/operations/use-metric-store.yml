@@ -2,9 +2,9 @@
   path: /releases/name=metric-store?
   value:
     name: metric-store
-    sha1: 84d70685d882e427a69bd482aba101744981cc60
-    url: https://bosh.io/d/github.com/cloudfoundry/metric-store-release?v=1.5.2
-    version: 1.5.2
+    sha1: 546a96e8c1505577fa0f7fa199d3a5636831bd2b
+    url: https://bosh.io/d/github.com/cloudfoundry/metric-store-release?v=1.5.4
+    version: 1.5.4
 - type: replace
   path: /instance_groups/name=metric-store?
   value:

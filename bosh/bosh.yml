@@ -77,13 +77,13 @@ instance_groups:
       enable_dedicated_status_worker: true
       enable_nats_delivered_templates: true
       enable_post_deploy: true
-      log_access_events: true
       events:
         record_events: true
       flush_arp: true
       generate_vm_passwords: true
       local_dns:
         enabled: true
+        use_dns_addresses: true
       name: ((director_name))
       ssl:
         cert: ((director_ssl.certificate))
@@ -142,13 +142,13 @@ networks:
   type: manual
 releases:
 - name: bosh
-  sha1: 7da6c331bd5a17ed43e57ae5ae70ec2717046c23
-  url: https://bosh.io/d/github.com/cloudfoundry/bosh?v=271.8.0
-  version: 271.8.0
+  sha1: 7e4cf1cac28ebba1e6a57cafb12bdd6352168cf0
+  url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/bosh-271.20.0-ubuntu-bionic-1.59-20220201-194127-441156061-20220201194129.tgz
+  version: 271.20.0
 - name: bpm
-  sha1: dcf0582d838a73de29da273552ae79ac3098ee8b 
-  url: https://bosh.io/d/github.com/cloudfoundry/bpm-release?v=1.1.9
-  version: 1.1.9
+  sha1: 96ccc1d82d968677e0b8b26f71a0a79b5dc546e2
+  url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/bpm-1.1.16-ubuntu-bionic-1.59-20220127-124326-59454749-20220127124328.tgz
+  version: 1.1.16
 resource_pools:
 - env:
     bosh:
