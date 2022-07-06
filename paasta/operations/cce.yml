@@ -149,3 +149,12 @@
     sha1: 62199cc3aa4dff2e2aa75db89daad13542c5e9c6
     url: https://bosh.io/d/github.com/cloudfoundry/java-buildpack-release?v=4.48.3
     version: 4.48.3
+
+# CVE - Release replace
+- type: replace
+  path: /releases/name=haproxy
+  value:
+    name: haproxy
+    sha1: b1ea172e97562ac785a28b3614655b5a77552d8f
+    url: https://bosh.io/d/github.com/cloudfoundry-incubator/haproxy-boshrelease?v=11.11.0
+    version: 11.11.0
