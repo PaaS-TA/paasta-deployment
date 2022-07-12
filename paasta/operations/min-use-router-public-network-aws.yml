@@ -2,8 +2,8 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  https://nextcloud.paas-ta.org/index.php/s/CTDsro382NyyAEL/download
-    version: 1.0.1
+    url:  https://nextcloud.paas-ta.org/index.php/s/TqKAsxz83PiMoXF/download
+    version: 1.0.5
 
 - type: replace
   path: /instance_groups/name=router/jobs/-

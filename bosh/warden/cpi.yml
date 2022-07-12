@@ -3,15 +3,15 @@
   type: replace
   value:
     name: bosh-warden-cpi
-    sha1: 9f579b1615bc95494eaa8579728fe4764e3b1e16
-    url: https://bosh.io/d/github.com/cppforlife/bosh-warden-cpi-release?v=40
-    version: "40"
+    sha1: eea3e6e863ff63eda68470a7d622b01ba6f80b46
+    url: https://bosh.io/d/github.com/cloudfoundry/bosh-warden-cpi-release?v=43
+    version: 43
 - name: stemcell
   path: /resource_pools/name=vms/stemcell?
   type: replace
   value:
-    sha1: f399044d2ebe3351f0f1b0b3f97ef11464d283b4
-    url: https://bosh-core-stemcells.s3-accelerate.amazonaws.com/621.125/bosh-stemcell-621.125-warden-boshlite-ubuntu-xenial-go_agent.tgz
+    sha1: 21bff564729c93b809e265892ffc3de6489bfbfe
+    url: https://storage.googleapis.com/bosh-core-stemcells/1.59/bosh-stemcell-1.59-warden-boshlite-ubuntu-bionic-go_agent.tgz
 - path: /resource_pools/name=vms/cloud_properties?
   type: replace
   value:

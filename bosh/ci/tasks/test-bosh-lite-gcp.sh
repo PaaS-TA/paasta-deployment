@@ -1,15 +1,18 @@
 #!/bin/bash -ex
 
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+URL=$(cat stemcell/url)
+SHA1=$(cat stemcell/sha1)
+
 pushd "${PWD}/bbl-state"
   set +x
   eval "$(bbl print-env)"
   set -x
 
-  bosh upload-stemcell --sha1 35297b197426db1c9ead4d66afff47dab63a26ab \
-    "https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-xenial-go_agent?v=315.41"
+  bosh upload-stemcell --sha1 "$SHA1" "$URL"
 
   echo "-----> `date`: Deploy"
-  bosh -n -d zookeeper deploy <(wget -O- https://raw.githubusercontent.com/cppforlife/zookeeper-release/master/manifests/zookeeper.yml) \
+  bosh -n -d zookeeper deploy "${script_dir}/../assets/zookeeper.yml" \
     -o bosh-deployment/tests/cred-test.yml
 
   echo "-----> `date`: Exercise deployment"

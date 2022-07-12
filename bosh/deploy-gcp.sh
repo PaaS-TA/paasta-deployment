@@ -7,5 +7,6 @@ bosh create-env bosh.yml \
 	-o uaa.yml  \
 	-o credhub.yml  \
 	-o jumpbox-user.yml  \
+        -o cce.yml \
 	--var-file gcp_credentials_json=~/.ssh/paasta-project.json \
 	-l gcp-vars.yml
