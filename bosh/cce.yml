@@ -88,9 +88,9 @@
   path: /releases/name=uaa?
   value:
     name: uaa
-    sha1: fdc02e3a8901cc2c682a82a89a7d54aa2d70d7f0
-    url: https://bosh.io/d/github.com/cloudfoundry/uaa-release?v=75.20.0
-    version: 75.20.0
+    sha1: 59d22be3f35612d208975a4a235934e972b8df57
+    url: https://bosh.io/d/github.com/cloudfoundry/uaa-release?v=75.22.0
+    version: 75.22.0
 
 - type: replace
   path: /instance_groups/name=bosh/properties/postgres/cce_enable?
