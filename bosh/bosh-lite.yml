@@ -3,16 +3,16 @@
   type: replace
   value:
     name: garden-runc
-    sha1: c42f13099443636c4dd604591605f7664b95c395
-    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/garden-runc-1.19.33-ubuntu-bionic-1.59-20220208-222340-972864328-20220208222344.tgz
-    version: 1.19.33
+    sha1: 0bfd4d2a2879fcda53c790c9ec35b78e10c6a835
+    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/garden-runc-1.20.8-ubuntu-jammy-0.2-20220714-122631-445072235-20220714122634.tgz
+    version: 1.20.8
 - path: /releases/-
   release: bosh-warden-cpi
   type: replace
   value:
     name: bosh-warden-cpi
-    sha1: d98843ded925bc75f8d03abf8a048cf40b5b6375
-    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/bosh-warden-cpi-43-ubuntu-bionic-1.59-20220127-124144-563388624-20220127124146.tgz
+    sha1: 065eb06a2f5b12088c06102f89a0a269378015be
+    url: https://s3.amazonaws.com/bosh-compiled-release-tarballs/bosh-warden-cpi-43-ubuntu-jammy-0.2-20220714-122053-070180468-20220714122054.tgz
     version: 43
 - path: /instance_groups/name=bosh/jobs/-
   type: replace
@@ -44,7 +44,7 @@
       expand_stemcell_tarball: false
     agent:
       blobstore: null
-      mbus: nats://nats:((nats_password))@10.254.50.4:4222
+      mbus: nats://10.254.50.4:4222
     host_ip: 10.254.50.4
     warden:
       connect_address: 127.0.0.1:7777

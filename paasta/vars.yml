@@ -23,7 +23,7 @@ syslog_fallback_servers: []             # [MONITORING] PaaS-TA Syslog Fallback S
 
 # STEMCELL
 stemcell_os: "ubuntu-bionic"		# Stemcell OS
-stemcell_version: "1.90"		# Stemcell Version
+stemcell_version: "1.92"		# Stemcell Version
 
 # SMOKE-TEST
 smoke_tests_azs: ["z1"]			# Smoke-Test 가용 존
@@ -53,7 +53,7 @@ diego_api_network: "default"		# Diego-API 네트워크
 # UAA
 uaa_azs: ["z1", "z2"]			# UAA 가용 존
 uaa_instances: 2			# UAA 인스턴스 수
-uaa_vm_type: "minimal"			# UAA VM 종류
+uaa_vm_type: "small"			# UAA VM 종류
 uaa_network: "default"			# UAA 네트워크
 
 # SINGLETON-BLOBSTORE
@@ -99,9 +99,15 @@ tcp_router_vm_extensions: ["cf-tcp-router-network-properties"]	# TCP-Router VM �
 
 # DOPPLER
 doppler_azs: ["z1", "z2"]		# Doppler 가용 존
-doppler_instances: 4			# Doppler 인스턴스 수
+doppler_instances: 3			# Doppler 인스턴스 수
 doppler_vm_type: "minimal"		# Doppler VM 종류
 doppler_network: "default"		# Doppler 네트워크
+
+# LOG_CACHE
+log_cache_azs: ["z1"]		# Log Cache 가용 존
+log_cache_instances: 1			# Log Cache 인스턴스 수
+log_cache_vm_type: "minimal"		# Log Cache VM 종류
+log_cache_network: "default"		# Log Cache 네트워크
 
 # DIEGO-CELL
 diego_cell_azs: ["z1", "z2"]		# Diego-Cell 가용 존

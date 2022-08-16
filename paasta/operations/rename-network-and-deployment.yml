@@ -13,6 +13,10 @@
   value: ((doppler_network))
 
 - type: replace
+  path: /instance_groups/name=log-cache/networks/name=default/name
+  value: ((log_cache_network))
+
+- type: replace
   path: /instance_groups/name=database/networks/name=default/name
   value: ((database_network))
 
@@ -229,6 +233,13 @@
     targets:
     - query: '*'
       instance_group: uaa
+      deployment: ((deployment_name))
+      network: ((uaa_network))
+      domain: bosh
+  - domain: log-cache.service.cf.internal
+    targets:
+    - query: '*'
+      instance_group: log-cache
       deployment: ((deployment_name))
       network: ((uaa_network))
       domain: bosh
