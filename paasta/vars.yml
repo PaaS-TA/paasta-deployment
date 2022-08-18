@@ -79,7 +79,7 @@ cc_worker_network: "default"		# CC-Worker 네트워크
 # SCHEDULER
 scheduler_azs: ["z1", "z2"]		# Scheduler 가용 존
 scheduler_instances: 2			# Scheduler 인스턴스 수
-scheduler_vm_type: "minimal"		# Scheduler VM 종류
+scheduler_vm_type: "small"		# Scheduler VM 종류
 scheduler_network: "default"		# Scheduler 네트워크
 scheduler_vm_extensions: ["diego-ssh-proxy-network-properties"] # Scheduler VM 확장
 
