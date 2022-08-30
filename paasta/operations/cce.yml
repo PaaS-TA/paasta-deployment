@@ -96,6 +96,15 @@
 
 # CCE - Release replace
 - type: replace
+  path: /releases/name=uaa
+  value:
+    name: uaa
+    sha1: 328493d41fdfb2728ee17f8e3fcad1b7296a702f
+    url: https://bosh.io/d/github.com/cloudfoundry/uaa-release?v=75.23.0
+    version: 75.23.0
+
+# CCE - Release replace
+- type: replace
   path: /releases/name=pxc
   value:
     name: pxc
