@@ -108,6 +108,6 @@
   path: /releases/name=pxc
   value:
     name: pxc
-    sha1: 045dbb3176b13cb9ab9a44370546a65e8a2afe0b
-    url: https://nextcloud.paas-ta.org/index.php/s/W5ExfZK9bAwWttf/download
-    version: 0.44.0-PaaS-TA
+    sha1: 7f90f2689f31ddcd95fe16c75a4e8816f2ec59db
+    url: https://nextcloud.paas-ta.org/index.php/s/cfGCLsgPz6iMcCE/download
+    version: 0.44.0-PaaS-TA-v2
