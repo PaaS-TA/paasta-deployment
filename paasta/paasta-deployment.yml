@@ -1,10 +1,6 @@
 ---
 name: paasta
-<<<<<<< HEAD
 manifest_version: v5.8.0
-=======
-manifest_version: v5.7.10
->>>>>>> master
 update:
   canaries: 1
   canary_watch_time: 30000-1200000
