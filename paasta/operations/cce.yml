@@ -11,9 +11,9 @@
   path: /releases/name=postgres?
   value:
     name: postgres
-    sha1: eda6c862c0edde443381199a750d28774b06bb31
-    url:  https://nextcloud.paas-ta.org/index.php/s/znqQxgMaWTPQL4B/download
-    version: 43-PaaS-TA-v4
+    sha1: 1319f237751f8f3314038e6d67d473fa8551f81e
+    url:  https://nextcloud.paas-ta.org/index.php/s/nnsExzqorEm5wAg/download
+    version: 44-PaaS-TA
 
 # CCE - UAA tomcat patch
 - type: replace
