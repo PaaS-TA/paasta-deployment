@@ -111,3 +111,12 @@
     sha1: 7f90f2689f31ddcd95fe16c75a4e8816f2ec59db
     url: https://nextcloud.paas-ta.org/index.php/s/cfGCLsgPz6iMcCE/download
     version: 0.44.0-PaaS-TA-v2
+
+# CCE - Release replace
+- type: replace
+  path: /releases/name=credhub
+  value:
+    name: credhub
+    sha1: 7beae81d257ffc995a19617c558c13b1fb0714c6
+    url: https://bosh.io/d/github.com/pivotal-cf/credhub-release?v=2.12.8
+    version: 2.12.8

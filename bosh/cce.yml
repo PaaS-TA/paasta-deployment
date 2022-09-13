@@ -85,6 +85,14 @@
     version: 273.0.0-PaaS-TA-v2
 
 - type: replace
+  path: /releases/name=credhub?
+  value:
+    name: credhub
+    sha1: 7beae81d257ffc995a19617c558c13b1fb0714c6
+    url: https://bosh.io/d/github.com/pivotal-cf/credhub-release?v=2.12.8
+    version: 2.12.8
+
+- type: replace
   path: /releases/name=uaa?
   value:
     name: uaa
