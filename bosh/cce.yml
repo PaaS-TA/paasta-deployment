@@ -80,9 +80,17 @@
   path: /releases/name=bosh?
   value:
     name: bosh
-    sha1: 7621c562fa740a7af58fca9bb8f81a86355cacf5
-    url: https://nextcloud.paas-ta.org/index.php/s/cLkfTiYkkLKkKJM/download
-    version: 273.0.0-PaaS-TA
+    sha1: 55beb7b613ab5e6a2094bdd7b0647546e75544a9
+    url: https://nextcloud.paas-ta.org/index.php/s/ZNg2mNwZofW8X47/download
+    version: 273.0.0-PaaS-TA-v2
+
+- type: replace
+  path: /releases/name=credhub?
+  value:
+    name: credhub
+    sha1: 7beae81d257ffc995a19617c558c13b1fb0714c6
+    url: https://bosh.io/d/github.com/pivotal-cf/credhub-release?v=2.12.8
+    version: 2.12.8
 
 - type: replace
   path: /releases/name=uaa?
