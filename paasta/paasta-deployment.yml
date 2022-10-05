@@ -2786,9 +2786,9 @@ releases:
   version: 1.1.18
   sha1: 86675f90d66f7018c57f4ae0312f1b3834dd58c9
 - name: capi
-  url: https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.134.0
-  version: 1.134.0
-  sha1: 2a0be49ee3164e9e96e582657b5bb989e6b95ecd
+  url: https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.139.0
+  version: 1.139.0
+  sha1: bf904f6f360508a66ffd67d1f66c061be3e2ee8f
 - name: cf-networking
   url: https://bosh.io/d/github.com/cloudfoundry/cf-networking-release?v=3.11.0
   version: 3.11.0
