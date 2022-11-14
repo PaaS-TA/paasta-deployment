@@ -2806,9 +2806,9 @@ releases:
   version: 2.12.6
   sha1: 0829869f6cd0b16df0dd3dac4a8be08bb46e1556
 - name: diego
-  url: https://bosh.io/d/github.com/cloudfoundry/diego-release?v=2.65.0
-  version: 2.65.0
-  sha1: 090a026a0011028463d6423cd05c2290d320f139
+  url: https://bosh.io/d/github.com/cloudfoundry/diego-release?v=2.66.3
+  version: 2.66.3
+  sha1: e8dbd0d3a2054ff7aeb25a939882e2d684e3a989
 - name: dotnet-core-buildpack
   url: https://bosh.io/d/github.com/cloudfoundry/dotnet-core-buildpack-release?v=2.3.44
   version: 2.3.44
