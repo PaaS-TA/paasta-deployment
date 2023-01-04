@@ -23,7 +23,7 @@ syslog_fallback_servers: []             # [MONITORING] PaaS-TA Syslog Fallback S
 
 # STEMCELL
 stemcell_os: "ubuntu-bionic"		# Stemcell OS
-stemcell_version: "1.122"		# Stemcell Version
+stemcell_version: "1.169"		# Stemcell Version
 
 # SMOKE-TEST
 smoke_tests_azs: ["z1"]			# Smoke-Test 가용 존
