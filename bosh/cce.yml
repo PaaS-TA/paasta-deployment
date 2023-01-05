@@ -71,7 +71,7 @@
       - net.ipv4.tcp_timestamps=0
 
 - type: replace
-  path: /instance_groups/name=bosh/jobs/name=postgres-10
+  path: /instance_groups/name=bosh/jobs/name=postgres
   value:
     name: postgres-cce
     release: bosh
@@ -80,17 +80,25 @@
   path: /releases/name=bosh?
   value:
     name: bosh
-    sha1: fb28cd9a20f2607233c2d9094962d6c0690a17af
-    url: https://nextcloud.paas-ta.org/index.php/s/oMG5W2HKRSBdswT/download
-    version: 271.20.0-PaaS-TA-v2
+    sha1: 55beb7b613ab5e6a2094bdd7b0647546e75544a9
+    url: https://nextcloud.paas-ta.org/index.php/s/ZNg2mNwZofW8X47/download
+    version: 273.0.0-PaaS-TA-v2
+
+- type: replace
+  path: /releases/name=credhub?
+  value:
+    name: credhub
+    sha1: 7beae81d257ffc995a19617c558c13b1fb0714c6
+    url: https://bosh.io/d/github.com/pivotal-cf/credhub-release?v=2.12.8
+    version: 2.12.8
 
 - type: replace
   path: /releases/name=uaa?
   value:
     name: uaa
-    sha1: fdc02e3a8901cc2c682a82a89a7d54aa2d70d7f0
-    url: https://bosh.io/d/github.com/cloudfoundry/uaa-release?v=75.20.0
-    version: 75.20.0
+    sha1: cb40ae60cc87c416a8d60b66032426947aea1f29
+    url: https://bosh.io/d/github.com/cloudfoundry/uaa-release?v=76.2.0
+    version: 76.2.0
 
 - type: replace
   path: /instance_groups/name=bosh/properties/postgres/cce_enable?

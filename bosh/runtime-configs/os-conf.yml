@@ -35,6 +35,6 @@ addons:
         #!/bin/bash
         chmod o-w /var/tmp
         echo "linux 18.04 cce enable"
-        find / \( -nouser -o -nogroup \) -xdev -exec chown root:root {} \;
-        find /sys /var /usr /home /etc /tmp /bin /sbin -type f -perm -2 -exec chmod o-w {} \;
+        find / \( -nouser -o -nogroup \) ! \( -path '/sys/kernel/*' -prune \) ! \( -path '/sys/fs/cgroup/unified/*' -prune \) -xdev -exec chown root:root {} \;
+        find /sys /var /usr /home /etc /tmp /bin /sbin -type f -perm -2 ! \( -path '/sys/kernel/*' -prune \) ! \( -path '/sys/fs/cgroup/unified/*' -prune \) -exec chmod o-w {} \;
 

@@ -134,6 +134,13 @@
       deployment: ((deployment_name))
       network: ((control_network))
       domain: bosh
+  - domain: log-cache.service.cf.internal
+    targets:
+    - query: '*'
+      instance_group: control
+      deployment: ((deployment_name))
+      network: ((control_network))
+      domain: bosh
   - domain: file-server.service.cf.internal
     targets:
     - query: '*'

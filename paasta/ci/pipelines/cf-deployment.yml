@@ -319,13 +319,13 @@ resources:
   type: git
   icon: github
   source:
-    uri: https://github.com/cloudfoundry-incubator/disaster-recovery-acceptance-tests.git
+    uri: https://github.com/cloudfoundry/disaster-recovery-acceptance-tests.git
 
 - name: bbr-github-release
   type: github-release
   icon: github
   source:
-    owner: cloudfoundry-incubator
+    owner: cloudfoundry
     repository: bosh-backup-and-restore
 
 - name: trelawney-external-resources
@@ -538,6 +538,7 @@ jobs:
         operations/change-postgres-max-connections.yml
         operations/use-internal-lookup-for-route-services.yml
         operations/enable-tls-on-file-server.yml
+        operations/test/speed-up-dynamic-asgs.yml
       VARS_FILES: |
         environments/test/luna/deployment-name.yml
         environments/test/luna/network-name.yml
@@ -663,6 +664,7 @@ jobs:
         REPORTER_CONFIG_FILE_PATH: environments/test/luna/reporter_config.json
         CAPTURE_LOGS: true
         RELINT_VERBOSE_AUTH: "true"
+        NODES: 12
 
 - name: fresh-delete-deployment
   serial: true
@@ -859,6 +861,7 @@ jobs:
         operations/increase-doppler-vm-type-from-minimal-to-small.yml
         operations/scale-log-api-to-4.yml
         operations/use-internal-lookup-for-route-services.yml
+        operations/test/speed-up-dynamic-asgs.yml
       VARS_FILES: |
         environments/test/trelawney/external-db-vars.yml
         environments/test/trelawney/external-public-ip-vars.yml
@@ -1078,9 +1081,10 @@ jobs:
         operations/experimental/enable-iptables-logger.yml
         operations/experimental/set-cpu-weight.yml
         operations/experimental/enable-cpu-throttling.yml
+        operations/experimental/enable-oci-phase-1.yml
         operations/experimental/enable-containerd-for-processes.yml
-        operations/experimental/use-logcache-syslog-ingress.yml
         operations/increase-doppler-vm-type-from-minimal-to-small.yml
+        operations/test/speed-up-dynamic-asgs.yml
       VARS_FILES: |
         environments/test/hermione/bbl-state/vars/director-vars-file.yml
         environments/test/hermione/vars-use-operator-provided-router-tls-certificates.yml
@@ -1133,8 +1137,8 @@ jobs:
         operations/experimental/enable-cpu-throttling.yml
         operations/experimental/enable-oci-phase-1.yml
         operations/experimental/enable-containerd-for-processes.yml
-        operations/experimental/use-logcache-syslog-ingress.yml
         operations/increase-doppler-vm-type-from-minimal-to-small.yml
+        operations/test/speed-up-dynamic-asgs.yml
       VARS_FILES: |
         environments/test/hermione/bbl-state/vars/director-vars-file.yml
         environments/test/hermione/vars-use-operator-provided-router-tls-certificates.yml
@@ -1472,6 +1476,13 @@ jobs:
     - get: cf-deployment-concourse-tasks
     - get: runtime-ci
     - get: relint-envs
+  - task: guarantee-no-existing-cf-deployment
+    file: cf-deployment-concourse-tasks/bosh-delete-deployment/task.yml
+    input_mapping:
+      bbl-state: relint-envs
+    params:
+      BBL_STATE_DIR: environments/test/bbr/bbl-state
+      IGNORE_ERRORS: true
   - task: bosh-deploy-cf
     file: cf-deployment-concourse-tasks/bosh-deploy/task.yml
     input_mapping:
@@ -1487,6 +1498,8 @@ jobs:
         operations/backup-and-restore/enable-backup-restore.yml
         operations/enable-nfs-volume-service.yml
         operations/backup-and-restore/enable-restore-nfs-broker.yml
+        operations/enable-smb-volume-service.yml
+        operations/backup-and-restore/enable-restore-smb-broker.yml
       REGENERATE_CREDENTIALS: true
   - in_parallel:
     - task: enable-docker
@@ -1517,13 +1530,21 @@ jobs:
         INSTANCE_GROUP_NAME: uaa
         SYSTEM_DOMAIN: baba-yaga.cf-app.com
         SECURITY_GROUP_NAME: uaa
-    - task: run-nfs-broker-push-errand
-      file: cf-deployment-concourse-tasks/run-errand/task.yml
-      input_mapping:
-        bbl-state: relint-envs
-      params:
-        BBL_STATE_DIR: environments/test/bbr/bbl-state
-        ERRAND_NAME: nfs-broker-push
+    - do:
+      - task: run-nfs-broker-push-errand
+        file: cf-deployment-concourse-tasks/run-errand/task.yml
+        input_mapping:
+          bbl-state: relint-envs
+        params:
+          BBL_STATE_DIR: environments/test/bbr/bbl-state
+          ERRAND_NAME: nfs-broker-push
+      - task: run-smb-broker-push-errand
+        file: cf-deployment-concourse-tasks/run-errand/task.yml
+        input_mapping:
+          bbl-state: relint-envs
+        params:
+          BBL_STATE_DIR: environments/test/bbr/bbl-state
+          ERRAND_NAME: smb-broker-push
     - task: run-bosh-cleanup
       file: cf-deployment-concourse-tasks/bosh-cleanup/task.yml
       input_mapping:
@@ -1625,6 +1646,40 @@ jobs:
     file: cf-deployment-concourse-tasks/bosh-cleanup/task.yml
     input_mapping:
       toolsmiths-env: toolsmiths-windows-env
+  - task: update-dns-runtime-config
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: cloudfoundry/cf-deployment-concourse-tasks
+      inputs:
+      - name: toolsmiths-env
+      - name: cf-deployment-concourse-tasks
+      run:
+        dir: ""
+        path: bash
+        args:
+        - -c
+        - |
+          #!/bin/bash
+
+          source cf-deployment-concourse-tasks/shared-functions
+          setup_bosh_env_vars
+
+          cat <<EOT > /tmp/add-bionic.yml
+          ---
+          - type: replace
+            path: /addons/name=bosh-dns/include/stemcell/-
+            value:
+              os: ubuntu-bionic
+          EOT
+
+          bosh runtime-config --name=dns > /tmp/dns.yml
+          bosh interpolate -o /tmp/add-bionic.yml /tmp/dns.yml > /tmp/updated-dns.yml
+          bosh -n update-runtime-config --name=dns /tmp/updated-dns.yml
+    input_mapping:
+      toolsmiths-env: toolsmiths-windows-env
   - task: bosh-deploy-cf-develop
     file: cf-deployment-concourse-tasks/bosh-deploy/task.yml
     input_mapping:
@@ -1694,6 +1749,7 @@ jobs:
     params:
       CAPTURE_LOGS: true
       CONFIG_FILE_PATH: environments/test/trelawney/cats_windows_integration_config.json
+      NODES: 5
 
 - name: windows-unclaim-env
   serial: true

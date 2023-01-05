@@ -46,6 +46,6 @@
   path: /releases/-
   value:
     name: datadog-firehose-nozzle
-    sha1: e301e6de0093ee0f36b9580269d63aa849651b02
-    url: https://bosh.io/d/github.com/DataDog/datadog-firehose-nozzle-release?v=83
-    version: "83"
+    sha1: c7d5288526c68773b48bdf2e6d4346aefdd3ac0f
+    url: https://bosh.io/d/github.com/DataDog/datadog-firehose-nozzle-release?v=85
+    version: "85"

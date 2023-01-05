@@ -287,4 +287,4 @@ vm_extensions:
     - host: 80
     - host: 443
     - host: 2222
-    - host: 4443    
+    - host: 4443
