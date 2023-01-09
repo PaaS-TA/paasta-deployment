@@ -977,6 +977,7 @@ instance_groups:
         temporary_use_logcache: true
         logcache:
           host: log-cache.service.cf.internal
+          port: 8680
         logcache_tls:
           private_key: "((cc_logcache_tls.private_key))"
           certificate: "((cc_logcache_tls.certificate))"
