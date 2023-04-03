@@ -4,16 +4,16 @@
   path: /releases/name=paasta-conf?
   value:
     name: paasta-conf
-    url:  https://nextcloud.paas-ta.org/index.php/s/TqKAsxz83PiMoXF/download
-    version: 1.0.5
+    url:  https://nextcloud.paas-ta.org/index.php/s/DHQ44K68FfgMQy5/download
+    version: 1.0.6
 
 - type: replace
   path: /releases/name=postgres?
   value:
     name: postgres
-    sha1: eda6c862c0edde443381199a750d28774b06bb31
-    url:  https://nextcloud.paas-ta.org/index.php/s/znqQxgMaWTPQL4B/download
-    version: 43-PaaS-TA-v4
+    sha1: 1319f237751f8f3314038e6d67d473fa8551f81e
+    url:  https://nextcloud.paas-ta.org/index.php/s/nnsExzqorEm5wAg/download
+    version: 44-PaaS-TA
 
 # CCE - UAA tomcat patch
 - type: replace
@@ -91,15 +91,6 @@
         echo "added disable_symlinks in nginx.conf"
 
 # CCE - Release replace
-- type: replace
-  path: /releases/name=capi
-  value:
-    name: capi
-    sha1: 24633dcc64a3369eecdc1b12372c0777efa3ed8f
-    url: https://nextcloud.paas-ta.org/index.php/s/B2Db4Ym4erssTAT/download
-    version: 1.123.0-PaaS-TA
-
-# CCE - Release replace
 #- type: replace
 #  path: /releases/name=cf-networking
 #  value:
@@ -122,9 +113,9 @@
   path: /releases/name=routing
   value:
     name: routing
-    sha1: 240395b382c8607c59b37e1d58c46567c9b311cf
-    url: https://nextcloud.paas-ta.org/index.php/s/DjH4HH3aEkGY98Q/download
-    version: 0.228.0-PaaS-TA
+    sha1: 7cedb5d5dcb92ab62f636866fa7b26d7b5d21fe2
+    url: https://nextcloud.paas-ta.org/index.php/s/Tgz8XqxWAGtTn2X/download
+    version: 0.237.0-PaaS-TA
 
 # CCE - Release replace
 #- type: replace
@@ -140,52 +131,24 @@
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: 72beceffd33d326acb9b7bfa88bb18e8a8f6aaf8
-    url: https://nextcloud.paas-ta.org/index.php/s/dZ2EtD45Z7fkcWH/download
-    version: 75.20.0-PaaS-TA
+    sha1: 5bf905e1fcc049c1f7dfb3f5fcca4f009f6e422d
+    url: https://nextcloud.paas-ta.org/index.php/s/nizzfaH4aeomzAG/download
+    version: 76.2.0-PaaS-TA
 
 # CCE - Release replace
 - type: replace
   path: /releases/name=pxc
   value:
     name: pxc
-    sha1: eae46c8c30d81e3ee4fde428b77466eff8136326
-    url: https://nextcloud.paas-ta.org/index.php/s/JBbAD2ZYCAyBP5M/download
-    version: 0.42.0-PaaS-TA
+    sha1: 7f90f2689f31ddcd95fe16c75a4e8816f2ec59db
+    url: https://nextcloud.paas-ta.org/index.php/s/cfGCLsgPz6iMcCE/download
+    version: 0.44.0-PaaS-TA-v2
 
 # CCE - Release replace
 - type: replace
   path: /releases/name=credhub
   value:
     name: credhub
-    sha1: 8792e336dfa79705e5bee1d73042cf4a30fd7965
-    url: https://nextcloud.paas-ta.org/index.php/s/B8oR4LH4EkeEN9Q/download
-    version: 2.11.1-PaaS-TA
-
-# CVE - Release replace
-- type: replace
-  path: /releases/name=php-buildpack
-  value:
-    name: php-buildpack
-    sha1: 5dcb1988bdfaa67a334aa7c5aa0dcf95873bc362
-    url: https://bosh.io/d/github.com/cloudfoundry/php-buildpack-release?v=4.4.55
-    version: 4.4.55
-    
-
-# CVE - Release replace
-- type: replace
-  path: /releases/name=java-buildpack
-  value:
-    name: java-buildpack
-    sha1: 62199cc3aa4dff2e2aa75db89daad13542c5e9c6
-    url: https://bosh.io/d/github.com/cloudfoundry/java-buildpack-release?v=4.48.3
-    version: 4.48.3
-
-# CVE - Release replace
-- type: replace
-  path: /releases/name=haproxy?
-  value:
-    name: haproxy
-    sha1: b1ea172e97562ac785a28b3614655b5a77552d8f
-    url: https://bosh.io/d/github.com/cloudfoundry-incubator/haproxy-boshrelease?v=11.11.0
-    version: 11.11.0
+    sha1: 7beae81d257ffc995a19617c558c13b1fb0714c6
+    url: https://bosh.io/d/github.com/pivotal-cf/credhub-release?v=2.12.8
+    version: 2.12.8

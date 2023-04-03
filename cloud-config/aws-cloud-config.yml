@@ -192,7 +192,6 @@ vm_extensions:
     - host: 2222
     - host: 4443
 
-
 vm_types:
 - cloud_properties:
     ephemeral_disk:

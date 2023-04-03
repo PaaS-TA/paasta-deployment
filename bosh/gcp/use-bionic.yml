@@ -1,5 +1,6 @@
-- type: replace
+- name: stemcell
   path: /resource_pools/name=vms/stemcell?
+  type: replace
   value:
-    sha1: c7b428b8e1b68991b9a836819d8d81647e415c99
-    url: https://bosh-gce-light-stemcells.s3-accelerate.amazonaws.com/0.28/light-bosh-stemcell-0.28-google-kvm-ubuntu-bionic-go_agent.tgz
+    sha1: 42c177a311c4602fc0bb4dbe2e28174ff6d22e65
+    url: https://storage.googleapis.com/bosh-gce-light-stemcells/1.171/light-bosh-stemcell-1.171-google-kvm-ubuntu-bionic-go_agent.tgz

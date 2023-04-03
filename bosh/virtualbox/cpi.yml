@@ -3,15 +3,15 @@
   type: replace
   value:
     name: bosh-virtualbox-cpi
-    sha1: 9966eceb040aeb96765319a539d74266edbaf09d
-    url: https://bosh.io/d/github.com/cloudfoundry/bosh-virtualbox-cpi-release?v=0.2.2
-    version: 0.2.2
+    sha1: 0806a782c68d4c11952c69ac18317a9a13ad43ad
+    url: https://bosh.io/d/github.com/cloudfoundry/bosh-virtualbox-cpi-release?v=0.3.0
+    version: 0.3.0
 - name: stemcell
   path: /resource_pools/name=vms/stemcell?
   type: replace
   value:
-    sha1: 71002ba4d45832bfaf238f97ed22bd38f7ff19c4
-    url: https://storage.googleapis.com/bosh-core-stemcells/1.90/bosh-stemcell-1.90-vsphere-esxi-ubuntu-bionic-go_agent.tgz
+    sha1: 2e2a94c7f4741e71249ebf65176ddcecafa1b160
+    url: https://storage.googleapis.com/bosh-core-stemcells/1.80/bosh-stemcell-1.80-vsphere-esxi-ubuntu-jammy-go_agent.tgz
 - path: /resource_pools/name=vms/cloud_properties?
   type: replace
   value:
@@ -24,7 +24,7 @@
     name: virtualbox_cpi
     properties:
       agent:
-        mbus: nats://nats:((nats_password))@((bosh_ip)):4222
+        mbus: nats://((bosh_ip)):4222
       blobstore: null
     release: bosh-virtualbox-cpi
 - path: /instance_groups/name=bosh/properties/director/cpi_job?

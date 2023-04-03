@@ -246,7 +246,7 @@ vm_extensions:
     ephemeral_disk:
       size: 102400
       type: gp2
-  name: small-highmem-100GB 
+  name: small-highmem-100GB
 - name: ssh-proxy-and-router-lb
   cloud_properties:
     ports:

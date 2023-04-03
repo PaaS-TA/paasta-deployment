@@ -10,20 +10,20 @@
   path: /resource_pools/name=vms/stemcell?
   type: replace
   value:
-    sha1: 7373be1ec9b1a8cbe08e6eee025bf3ab72f12c8b
-    url: https://storage.googleapis.com/bosh-aws-light-stemcells/1.90/light-bosh-stemcell-1.90-aws-xen-hvm-ubuntu-bionic-go_agent.tgz
+    sha1: 516f47bb96ff1600b6887df7cf1abde0ee81b0e8
+    url: https://storage.googleapis.com/bosh-aws-light-stemcells/1.80/light-bosh-stemcell-1.80-aws-xen-hvm-ubuntu-jammy-go_agent.tgz
 - path: /resource_pools/name=vms/cloud_properties?
   type: replace
   value:
     availability_zone: ((az))
     ephemeral_disk:
       size: 25000
-      type: gp2
-    instance_type: m5.xlarge
+      type: gp3
+    instance_type: t3.medium
 - path: /disk_pools/name=disks/cloud_properties?
   type: replace
   value:
-    type: gp2
+    type: gp3
 - path: /networks/name=default/subnets/0/cloud_properties?
   type: replace
   value:
@@ -49,13 +49,6 @@
     default_security_groups: ((default_security_groups))
     region: ((region))
     secret_access_key: ((secret_access_key))
-- path: /cloud_provider/ssh_tunnel?
-  type: replace
-  value:
-    host: ((bosh_ip))
-    port: 22
-    private_key: ((private_key))
-    user: vcap
 - path: /cloud_provider/properties/aws?
   type: replace
   value:
