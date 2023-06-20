@@ -10,6 +10,7 @@ addons:
     - os: ubuntu-trusty
     - os: ubuntu-xenial
     - os: ubuntu-bionic
+    - os: ubuntu-jammy
   name: os-configuration
   jobs:
   - name: sysctl
