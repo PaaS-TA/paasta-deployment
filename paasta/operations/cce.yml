@@ -99,9 +99,9 @@
   path: /releases/name=uaa
   value:
     name: uaa
-    sha1: e25430a7c236a2ba311bcac5595acfe6a44b6e0a
-    url: https://nextcloud.paas-ta.org/index.php/s/KntxggoeGxiyHcD/download
-    version: 76.2.0-PaaS-TA-v2
+    sha1: 7b338be5ec4d3a82ae9417c8943379e18db2ee98
+    url: https://bosh.io/d/github.com/cloudfoundry/uaa-release?v=76.10.0
+    version: 76.10.0
 
 # CCE - Release replace
 - type: replace
