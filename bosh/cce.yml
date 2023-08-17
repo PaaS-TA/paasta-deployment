@@ -80,8 +80,8 @@
   path: /releases/name=bosh?
   value:
     name: bosh
-    sha1: 
-    url: https://nextcloud.paas-ta.org/index.php/s/xxxx/download
+    sha1: b15ee69180241da0a9d79c58a07f30ac8a9ed4cf
+    url: https://nextcloud.paas-ta.org/index.php/s/MZzaAggzXRCQH92/download
     version: 273.0.0-PaaS-TA-v3
 
 - type: replace
